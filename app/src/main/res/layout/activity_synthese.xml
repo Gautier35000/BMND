@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="#F1B753C5"
+    tools:context=".SyntheseActivity">
+
+    <TextView
+        android:id="@+id/tvReservation2"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:text="Réservation"
+        android:textSize="30sp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="25dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar4"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+
+    <TextView
+        android:id="@+id/tvSyntheseTitre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Synthèse :"
+        android:textSize="24sp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="25dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tvMessageAdresse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Adresse de prestation :"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tvAdrresse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="186 Route de Grenade"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tvCPVille"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="31700 Blagnac"
+            android:textSize="18sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tvMessagePrestation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Prestation :"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tvPrestation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Mulet"
+            android:textSize="18sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tvCoiffeuseMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Coiffeuse :"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tvCoiffeuse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Micheline"
+            android:textSize="18sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tvHoraireMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Horaire :"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tvHoraire"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="37 : 72"
+            android:textSize="18sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btValider"
+            android:onClick="onBtValiderSyntheseClick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Valider" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_dark"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btRéservation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:drawableTint="@android:color/holo_blue_dark"
+            android:foregroundTint="@android:color/holo_blue_dark"
+            android:onClick="onBtReservtionClick"
+            android:text="Réservation"
+            android:textColor="#000000"
+            android:textColorHint="#C83D3D"
+            android:stateListAnimator="@null"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/btPrestation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:drawableTint="@android:color/holo_blue_dark"
+            android:foregroundTint="@android:color/holo_blue_dark"
+            android:onClick="onBtPrestationClick"
+            android:text="Prestation"
+            android:textColor="#000000"
+            android:textColorHint="#C83D3D"
+            android:stateListAnimator="@null"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/btCoiffeuse"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:drawableTint="@android:color/holo_blue_dark"
+            android:foregroundTint="@android:color/holo_blue_dark"
+            android:onClick="onBtCoiffeuseClick"
+            android:text="Coiffeuse"
+            android:stateListAnimator="@null"
+            android:textColor="#000000"
+            android:textColorHint="#C83D3D"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/btConseils"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:backgroundTintMode="multiply"
+            android:drawableTint="@android:color/holo_blue_dark"
+            android:foregroundTint="@android:color/holo_blue_dark"
+            android:onClick="onBtConseilClick"
+            android:text="Conseils"
+            android:textColor="#000000"
+            android:stateListAnimator="@null"
+            android:textColorHint="#C83D3D"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

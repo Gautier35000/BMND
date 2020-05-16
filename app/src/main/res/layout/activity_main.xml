@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F1B753C5"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tvReservation"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:text="Réservation"
+        android:textSize="30sp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="25dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="25dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/ivCoif1"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                app:srcCompat="@drawable/perruques_unsplash" />
+
+            <TextView
+                android:id="@+id/tvImage1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Coiffure Homme" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@android:drawable/btn_plus" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/ivCoif2"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                app:srcCompat="@drawable/perruques_unsplash" />
+
+            <TextView
+                android:id="@+id/tvImage2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Pose perruque / confection" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@android:drawable/btn_plus" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btRéservation"
+            android:onClick="onBtReservtionClick"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:drawableTint="@android:color/holo_blue_dark"
+            android:foregroundTint="@android:color/holo_blue_dark"
+            android:text="Réservation"
+            android:textColor="#000000"
+            android:textColorHint="#C83D3D"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/btPrestation"
+            android:onClick="onBtPrestationClick"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:drawableTint="@android:color/holo_blue_dark"
+            android:foregroundTint="@android:color/holo_blue_dark"
+            android:text="Prestation"
+            android:textColor="#000000"
+            android:textColorHint="#C83D3D"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/btCoiffeuse"
+            android:onClick="onBtCoiffeuseClick"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:drawableTint="@android:color/holo_blue_dark"
+            android:foregroundTint="@android:color/holo_blue_dark"
+            android:text="Coiffeuse"
+            android:textColor="#000000"
+            android:textColorHint="#C83D3D"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/btConseils"
+            android:onClick="onBtConseilClick"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:backgroundTintMode="multiply"
+            android:drawableTint="@android:color/holo_blue_dark"
+            android:foregroundTint="@android:color/holo_blue_dark"
+            android:text="Conseils"
+            android:textColor="#000000"
+            android:textColorHint="#C83D3D"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+</LinearLayout>
