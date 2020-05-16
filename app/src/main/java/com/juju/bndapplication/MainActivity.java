@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    //Variables
     private ProgressBar progressBar;
     private ImageView ivCoif1;
     private ImageView ivCoif2;
