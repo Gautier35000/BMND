@@ -39,11 +39,9 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(Object o) {
             super.onPostExecute(o);
             //lancement de la page de login
-            /*Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
-            finish();*/
-            LoginActivity loginActivity = new LoginActivity();
-            Intent intent = new Intent(MainActivity.this, loginActivity.getClass());
+            finish();
         }
     }
 

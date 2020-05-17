@@ -1,18 +1,25 @@
 package com.juju.bndapplication;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.juju.bndapplication.models.ReservationBean;
 
 public class ReservationAdresseActivity extends AppCompatActivity {
 
     private ProgressBar progressBar5;
+    private TextView tvAdresse1;
+    private TextView tvAdresse2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,8 +27,11 @@ public class ReservationAdresseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_reservation_adresse);
 
         progressBar5 = findViewById(R.id.progressBar5);
+        tvAdresse1 = findViewById(R.id.tvAdresse1);
+        tvAdresse2 = findViewById(R.id.tvAdresse2);
 
         progressBar5.setProgress(20);
+
     }
 
     @Override
@@ -81,11 +91,15 @@ public class ReservationAdresseActivity extends AppCompatActivity {
     public void onBtConseilClick(View view) {
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void onBtValiderAdresseClick(View view) {
         //Enregistrement de l'adresse
-
+        ReservationBean reservation = new ReservationBean();
+        reservation.setAdresse(tvAdresse1.getText().toString());
+        reservation.setCpVille(tvAdresse2.getText().toString());
         //Passage à l'étape suivante
         Intent intent = new Intent(this, ChoixCoiffureActivity.class);
+        intent.putExtra("reservation", reservation);
         startActivity(intent);
     }
 }

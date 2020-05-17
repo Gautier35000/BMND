@@ -1,15 +1,20 @@
 package com.juju.bndapplication;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
+
+import com.juju.bndapplication.models.ReservationBean;
 
 public class ChoixCoiffureActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -18,6 +23,7 @@ public class ChoixCoiffureActivity extends AppCompatActivity implements View.OnC
     private ImageView ivCoif1;
     private ImageView ivCoif2;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +38,15 @@ public class ChoixCoiffureActivity extends AppCompatActivity implements View.OnC
         ivCoif1.setOnClickListener(this);
         ivCoif2.setOnClickListener(this);
 
+        Intent intent = getIntent();
+
+        if (intent != null){
+            ReservationBean reservation = intent.getParcelableExtra("reservation");
+            if (reservation.getAdresse() != null){
+                //A titre de test
+                //Toast.makeText(this, reservation.getAdresse(), Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     @Override

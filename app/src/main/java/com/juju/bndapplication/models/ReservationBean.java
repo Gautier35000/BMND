@@ -2,20 +2,22 @@ package com.juju.bndapplication.models;
 
 import android.icu.text.SimpleDateFormat;
 import android.os.Build;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import androidx.annotation.RequiresApi;
 
 import java.util.Date;
 
 @RequiresApi(api = Build.VERSION_CODES.N)
-public class ReservationBean {
+public class ReservationBean implements Parcelable {
 
     private String adresse;
     private String cpVille;
     private String coiffure;
     private String options;
     private String coiffeuse;
-    private final SimpleDateFormat dateReservation = new SimpleDateFormat("dd/MM/yyyy");
+    private SimpleDateFormat dateReservation = new SimpleDateFormat("dd/MM/yyyy");
     private String creneauHoraire;
     private String client; //à changer en model client ou en nomClient
 
@@ -31,6 +33,44 @@ public class ReservationBean {
 
     public ReservationBean() {
     }
+
+    protected ReservationBean(Parcel in) {
+        adresse = in.readString();
+        cpVille = in.readString();
+        coiffure = in.readString();
+        options = in.readString();
+        coiffeuse = in.readString();
+        creneauHoraire = in.readString();
+        client = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(adresse);
+        dest.writeString(cpVille);
+        dest.writeString(coiffure);
+        dest.writeString(options);
+        dest.writeString(coiffeuse);
+        dest.writeString(creneauHoraire);
+        dest.writeString(client);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<ReservationBean> CREATOR = new Creator<ReservationBean>() {
+        @Override
+        public ReservationBean createFromParcel(Parcel in) {
+            return new ReservationBean(in);
+        }
+
+        @Override
+        public ReservationBean[] newArray(int size) {
+            return new ReservationBean[size];
+        }
+    };
 
     public String getAdresse() {
         return adresse;
