@@ -1,6 +1,8 @@
 package com.juju.bndapplication;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.icu.text.SimpleDateFormat;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -28,6 +30,7 @@ public class SyntheseActivity extends AppCompatActivity {
     private TextView tvCoiffeuse;
     private TextView tvHoraire;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +51,7 @@ public class SyntheseActivity extends AppCompatActivity {
             reservation = intentReservation.getParcelableExtra("reservation5");
             if (reservation.getCreneauHoraire() == null) {
                 Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
-                Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Une erreur de date est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
                 startActivity(intent1);
                 finish();
             } else {
@@ -57,7 +60,18 @@ public class SyntheseActivity extends AppCompatActivity {
                 tvPrestation.setText(reservation.getCoiffure() + " , " + reservation.getOptions());
                 tvCoiffeuse.setText(reservation.getCoiffeuse());
                 //String dateReservation = récupérer la date une fois celle-ci gérée
-                tvHoraire.setText("20/21/2022" + " à " + reservation.getCreneauHoraire());
+                /*SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                String date = dateFormat.format(reservation.getDateReservation());
+                Toast.makeText(this, date, Toast.LENGTH_SHORT).show();*/
+
+                try {
+
+                }
+                catch (Exception e){
+
+                }
+
+                tvHoraire.setText("date" + " à " + reservation.getCreneauHoraire());
             }
         } else {
             Intent intent1 = new Intent(this, ReservationAdresseActivity.class);

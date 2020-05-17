@@ -1,6 +1,7 @@
 package com.juju.bndapplication;
 
 import android.content.Intent;
+import android.icu.text.SimpleDateFormat;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,6 +15,9 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.juju.bndapplication.models.ReservationBean;
+
+import java.text.ParseException;
+import java.util.Date;
 
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class ChoixHoraireActivity extends AppCompatActivity {
@@ -110,9 +114,16 @@ public class ChoixHoraireActivity extends AppCompatActivity {
     }
 
     //Remplace pour le moment le lien devant se faire au niveau du tableau de choix
-    public void remplacementTableau(View view) {
+    public void remplacementTableau(View view) throws ParseException {
 
         reservation.setCreneauHoraire("8h-18h");
+
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+
+        Date dateTamp = format.parse("20/02/2020");
+        reservation.setDateReservation(dateTamp);
+        Toast.makeText(this, reservation.getDateReservation().toString(), Toast.LENGTH_LONG).show();
+
 
         Intent intent = new Intent(this, SyntheseActivity.class);
         intent.putExtra("reservation5", reservation);

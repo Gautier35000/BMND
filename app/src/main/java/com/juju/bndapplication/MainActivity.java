@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected Object doInBackground(Object[] objects) {
-            SystemClock.sleep(3000);
+            SystemClock.sleep(1500);
             return null;
         }
 

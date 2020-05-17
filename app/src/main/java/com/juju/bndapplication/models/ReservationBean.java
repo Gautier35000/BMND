@@ -24,12 +24,13 @@ public class ReservationBean implements Parcelable {
     //Peut-être rajouter l'ID
 
     //Constructeur full réservation sans ID
-    public ReservationBean(String adresse, String cpVille, String coiffure, String options, String coiffeuse, String creneauHoraire, String client) {
+    public ReservationBean(String adresse, String cpVille, String coiffure, String options, String coiffeuse, Date dateReservation, String creneauHoraire, String client) {
         this.adresse = adresse;
         this.cpVille = cpVille;
         this.coiffure = coiffure;
         this.options = options;
         this.coiffeuse = coiffeuse;
+        this.dateReservation = dateReservation;
         this.creneauHoraire = creneauHoraire;
         this.client = client;
     }
