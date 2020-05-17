@@ -1,17 +1,32 @@
 package com.juju.bndapplication;
 
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.juju.bndapplication.models.ReservationBean;
+
+@RequiresApi(api = Build.VERSION_CODES.N)
 public class SyntheseActivity extends AppCompatActivity {
 
     private ProgressBar progressBar4;
+
+    private ReservationBean reservation;
+    private TextView tvAdresse;
+    private TextView tvCPVille;
+    private TextView tvPrestation;
+    private TextView tvCoiffeuse;
+    private TextView tvHoraire;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +34,38 @@ public class SyntheseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_synthese);
 
         progressBar4 = findViewById(R.id.progressBar4);
+        tvAdresse = findViewById(R.id.tvAdresse);
+        tvCPVille = findViewById(R.id.tvCPVille);
+        tvPrestation = findViewById(R.id.tvPrestation);
+        tvCoiffeuse = findViewById(R.id.tvCoiffeuse);
+        tvHoraire = findViewById(R.id.tvHoraire);
 
         progressBar4.setProgress(100);
+
+        Intent intentReservation = getIntent();
+
+        if (intentReservation != null) {
+            reservation = intentReservation.getParcelableExtra("reservation5");
+            if (reservation.getCreneauHoraire() == null) {
+                Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
+                Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
+                startActivity(intent1);
+                finish();
+            } else {
+                tvAdresse.setText(reservation.getAdresse());
+                tvCPVille.setText(reservation.getCpVille());
+                tvPrestation.setText(reservation.getCoiffure() + " , " + reservation.getOptions());
+                tvCoiffeuse.setText(reservation.getCoiffeuse());
+                //String dateReservation = récupérer la date une fois celle-ci gérée
+                tvHoraire.setText("20/21/2022" + " à " + reservation.getCreneauHoraire());
+            }
+        } else {
+            Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
+            Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
+            startActivity(intent1);
+            finish();
+        }
+
     }
 
     @Override

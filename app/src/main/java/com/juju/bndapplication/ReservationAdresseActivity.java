@@ -99,7 +99,8 @@ public class ReservationAdresseActivity extends AppCompatActivity {
         reservation.setCpVille(tvAdresse2.getText().toString());
         //Passage à l'étape suivante
         Intent intent = new Intent(this, ChoixCoiffureActivity.class);
-        intent.putExtra("reservation", reservation);
+        intent.putExtra("reservation1", reservation);
         startActivity(intent);
+        finish();
     }
 }

@@ -52,7 +52,7 @@
         android:orientation="horizontal">
 
         <CheckBox
-            android:id="@+id/checkBox8"
+            android:id="@+id/cbOption1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="CheckBox" />
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content" />
 
         <CheckBox
-            android:id="@+id/checkBox9"
+            android:id="@+id/cbOption2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="CheckBox" />
@@ -81,7 +81,7 @@
         android:orientation="horizontal">
 
         <CheckBox
-            android:id="@+id/checkBox10"
+            android:id="@+id/cbOption3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="CheckBox" />
@@ -91,7 +91,7 @@
             android:layout_height="wrap_content" />
 
         <CheckBox
-            android:id="@+id/checkBox11"
+            android:id="@+id/cbOption4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="CheckBox" />
@@ -110,7 +110,7 @@
         android:orientation="horizontal">
 
         <CheckBox
-            android:id="@+id/checkBox12"
+            android:id="@+id/cbOption5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="CheckBox" />
@@ -120,7 +120,7 @@
             android:layout_height="0dp" />
 
         <CheckBox
-            android:id="@+id/checkBox13"
+            android:id="@+id/cbOption6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="CheckBox" />

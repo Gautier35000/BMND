@@ -16,14 +16,15 @@ import android.widget.Toast;
 
 import com.juju.bndapplication.models.ReservationBean;
 
+@RequiresApi(api = Build.VERSION_CODES.N)
 public class ChoixCoiffureActivity extends AppCompatActivity implements View.OnClickListener {
 
     //Variables
     private ProgressBar progressBar;
     private ImageView ivCoif1;
     private ImageView ivCoif2;
+    ReservationBean reservation;
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,14 +39,27 @@ public class ChoixCoiffureActivity extends AppCompatActivity implements View.OnC
         ivCoif1.setOnClickListener(this);
         ivCoif2.setOnClickListener(this);
 
-        Intent intent = getIntent();
+        //Récupération de l'objet réservation initié en ReservationAdresseActivity
+        //Redirection vers la ReservationAdresseActivity si les données n'ont pas été récupérées
+        Intent intentReservation = getIntent();
 
-        if (intent != null){
-            ReservationBean reservation = intent.getParcelableExtra("reservation");
-            if (reservation.getAdresse() != null){
-                //A titre de test
-                //Toast.makeText(this, reservation.getAdresse(), Toast.LENGTH_SHORT).show();
+        if (intentReservation != null){
+            reservation = intentReservation.getParcelableExtra("reservation1");
+            if (reservation.getAdresse() == null || reservation .getCpVille() == null){
+                Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
+                Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
+                startActivity(intent1);
+                finish();
             }
+            else {
+                Toast.makeText(this, reservation.getAdresse(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else {
+            Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
+            Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
+            startActivity(intent1);
+            finish();
         }
     }
 
@@ -53,10 +67,18 @@ public class ChoixCoiffureActivity extends AppCompatActivity implements View.OnC
     public void onClick(View v) {
 
         //Choix de la coiffure
+        if (v == ivCoif1) {
+            reservation.setCoiffure("Tresses");
+        }
+        else if (v == ivCoif2) {
+            reservation.setCoiffure("Perruque");
+        }
 
         //Lancement du prochain écran
         Intent intent = new Intent(this, OptionsActivity.class);
+        intent.putExtra("reservation2", reservation);
         startActivity(intent);
+        finish();
     }
 
     @Override

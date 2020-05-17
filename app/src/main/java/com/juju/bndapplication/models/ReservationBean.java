@@ -17,10 +17,13 @@ public class ReservationBean implements Parcelable {
     private String coiffure;
     private String options;
     private String coiffeuse;
-    private SimpleDateFormat dateReservation = new SimpleDateFormat("dd/MM/yyyy");
+    private SimpleDateFormat dateReservationFormat = new SimpleDateFormat("dd/MM/yyyy");
+    Date dateReservation;
     private String creneauHoraire;
     private String client; //à changer en model client ou en nomClient
+    //Peut-être rajouter l'ID
 
+    //Constructeur full réservation sans ID
     public ReservationBean(String adresse, String cpVille, String coiffure, String options, String coiffeuse, String creneauHoraire, String client) {
         this.adresse = adresse;
         this.cpVille = cpVille;
@@ -112,8 +115,8 @@ public class ReservationBean implements Parcelable {
         this.coiffeuse = coiffeuse;
     }
 
-    public SimpleDateFormat getDateReservation() {
-        return dateReservation;
+    public SimpleDateFormat getDateReservationFormat() {
+        return dateReservationFormat;
     }
 
     public String getCreneauHoraire() {
@@ -131,4 +134,8 @@ public class ReservationBean implements Parcelable {
     public void setClient(String client) {
         this.client = client;
     }
+
+    public Date getDateReservation() {return dateReservation;}
+
+    public void setDateReservation(Date dateReservation) {this.dateReservation = dateReservation;}
 }
