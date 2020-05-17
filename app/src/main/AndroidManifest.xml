@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SyntheseActivity"></activity>
+        <activity android:name=".ReservationAdresseActivity"></activity>
+        <activity android:name=".AcceuilActivity" />
+        <activity android:name=".CreacptActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".ChoixCoiffureActivity" />
+        <activity android:name=".SyntheseActivity" />
         <activity android:name=".ChoixHoraireActivity" />
         <activity android:name=".CommentActivity" />
         <activity android:name=".ProfilCoiffeuseActivity" />

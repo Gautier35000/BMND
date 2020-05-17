@@ -21,7 +21,7 @@ public class ChoixHoraireActivity extends AppCompatActivity {
 
         progressBar3 = findViewById(R.id.progressBar3);
 
-        progressBar3.setProgress(75);
+        progressBar3.setProgress(80);
     }
 
     @Override

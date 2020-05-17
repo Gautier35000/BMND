@@ -21,7 +21,7 @@ public class OptionsActivity extends AppCompatActivity {
 
         progressBar2 = findViewById(R.id.progressBar2);
 
-        progressBar2.setProgress(25);
+        progressBar2.setProgress(40);
     }
 
     @Override

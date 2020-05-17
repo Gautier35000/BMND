@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="#F1B753C5"
+    tools:context=".ReservationAdresseActivity">
+
+    <TextView
+        android:id="@+id/tvReservation"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:text="Réservation"
+        android:textSize="30sp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_weight="1" />
+
+    <ProgressBar
+        android:id="@+id/progressBar5"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Space
+            android:layout_width="50dp"
+            android:layout_height="match_parent" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <RadioButton
+                android:id="@+id/rdbtAdresseActuelle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Mon adresse :"
+                android:textSize="18sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tvAdresse1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="186 Route de Grenade"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvAdresse2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="31700 Blagnac"
+                android:textSize="18sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_weight="1" />
+
+            <RadioButton
+                android:id="@+id/rdbtAutreAdresse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Autre adresse :"
+                android:textSize="18sp" />
+        </RadioGroup>
+
+        <Space
+            android:layout_width="50dp"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/btValider"
+        android:onClick="onBtValiderAdresseClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Valider" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btRéservation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:drawableTint="@android:color/holo_blue_dark"
+            android:foregroundTint="@android:color/holo_blue_dark"
+            android:onClick="onBtReservtionClick"
+            android:text="Réservation"
+            android:textColor="#000000"
+            android:textColorHint="#C83D3D"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/btPrestation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:drawableTint="@android:color/holo_blue_dark"
+            android:foregroundTint="@android:color/holo_blue_dark"
+            android:onClick="onBtPrestationClick"
+            android:text="Prestation"
+            android:textColor="#000000"
+            android:textColorHint="#C83D3D"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/btCoiffeuse"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:drawableTint="@android:color/holo_blue_dark"
+            android:foregroundTint="@android:color/holo_blue_dark"
+            android:onClick="onBtCoiffeuseClick"
+            android:text="Coiffeuse"
+            android:textColor="#000000"
+            android:textColorHint="#C83D3D"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/btConseils"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:backgroundTintMode="multiply"
+            android:drawableTint="@android:color/holo_blue_dark"
+            android:foregroundTint="@android:color/holo_blue_dark"
+            android:onClick="onBtConseilClick"
+            android:text="Conseils"
+            android:textColor="#000000"
+            android:textColorHint="#C83D3D"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+</LinearLayout>

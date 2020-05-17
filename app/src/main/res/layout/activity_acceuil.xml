@@ -4,103 +4,82 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F1B753C5"
-    android:gravity="center"
     android:orientation="vertical"
-    tools:context=".MainActivity">
-
-    <TextView
-        android:id="@+id/tvReservation"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:gravity="center"
-        android:text="Réservation"
-        android:textSize="30sp" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="25dp" />
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="25dp" />
+    android:background="#F1B753C5"
+    tools:context=".AcceuilActivity">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:gravity="center"
         android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/ivCoif1"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                app:srcCompat="@drawable/perruques_unsplash" />
-
-            <TextView
-                android:id="@+id/tvImage1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Coiffure Homme" />
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/imageView5"
+        <TextView
+            android:id="@+id/tvBonjour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@android:drawable/btn_plus" />
+            android:gravity="center"
+            android:text="Bonjour bidule,"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/imageView28"
+            android:layout_width="wrap_content"
+            android:layout_height="130dp"
+            tools:srcCompat="@mipmap/ic_launcher" />
     </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_weight="1" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:gravity="center">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/ivCoif2"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                app:srcCompat="@drawable/perruques_unsplash" />
-
-            <TextView
-                android:id="@+id/tvImage2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Pose perruque / confection" />
-
-        </LinearLayout>
+            android:text="@string/loremIpsum" />
 
         <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@android:drawable/btn_plus" />
+            android:id="@+id/imageView29"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:srcCompat="@drawable/perruques_unsplash" />
     </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/imageView30"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:srcCompat="@drawable/perruques_unsplash" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/loremIpsum" />
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_weight="1" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -109,13 +88,13 @@
 
         <Button
             android:id="@+id/btRéservation"
-            android:onClick="onBtReservtionClick"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:drawableTint="@android:color/holo_blue_dark"
             android:foregroundTint="@android:color/holo_blue_dark"
+            android:onClick="onBtReservtionClick"
             android:text="Réservation"
             android:textColor="#000000"
             android:textColorHint="#C83D3D"
@@ -123,13 +102,13 @@
 
         <Button
             android:id="@+id/btPrestation"
-            android:onClick="onBtPrestationClick"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:drawableTint="@android:color/holo_blue_dark"
             android:foregroundTint="@android:color/holo_blue_dark"
+            android:onClick="onBtPrestationClick"
             android:text="Prestation"
             android:textColor="#000000"
             android:textColorHint="#C83D3D"
@@ -137,13 +116,13 @@
 
         <Button
             android:id="@+id/btCoiffeuse"
-            android:onClick="onBtCoiffeuseClick"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:drawableTint="@android:color/holo_blue_dark"
             android:foregroundTint="@android:color/holo_blue_dark"
+            android:onClick="onBtCoiffeuseClick"
             android:text="Coiffeuse"
             android:textColor="#000000"
             android:textColorHint="#C83D3D"
@@ -151,7 +130,6 @@
 
         <Button
             android:id="@+id/btConseils"
-            android:onClick="onBtConseilClick"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -159,10 +137,12 @@
             android:backgroundTintMode="multiply"
             android:drawableTint="@android:color/holo_blue_dark"
             android:foregroundTint="@android:color/holo_blue_dark"
+            android:onClick="onBtConseilClick"
             android:text="Conseils"
             android:textColor="#000000"
             android:textColorHint="#C83D3D"
             android:textSize="10sp" />
+
     </LinearLayout>
 
 </LinearLayout>

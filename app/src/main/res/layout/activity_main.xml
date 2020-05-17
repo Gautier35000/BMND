@@ -16,7 +16,9 @@
         android:background="#FAF6F6"
         android:backgroundTint="#FFFFFF"
         android:backgroundTintMode="screen"
-        android:hapticFeedbackEnabled="false" />
+        android:hapticFeedbackEnabled="false"
+        android:visibility="visible"
+        tools:srcCompat="@drawable/artboard_8" />
 
     <LinearLayout
         android:layout_width="match_parent"

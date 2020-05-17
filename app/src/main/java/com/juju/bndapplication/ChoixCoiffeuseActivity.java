@@ -30,7 +30,7 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
         ivViewProfile1 = findViewById(R.id.ivViewProfile1);
         ivViewProfile2 = findViewById(R.id.ivViewProfile2);
 
-        progressBar2.setProgress(50);
+        progressBar2.setProgress(60);
 
         ivCoiffeuse1.setOnClickListener(this);
         ivCoiffeuse2.setOnClickListener(this);

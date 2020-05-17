@@ -61,8 +61,6 @@ public class CommentActivity extends AppCompatActivity {
 
     }
 
-
-
     public void onBtReservtionClick(View view) {
     }
 
