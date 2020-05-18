@@ -23,7 +23,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onBtInscriptionClick(View view) {
-        //Aller sur la page de création de compte
         Intent intent = new Intent(this, CreacptActivity.class);
         startActivity(intent);
     }

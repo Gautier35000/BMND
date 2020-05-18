@@ -1,8 +1,11 @@
 package com.juju.bndapplication;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -46,18 +49,45 @@ public class CommentActivity extends AppCompatActivity {
     }
 
     private void launchParametre() {
-
+        Intent intent = new Intent(this, ParametreActivity.class);
+        startActivity(intent);
     }
 
     private void launchContact() {
-
+        Intent intent = new Intent(this, ContactActivity.class);
+        startActivity(intent);
     }
 
     private void launchCG() {
-
+        Intent intent = new Intent(this, CGActivity.class);
+        startActivity(intent);
     }
 
     private void deconnexion() {
+
+        AlertDialog.Builder alerte = new AlertDialog.Builder(this);
+        alerte.setMessage("Souhaitez-vous vraiment vous déconnecter ?");
+        alerte.setTitle("Déconnexion");
+        alerte.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                //Mettre fin à la session avant le retour vers la page de login
+
+                Intent intent = new Intent(CommentActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        alerte.setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        alerte.setIcon(R.mipmap.ic_launcher_round);
+        alerte.show();
 
     }
 

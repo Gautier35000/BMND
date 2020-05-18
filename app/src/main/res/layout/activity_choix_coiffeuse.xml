@@ -42,6 +42,7 @@
             android:id="@+id/ivCoiffeuse1"
             android:layout_width="200dp"
             android:layout_height="200dp"
+            android:onClick="onMichelleClick"
             app:srcCompat="@drawable/perruques_unsplash" />
 
         <LinearLayout
@@ -109,6 +110,7 @@
 
         <ImageView
             android:id="@+id/ivCoiffeuse2"
+            android:onClick="onRoselineClick"
             android:layout_width="200dp"
             android:layout_height="200dp"
             app:srcCompat="@drawable/perruques_unsplash" />
@@ -181,7 +183,6 @@
             android:backgroundTint="@android:color/holo_blue_dark"
             android:drawableTint="@android:color/holo_blue_dark"
             android:foregroundTint="@android:color/holo_blue_dark"
-            android:onClick="onBtReservtionClick"
             android:text="Réservation"
             android:textColor="#000000"
             android:textColorHint="#C83D3D"
@@ -195,7 +196,6 @@
             android:backgroundTint="@android:color/holo_blue_dark"
             android:drawableTint="@android:color/holo_blue_dark"
             android:foregroundTint="@android:color/holo_blue_dark"
-            android:onClick="onBtPrestationClick"
             android:text="Prestation"
             android:textColor="#000000"
             android:textColorHint="#C83D3D"
@@ -209,7 +209,6 @@
             android:backgroundTint="@android:color/holo_blue_dark"
             android:drawableTint="@android:color/holo_blue_dark"
             android:foregroundTint="@android:color/holo_blue_dark"
-            android:onClick="onBtCoiffeuseClick"
             android:text="Coiffeuse"
             android:textColor="#000000"
             android:textColorHint="#C83D3D"
@@ -224,7 +223,6 @@
             android:backgroundTintMode="multiply"
             android:drawableTint="@android:color/holo_blue_dark"
             android:foregroundTint="@android:color/holo_blue_dark"
-            android:onClick="onBtConseilClick"
             android:text="Conseils"
             android:textColor="#000000"
             android:textColorHint="#C83D3D"

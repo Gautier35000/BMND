@@ -1,13 +1,16 @@
 package com.juju.bndapplication;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 public class AcceuilActivity extends AppCompatActivity {
 
@@ -47,18 +50,45 @@ public class AcceuilActivity extends AppCompatActivity {
     }
 
     private void launchParametre() {
-
+        Intent intent = new Intent(this, ParametreActivity.class);
+        startActivity(intent);
     }
 
     private void launchContact() {
-
+        Intent intent = new Intent(this, ContactActivity.class);
+        startActivity(intent);
     }
 
     private void launchCG() {
-
+        Intent intent = new Intent(this, CGActivity.class);
+        startActivity(intent);
     }
 
     private void deconnexion() {
+
+        AlertDialog.Builder alerte = new AlertDialog.Builder(this);
+        alerte.setMessage("Souhaitez-vous vraiment vous déconnecter ?");
+        alerte.setTitle("Déconnexion");
+        alerte.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                //Mettre fin à la session avant le retour vers la page de login
+
+                Intent intent = new Intent(AcceuilActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        alerte.setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        alerte.setIcon(R.mipmap.ic_launcher_round);
+        alerte.show();
 
     }
 
@@ -68,11 +98,17 @@ public class AcceuilActivity extends AppCompatActivity {
     }
 
     public void onBtPrestationClick(View view) {
+        Intent intent = new Intent(this, GaleriePrestationActivity.class);
+        startActivity(intent);
     }
 
     public void onBtCoiffeuseClick(View view) {
+        Intent intent = new Intent(this, GalerieCoiffeuseActivity.class);
+        startActivity(intent);
     }
 
     public void onBtConseilClick(View view) {
+        Intent intent = new Intent(this, ConseilsActivity.class);
+        startActivity(intent);
     }
 }

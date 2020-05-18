@@ -1,25 +1,27 @@
 package com.juju.bndapplication;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.icu.text.SimpleDateFormat;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.juju.bndapplication.models.ReservationBean;
 
 @RequiresApi(api = Build.VERSION_CODES.N)
-public class SyntheseActivity extends AppCompatActivity {
+public class SyntheseActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ProgressBar progressBar4;
 
@@ -29,6 +31,10 @@ public class SyntheseActivity extends AppCompatActivity {
     private TextView tvPrestation;
     private TextView tvCoiffeuse;
     private TextView tvHoraire;
+    private Button btRéservation;
+    private Button btPrestation;
+    private Button btCoiffeuse;
+    private Button btConseils;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -42,6 +48,10 @@ public class SyntheseActivity extends AppCompatActivity {
         tvPrestation = findViewById(R.id.tvPrestation);
         tvCoiffeuse = findViewById(R.id.tvCoiffeuse);
         tvHoraire = findViewById(R.id.tvHoraire);
+        btRéservation = findViewById(R.id.btRéservation);
+        btPrestation = findViewById(R.id.btPrestation);
+        btCoiffeuse = findViewById(R.id.btCoiffeuse);
+        btConseils = findViewById(R.id.btConseils);
 
         progressBar4.setProgress(100);
 
@@ -60,18 +70,7 @@ public class SyntheseActivity extends AppCompatActivity {
                 tvPrestation.setText(reservation.getCoiffure() + " , " + reservation.getOptions());
                 tvCoiffeuse.setText(reservation.getCoiffeuse());
                 //String dateReservation = récupérer la date une fois celle-ci gérée
-                /*SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                String date = dateFormat.format(reservation.getDateReservation());
-                Toast.makeText(this, date, Toast.LENGTH_SHORT).show();*/
-
-                try {
-
-                }
-                catch (Exception e){
-
-                }
-
-                tvHoraire.setText("date" + " à " + reservation.getCreneauHoraire());
+                tvHoraire.setText(reservation.getDateReservation() + " à " + reservation.getCreneauHoraire());
             }
         } else {
             Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
@@ -79,6 +78,56 @@ public class SyntheseActivity extends AppCompatActivity {
             startActivity(intent1);
             finish();
         }
+
+        btCoiffeuse.setOnClickListener(this);
+        btConseils.setOnClickListener(this);
+        btPrestation.setOnClickListener(this);
+        btRéservation.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(final View v) {
+
+        AlertDialog.Builder alerte = new AlertDialog.Builder(this);
+        alerte.setMessage("Souhaitez-vous vraiment vous abandonner votre réservation en cours ?");
+        alerte.setTitle("Quitter commande");
+        alerte.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                if (v == btRéservation) {
+                    Intent intent = new Intent(SyntheseActivity.this, ReservationAdresseActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else if (v == btPrestation){
+                    Intent intent = new Intent(SyntheseActivity.this, GaleriePrestationActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else if (v == btCoiffeuse){
+                    Intent intent = new Intent(SyntheseActivity.this, GalerieCoiffeuseActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else if (v == btConseils){
+                    Intent intent = new Intent(SyntheseActivity.this, ConseilsActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+
+            }
+        });
+        alerte.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        alerte.setIcon(R.mipmap.ic_launcher_round);
+        alerte.show();
 
     }
 
@@ -112,34 +161,50 @@ public class SyntheseActivity extends AppCompatActivity {
     }
 
     private void launchParametre() {
-
+        Intent intent = new Intent(this, ParametreActivity.class);
+        startActivity(intent);
     }
 
     private void launchContact() {
-
+        Intent intent = new Intent(this, ContactActivity.class);
+        startActivity(intent);
     }
 
     private void launchCG() {
-
+        Intent intent = new Intent(this, CGActivity.class);
+        startActivity(intent);
     }
 
     private void deconnexion() {
 
-    }
+        AlertDialog.Builder alerte = new AlertDialog.Builder(this);
+        alerte.setMessage("Souhaitez-vous vraiment vous déconnecter ?");
+        alerte.setTitle("Déconnexion");
+        alerte.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
 
-    public void onBtReservtionClick(View view) {
-    }
+                //Mettre fin à la session avant le retour vers la page de login
 
-    public void onBtPrestationClick(View view) {
-    }
+                Intent intent = new Intent(SyntheseActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        alerte.setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
 
-    public void onBtCoiffeuseClick(View view) {
-    }
+            }
+        });
 
-    public void onBtConseilClick(View view) {
+        alerte.setIcon(R.mipmap.ic_launcher_round);
+        alerte.show();
+
     }
 
     public void onBtValiderSyntheseClick(View view) {
         //Enregistrement de la commande
     }
+
 }

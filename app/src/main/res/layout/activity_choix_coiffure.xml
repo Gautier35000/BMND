@@ -46,6 +46,7 @@
 
             <ImageView
                 android:id="@+id/ivCoif1"
+                android:onClick="onIvCoif1Click"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 app:srcCompat="@drawable/perruques_unsplash" />
@@ -81,6 +82,7 @@
 
             <ImageView
                 android:id="@+id/ivCoif2"
+                android:onClick="onIvCoif2Click"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 app:srcCompat="@drawable/perruques_unsplash" />
@@ -109,7 +111,6 @@
 
         <Button
             android:id="@+id/btRéservation"
-            android:onClick="onBtReservtionClick"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -123,7 +124,6 @@
 
         <Button
             android:id="@+id/btPrestation"
-            android:onClick="onBtPrestationClick"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -137,7 +137,6 @@
 
         <Button
             android:id="@+id/btCoiffeuse"
-            android:onClick="onBtCoiffeuseClick"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -151,7 +150,6 @@
 
         <Button
             android:id="@+id/btConseils"
-            android:onClick="onBtConseilClick"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

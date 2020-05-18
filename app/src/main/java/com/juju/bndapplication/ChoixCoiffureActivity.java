@@ -1,18 +1,20 @@
 package com.juju.bndapplication;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.juju.bndapplication.models.ReservationBean;
 
@@ -21,9 +23,12 @@ public class ChoixCoiffureActivity extends AppCompatActivity implements View.OnC
 
     //Variables
     private ProgressBar progressBar;
-    private ImageView ivCoif1;
-    private ImageView ivCoif2;
+
     ReservationBean reservation;
+    private Button btRéservation;
+    private Button btPrestation;
+    private Button btCoiffeuse;
+    private Button btConseils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,54 +36,83 @@ public class ChoixCoiffureActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_choix_coiffure);
 
         progressBar = findViewById(R.id.progressBar);
-        ivCoif1 = findViewById(R.id.ivCoif1);
-        ivCoif2 = findViewById(R.id.ivCoif2);
+        btRéservation = findViewById(R.id.btRéservation);
+        btPrestation = findViewById(R.id.btPrestation);
+        btCoiffeuse = findViewById(R.id.btCoiffeuse);
+        btConseils = findViewById(R.id.btConseils);
 
         progressBar.setProgress(40);
 
-        ivCoif1.setOnClickListener(this);
-        ivCoif2.setOnClickListener(this);
+        btCoiffeuse.setOnClickListener(this);
+        btConseils.setOnClickListener(this);
+        btPrestation.setOnClickListener(this);
+        btRéservation.setOnClickListener(this);
 
         //Récupération de l'objet réservation initié en ReservationAdresseActivity
         //Redirection vers la ReservationAdresseActivity si les données n'ont pas été récupérées
         Intent intentReservation = getIntent();
 
-        if (intentReservation != null){
+        if (intentReservation != null) {
             reservation = intentReservation.getParcelableExtra("reservation1");
-            if (reservation.getAdresse() == null || reservation .getCpVille() == null){
+            if (reservation.getAdresse() == null || reservation.getCpVille() == null) {
                 Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
                 Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
                 startActivity(intent1);
                 finish();
-            }
-            else {
+            } else {
                 Toast.makeText(this, reservation.getAdresse(), Toast.LENGTH_SHORT).show();
             }
-        }
-        else {
+        } else {
             Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
             Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
             startActivity(intent1);
             finish();
         }
+
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(final View v) {
 
-        //Choix de la coiffure
-        if (v == ivCoif1) {
-            reservation.setCoiffure("Tresses");
-        }
-        else if (v == ivCoif2) {
-            reservation.setCoiffure("Perruque");
-        }
+        AlertDialog.Builder alerte = new AlertDialog.Builder(this);
+        alerte.setMessage("Souhaitez-vous vraiment vous abandonner votre réservation en cours ?");
+        alerte.setTitle("Quitter commande");
+        alerte.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
 
-        //Lancement du prochain écran
-        Intent intent = new Intent(this, OptionsActivity.class);
-        intent.putExtra("reservation2", reservation);
-        startActivity(intent);
-        finish();
+                if (v == btRéservation) {
+                    Intent intent = new Intent(ChoixCoiffureActivity.this, ReservationAdresseActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else if (v == btPrestation){
+                    Intent intent = new Intent(ChoixCoiffureActivity.this, GaleriePrestationActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else if (v == btCoiffeuse){
+                    Intent intent = new Intent(ChoixCoiffureActivity.this, GalerieCoiffeuseActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else if (v == btConseils){
+                    Intent intent = new Intent(ChoixCoiffureActivity.this, ConseilsActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+
+            }
+        });
+        alerte.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        alerte.setIcon(R.mipmap.ic_launcher_round);
+        alerte.show();
     }
 
     @Override
@@ -111,31 +145,67 @@ public class ChoixCoiffureActivity extends AppCompatActivity implements View.OnC
     }
 
     private void launchParametre() {
-
+        Intent intent = new Intent(this, ParametreActivity.class);
+        startActivity(intent);
     }
 
     private void launchContact() {
-
+        Intent intent = new Intent(this, ContactActivity.class);
+        startActivity(intent);
     }
 
     private void launchCG() {
-
+        Intent intent = new Intent(this, CGActivity.class);
+        startActivity(intent);
     }
 
     private void deconnexion() {
 
+        AlertDialog.Builder alerte = new AlertDialog.Builder(this);
+        alerte.setMessage("Souhaitez-vous vraiment vous déconnecter ?");
+        alerte.setTitle("Déconnexion");
+        alerte.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                //Mettre fin à la session avant le retour vers la page de login
+
+                Intent intent = new Intent(ChoixCoiffureActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        alerte.setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        alerte.setIcon(R.mipmap.ic_launcher_round);
+        alerte.show();
+
     }
 
-    public void onBtReservtionClick(View view) {
+    public void onIvCoif1Click(View view) {
+
+        reservation.setCoiffure("Tresses");
+
+        //Lancement du prochain écran
+        Intent intent = new Intent(this, OptionsActivity.class);
+        intent.putExtra("reservation2", reservation);
+        startActivity(intent);
+        finish();
     }
 
-    public void onBtPrestationClick(View view) {
-    }
+    public void onIvCoif2Click(View view) {
 
-    public void onBtCoiffeuseClick(View view) {
-    }
+        reservation.setCoiffure("Perruque");
 
-    public void onBtConseilClick(View view) {
+        //Lancement du prochain écran
+        Intent intent = new Intent(this, OptionsActivity.class);
+        intent.putExtra("reservation2", reservation);
+        startActivity(intent);
+        finish();
     }
-
 }
