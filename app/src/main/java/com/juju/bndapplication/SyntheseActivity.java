@@ -61,7 +61,7 @@ public class SyntheseActivity extends AppCompatActivity implements View.OnClickL
             reservation = intentReservation.getParcelableExtra("reservation5");
             if (reservation.getCreneauHoraire() == null) {
                 Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
-                Toast.makeText(this, "Une erreur de date est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
                 startActivity(intent1);
                 finish();
             } else {
@@ -69,7 +69,6 @@ public class SyntheseActivity extends AppCompatActivity implements View.OnClickL
                 tvCPVille.setText(reservation.getCpVille());
                 tvPrestation.setText(reservation.getCoiffure() + " , " + reservation.getOptions());
                 tvCoiffeuse.setText(reservation.getCoiffeuse());
-                //String dateReservation = récupérer la date une fois celle-ci gérée
                 tvHoraire.setText(reservation.getDateReservation() + " à " + reservation.getCreneauHoraire());
             }
         } else {

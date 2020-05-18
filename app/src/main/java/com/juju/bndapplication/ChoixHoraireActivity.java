@@ -189,12 +189,12 @@ public class ChoixHoraireActivity extends AppCompatActivity implements View.OnCl
     }
 
     //Remplace pour le moment le lien devant se faire au niveau du tableau de choix
-    public void remplacementTableau(View view) throws ParseException {
+    public void remplacementTableau(View view) {
 
         reservation.setCreneauHoraire("8h-18h");
         reservation.setDateReservation("20/02/2020");
 
-        Toast.makeText(this, reservation.getDateReservation().toString(), Toast.LENGTH_LONG).show();
+        Toast.makeText(this, reservation.getDateReservation(), Toast.LENGTH_LONG).show();
 
         Intent intent = new Intent(this, SyntheseActivity.class);
         intent.putExtra("reservation5", reservation);

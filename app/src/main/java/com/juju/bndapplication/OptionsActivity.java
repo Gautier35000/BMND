@@ -30,12 +30,12 @@ public class OptionsActivity extends AppCompatActivity implements View.OnClickLi
     private CheckBox cbOption4;
     private CheckBox cbOption5;
     private CheckBox cbOption6;
-
-    private String compteurOptions = "Options :";
     private Button btRéservation;
     private Button btPrestation;
     private Button btCoiffeuse;
     private Button btConseils;
+
+    private String compteurOptions = "Options :";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
