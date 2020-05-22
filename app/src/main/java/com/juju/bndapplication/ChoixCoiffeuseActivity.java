@@ -22,13 +22,11 @@ import com.juju.bndapplication.models.ReservationBean;
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.OnClickListener {
 
+    //Déclarations des objets du layout
     private ProgressBar progressBar2;
-    private ImageView ivCoiffeuse1;
-    private ImageView ivCoiffeuse2;
-    private ImageView ivViewProfile1;
-    private ImageView ivViewProfile2;
 
-    ReservationBean reservation;
+    //Déclaration des variables locales
+    private ReservationBean reservation;
     private Button btRéservation;
     private Button btPrestation;
     private Button btCoiffeuse;
@@ -39,33 +37,36 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choix_coiffeuse);
 
+        //FindViewByIDs
         progressBar2 = findViewById(R.id.progressBar2);
-        ivCoiffeuse1 = findViewById(R.id.ivCoiffeuse1);
-        ivCoiffeuse2 = findViewById(R.id.ivCoiffeuse2);
-        ivViewProfile1 = findViewById(R.id.ivViewProfile1);
-        ivViewProfile2 = findViewById(R.id.ivViewProfile2);
         btRéservation = findViewById(R.id.btRéservation);
         btPrestation = findViewById(R.id.btPrestation);
         btCoiffeuse = findViewById(R.id.btCoiffeuse);
         btConseils = findViewById(R.id.btConseils);
 
+        //progressbar à 60%
         progressBar2.setProgress(60);
 
+        //setOnClickListenner pour les boutons du bas
         btRéservation.setOnClickListener(this);
         btCoiffeuse.setOnClickListener(this);
         btConseils.setOnClickListener(this);
         btPrestation.setOnClickListener(this);
 
+        //Récupération des informations de l'intent précédente
         Intent intentReservation = getIntent();
 
         if (intentReservation != null) {
+            //Récupération de l'objet reservation de l'intent récupérée
             reservation = intentReservation.getParcelableExtra("reservation3");
             if (reservation.getOptions() == null) {
+                //Si erreur lors de la récupération, redirection vers la début de la réservation
                 Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
                 Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
                 startActivity(intent1);
                 finish();
             } else {
+                //A titre de test, à supp
                 Toast.makeText(this, reservation.getOptions(), Toast.LENGTH_SHORT).show();
             }
         } else {
@@ -80,6 +81,7 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
     @Override
     public void onClick(final View v) {
 
+        //Si clic sur les boutons du bas, demande la confirmation à l'utilisateur d'abandonner la commande en cours
         AlertDialog.Builder alerte = new AlertDialog.Builder(this);
         alerte.setMessage("Souhaitez-vous vraiment vous abandonner votre réservation en cours ?");
         alerte.setTitle("Quitter commande");
@@ -87,6 +89,7 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
+                //Si oui, dirige vers la vue correspondant au bouton appuyé
                 if (v == btRéservation) {
                     Intent intent = new Intent(ChoixCoiffeuseActivity.this, ReservationAdresseActivity.class);
                     startActivity(intent);
@@ -121,6 +124,8 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
         alerte.show();
     }
 
+    //Création du menu et de ses liens
+    //Les menu dirigent vers les activities du même nom
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.add(0, 1, 0, "Paramètres");
@@ -193,6 +198,8 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
 
     }
 
+    //A titre de test
+    //Simulation d'un choix multiple de coiffeuses
     public void onMichelleClick(View view) {
 
         reservation.setCoiffeuse("Michelle");

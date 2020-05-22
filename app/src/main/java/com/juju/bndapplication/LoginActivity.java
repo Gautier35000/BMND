@@ -22,14 +22,14 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //Lancement de l'activity de création de compte
     public void onBtInscriptionClick(View view) {
         Intent intent = new Intent(this, CreacptActivity.class);
         startActivity(intent);
     }
 
+    //Dirige vers un acceuil limité (ou vers une vidéo/pub présentant l'appli
     public void onBtDecouverteClick(View view) {
-        //Direction accueil avec accès limité
-
         //Pour l'exercice, relié vers accueil "normal"
         Intent intent = new Intent(this, AcceuilActivity.class);
         startActivity(intent);

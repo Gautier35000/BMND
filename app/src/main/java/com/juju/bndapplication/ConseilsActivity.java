@@ -107,5 +107,6 @@ public class ConseilsActivity extends AppCompatActivity {
     }
 
     public void onBtConseilClick(View view) {
+        //laissée vide car déjà dans conseils
     }
 }

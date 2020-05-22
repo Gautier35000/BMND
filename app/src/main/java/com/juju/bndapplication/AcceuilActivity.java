@@ -20,6 +20,8 @@ public class AcceuilActivity extends AppCompatActivity {
         setContentView(R.layout.activity_acceuil);
     }
 
+    //Création du menu et de ses liens
+    //Les menu dirigent vers les activities du même nom
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.add(0, 1, 0, "Paramètres");
@@ -66,6 +68,8 @@ public class AcceuilActivity extends AppCompatActivity {
 
     private void deconnexion() {
 
+        //Création d'une alertDialog demandant confirmation de l'utilisateur avant de quitter la session
+        //Et redirection vers la page de login si confirmation
         AlertDialog.Builder alerte = new AlertDialog.Builder(this);
         alerte.setMessage("Souhaitez-vous vraiment vous déconnecter ?");
         alerte.setTitle("Déconnexion");
@@ -92,6 +96,8 @@ public class AcceuilActivity extends AppCompatActivity {
 
     }
 
+    //Boutons de pied d'écran
+    //Dirigent vers les vues du même nom
     public void onBtReservtionClick(View view) {
         Intent intent = new Intent(this, ReservationAdresseActivity.class);
         startActivity(intent);

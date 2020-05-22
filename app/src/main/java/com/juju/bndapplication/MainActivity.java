@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Lancement d'une tempo en AsyncTask pour ne pas bloquer la progressbar
         TempoAsyncTask monAT = new TempoAsyncTask();
         monAT.execute();
 
@@ -31,14 +32,15 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected Object doInBackground(Object[] objects) {
-            SystemClock.sleep(1500);
+            //Tempo
+            SystemClock.sleep(500);
             return null;
         }
 
         @Override
         protected void onPostExecute(Object o) {
             super.onPostExecute(o);
-            //lancement de la page de login
+            //lancement de la page de login à la fin de la tempo
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();

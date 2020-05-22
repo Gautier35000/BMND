@@ -32,22 +32,28 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tvPrenom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="prenom" />
+
+            <TextView
                 android:id="@+id/tvNom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nom" />
+                android:text="nom" />
 
             <TextView
                 android:id="@+id/tvNote"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Note" />
+                android:text="Note : " />
 
             <TextView
                 android:id="@+id/tvSecteur"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Secteurs : Narnia, La Moria, Padhiver, Bourg-palette, Utopia, Tatooin" />
+                android:text="Stecteurs : " />
         </LinearLayout>
 
         <LinearLayout
@@ -70,11 +76,11 @@
         android:layout_weight="1" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tvPrestation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="start"
-        android:text="Prestations : Jonglage, saut périlleux arrière sur appui du pied droit, grande maitrise de la meringue au citron" />
+        android:gravity="center"
+        android:text="Prestations : " />
 
     <Space
         android:layout_width="match_parent"

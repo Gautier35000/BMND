@@ -1,22 +1,68 @@
 package com.juju.bndapplication;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.juju.bndapplication.models.CoiffeuseBean;
 
 public class ProfilCoiffeuseActivity extends AppCompatActivity {
+
+    private TextView tvPrenom;
+    private TextView tvNom;
+    private TextView tvNote;
+    private TextView tvSecteur;
+    private TextView tvPrestation;
+
+    private CoiffeuseBean coiffeuse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil_coiffeuse);
+
+        tvPrenom = findViewById(R.id.tvPrenom);
+        tvNom = findViewById(R.id.tvNom);
+        tvNote = findViewById(R.id.tvNote);
+        tvSecteur = findViewById(R.id.tvSecteur);
+        tvPrestation = findViewById(R.id.tvPrestation);
+
+        //Récupération des informations de l'intent précédente
+        Intent intentReservation = getIntent();
+
+        if (intentReservation != null) {
+            //Récupération de l'objet reservation de l'intent récupérée
+            coiffeuse = intentReservation.getParcelableExtra("profilCoiffeuse");
+            if (coiffeuse.getNom() == null) {
+                //Si erreur lors de la récupération, redirection vers l'acceuil
+                Intent intent1 = new Intent(this, AcceuilActivity.class);
+                Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
+                startActivity(intent1);
+                finish();
+            } else {
+                //Toast.makeText(this, coiffeuse.getNom(), Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
+            Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
+            startActivity(intent1);
+            finish();
+        }
+
+        tvNom.setText(coiffeuse.getNom());
+        tvPrenom.setText(coiffeuse.getPrenom());
+        tvNote.setText(String.valueOf(coiffeuse.getNote()));
+        tvPrestation.setText(coiffeuse.getPretations());
+        tvSecteur.setText(coiffeuse.getSecteurs());
     }
 
     @Override
@@ -91,16 +137,25 @@ public class ProfilCoiffeuseActivity extends AppCompatActivity {
 
     }
 
-
+    //Boutons de pied d'écran
+    //Dirigent vers les vues du même nom
     public void onBtReservtionClick(View view) {
+        Intent intent = new Intent(this, ReservationAdresseActivity.class);
+        startActivity(intent);
     }
 
     public void onBtPrestationClick(View view) {
+        Intent intent = new Intent(this, GaleriePrestationActivity.class);
+        startActivity(intent);
     }
 
     public void onBtCoiffeuseClick(View view) {
+        Intent intent = new Intent(this, GalerieCoiffeuseActivity.class);
+        startActivity(intent);
     }
 
     public void onBtConseilClick(View view) {
+        Intent intent = new Intent(this, ConseilsActivity.class);
+        startActivity(intent);
     }
 }

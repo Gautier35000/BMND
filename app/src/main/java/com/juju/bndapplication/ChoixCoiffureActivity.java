@@ -21,10 +21,11 @@ import com.juju.bndapplication.models.ReservationBean;
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class ChoixCoiffureActivity extends AppCompatActivity implements View.OnClickListener {
 
-    //Variables
+    //Déclarations des objets du layout
     private ProgressBar progressBar;
 
-    ReservationBean reservation;
+    //Déclaration des variables locales
+    private ReservationBean reservation;
     private Button btRéservation;
     private Button btPrestation;
     private Button btCoiffeuse;
@@ -35,26 +36,30 @@ public class ChoixCoiffureActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choix_coiffure);
 
+        //FindViewByIDs
         progressBar = findViewById(R.id.progressBar);
         btRéservation = findViewById(R.id.btRéservation);
         btPrestation = findViewById(R.id.btPrestation);
         btCoiffeuse = findViewById(R.id.btCoiffeuse);
         btConseils = findViewById(R.id.btConseils);
 
+        //progressbar à 40%
         progressBar.setProgress(40);
 
+        //setOnClickListenner pour les boutons du bas
         btCoiffeuse.setOnClickListener(this);
         btConseils.setOnClickListener(this);
         btPrestation.setOnClickListener(this);
         btRéservation.setOnClickListener(this);
 
-        //Récupération de l'objet réservation initié en ReservationAdresseActivity
-        //Redirection vers la ReservationAdresseActivity si les données n'ont pas été récupérées
+        //Récupération des informations de l'intent précédente
         Intent intentReservation = getIntent();
 
         if (intentReservation != null) {
+            //Récupération de l'objet reservation de l'intent récupérée
             reservation = intentReservation.getParcelableExtra("reservation1");
             if (reservation.getAdresse() == null || reservation.getCpVille() == null) {
+                //Si erreur lors de la récupération, redirection vers la début de la réservation
                 Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
                 Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
                 startActivity(intent1);
@@ -74,6 +79,7 @@ public class ChoixCoiffureActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(final View v) {
 
+        //Si clic sur les boutons du bas, demande la confirmation à l'utilisateur d'abandonner la commande en cours
         AlertDialog.Builder alerte = new AlertDialog.Builder(this);
         alerte.setMessage("Souhaitez-vous vraiment vous abandonner votre réservation en cours ?");
         alerte.setTitle("Quitter commande");
@@ -81,6 +87,7 @@ public class ChoixCoiffureActivity extends AppCompatActivity implements View.OnC
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
+                //Si oui, dirige vers la vue correspondant au bouton appuyé
                 if (v == btRéservation) {
                     Intent intent = new Intent(ChoixCoiffureActivity.this, ReservationAdresseActivity.class);
                     startActivity(intent);
@@ -115,6 +122,8 @@ public class ChoixCoiffureActivity extends AppCompatActivity implements View.OnC
         alerte.show();
     }
 
+    //Création du menu et de ses liens
+    //Les menu dirigent vers les activities du même nom
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.add(0, 1, 0, "Paramètres");
@@ -187,6 +196,8 @@ public class ChoixCoiffureActivity extends AppCompatActivity implements View.OnC
 
     }
 
+    //A titre de test
+    //Simulation d'un choix multiple de coiffures
     public void onIvCoif1Click(View view) {
 
         reservation.setCoiffure("Tresses");
