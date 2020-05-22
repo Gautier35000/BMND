@@ -45,12 +45,6 @@ public class GalerieCoiffeuseActivity extends AppCompatActivity implements Coiff
 
     }
 
-    public void launchProfileActivity(CoiffeuseBean coiffeuseBean){
-        Intent intent = new Intent(this, ProfilCoiffeuseActivity.class);
-        intent.putExtra("profilCoiffeuse", coiffeuseBean);
-        startActivity(intent);
-    }
-
     //Création du menu et de ses liens
     //Les menu dirigent vers les activities du même nom
     @Override
@@ -127,7 +121,6 @@ public class GalerieCoiffeuseActivity extends AppCompatActivity implements Coiff
 
     }
 
-
     //Boutons de pied d'écran
     //Dirigent vers les vues du même nom
     public void onBtReservtionClick(View view) {
@@ -141,9 +134,7 @@ public class GalerieCoiffeuseActivity extends AppCompatActivity implements Coiff
     }
 
     public void onBtCoiffeuseClick(View view) {
-        Intent intent = new Intent(this, GalerieCoiffeuseActivity.class);
-        startActivity(intent);
-        finish();
+
     }
 
     public void onBtConseilClick(View view) {

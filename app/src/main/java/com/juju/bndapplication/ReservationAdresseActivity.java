@@ -108,16 +108,25 @@ public class ReservationAdresseActivity extends AppCompatActivity {
 
     }
 
+    //Boutons de pied d'écran
+    //Dirigent vers les vues du même nom
     public void onBtReservtionClick(View view) {
+
     }
 
     public void onBtPrestationClick(View view) {
+        Intent intent = new Intent(this, GaleriePrestationActivity.class);
+        startActivity(intent);
     }
 
     public void onBtCoiffeuseClick(View view) {
+        Intent intent = new Intent(this, GalerieCoiffeuseActivity.class);
+        startActivity(intent);
     }
 
     public void onBtConseilClick(View view) {
+        Intent intent = new Intent(this, ConseilsActivity.class);
+        startActivity(intent);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)

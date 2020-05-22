@@ -61,8 +61,8 @@ public class ProfilCoiffeuseActivity extends AppCompatActivity {
         tvNom.setText(coiffeuse.getNom());
         tvPrenom.setText(coiffeuse.getPrenom());
         tvNote.setText(String.valueOf(coiffeuse.getNote()));
-        tvPrestation.setText(coiffeuse.getPretations());
-        tvSecteur.setText(coiffeuse.getSecteurs());
+        tvPrestation.setText(tvPrestation.getText() + coiffeuse.getPretations());
+        tvSecteur.setText(tvSecteur.getText() + coiffeuse.getSecteurs());
     }
 
     @Override

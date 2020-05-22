@@ -1,9 +1,5 @@
 package com.juju.bndapplication;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,12 +7,43 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-public class ConseilsActivity extends AppCompatActivity {
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.juju.bndapplication.Utils.CoiffeuseAdapter;
+import com.juju.bndapplication.Utils.ConseilAdapter;
+import com.juju.bndapplication.models.CoiffeuseBean;
+import com.juju.bndapplication.models.ConseilBean;
+
+import java.util.ArrayList;
+
+public class ConseilsActivity extends AppCompatActivity implements ConseilAdapter.ItemClickListener {
+
+    private final ArrayList<ConseilBean> data = new ArrayList<>();
+    private ConseilAdapter adapter;
+    private RecyclerView rvConseils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conseils);
+
+        rvConseils = findViewById(R.id.rvConseils);
+
+        for (int i = 1; i < 13; i++) {
+            ConseilBean conseil = new ConseilBean();
+            conseil.setNomConseil("Conseil n°" + i);
+            data.add(conseil);
+        }
+
+        rvConseils.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new ConseilAdapter(this, data);
+        adapter.setClickListener(this);
+        rvConseils.setAdapter(adapter);
     }
 
     @Override
@@ -26,6 +53,8 @@ public class ConseilsActivity extends AppCompatActivity {
         menu.add(0, 3, 0, "CGV/CGU");
         menu.add(0, 4, 0, "Déconnexion");
         return super.onCreateOptionsMenu(menu);
+
+
     }
 
     @Override
@@ -108,5 +137,10 @@ public class ConseilsActivity extends AppCompatActivity {
 
     public void onBtConseilClick(View view) {
         //laissée vide car déjà dans conseils
+    }
+
+    @Override
+    public void onItemClick(View v, int position) {
+
     }
 }

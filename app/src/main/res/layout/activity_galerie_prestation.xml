@@ -4,13 +4,114 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F1B753C5"
     tools:context=".GaleriePrestationActivity">
 
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Galerie prestation"
-        android:textSize="30sp" />
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Bread me next Door"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView40"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="Galerie des prestations"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView32"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/artboard_8" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvGaleriePrestation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btRéservation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:drawableTint="@android:color/holo_blue_dark"
+            android:foregroundTint="@android:color/holo_blue_dark"
+            android:onClick="onBtReservtionClick"
+            android:text="Réservation"
+            android:textColor="#000000"
+            android:textColorHint="#C83D3D"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/btPrestation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:drawableTint="@android:color/holo_blue_dark"
+            android:foregroundTint="@android:color/holo_blue_dark"
+            android:onClick="onBtPrestationClick"
+            android:text="Prestation"
+            android:textColor="#000000"
+            android:textColorHint="#C83D3D"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/btCoiffeuse"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:drawableTint="@android:color/holo_blue_dark"
+            android:foregroundTint="@android:color/holo_blue_dark"
+            android:onClick="onBtCoiffeuseClick"
+            android:text="Coiffeuse"
+            android:textColor="#000000"
+            android:textColorHint="#C83D3D"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/btConseils"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:backgroundTintMode="multiply"
+            android:drawableTint="@android:color/holo_blue_dark"
+            android:foregroundTint="@android:color/holo_blue_dark"
+            android:onClick="onBtConseilClick"
+            android:text="Conseils"
+            android:textColor="#000000"
+            android:textColorHint="#C83D3D"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
 </LinearLayout>
