@@ -1,5 +1,6 @@
 package com.juju.bndapplication;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
@@ -15,21 +16,32 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.juju.bndapplication.Utils.ChoixCoiffureAdapter;
+import com.juju.bndapplication.Utils.ConseilAdapter;
+import com.juju.bndapplication.models.ConseilBean;
+import com.juju.bndapplication.models.PrestationBean;
 import com.juju.bndapplication.models.ReservationBean;
 
+import java.util.ArrayList;
+
 @RequiresApi(api = Build.VERSION_CODES.N)
-public class ChoixCoiffureActivity extends AppCompatActivity implements View.OnClickListener {
+public class ChoixCoiffureActivity extends AppCompatActivity implements View.OnClickListener, ChoixCoiffureAdapter.ItemClickListener {
 
     //Déclarations des objets du layout
     private ProgressBar progressBar;
-
-    //Déclaration des variables locales
-    private ReservationBean reservation;
     private Button btRéservation;
     private Button btPrestation;
     private Button btCoiffeuse;
     private Button btConseils;
+
+    //Déclaration des variables locales
+    private static ReservationBean reservation;
+    private final ArrayList<PrestationBean> data = new ArrayList<>();
+    private ChoixCoiffureAdapter adapter;
+    private RecyclerView rvChoixCoiffure;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +54,14 @@ public class ChoixCoiffureActivity extends AppCompatActivity implements View.OnC
         btPrestation = findViewById(R.id.btPrestation);
         btCoiffeuse = findViewById(R.id.btCoiffeuse);
         btConseils = findViewById(R.id.btConseils);
+        rvChoixCoiffure = findViewById(R.id.rvChoixCoiffure);
+
+        //Remplissage de la rv de prestation
+        for (int i = 1; i < 13; i++) {
+            PrestationBean prestation = new PrestationBean();
+            prestation.getPrestation(i);
+            data.add(prestation);
+        }
 
         //progressbar à 40%
         progressBar.setProgress(40);
@@ -65,7 +85,7 @@ public class ChoixCoiffureActivity extends AppCompatActivity implements View.OnC
                 startActivity(intent1);
                 finish();
             } else {
-                Toast.makeText(this, reservation.getAdresse(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, reservation.getAdresse(), Toast.LENGTH_SHORT).show();
             }
         } else {
             Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
@@ -74,6 +94,10 @@ public class ChoixCoiffureActivity extends AppCompatActivity implements View.OnC
             finish();
         }
 
+        rvChoixCoiffure.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new ChoixCoiffureAdapter(this, data);
+        adapter.setClickListener(this);
+        rvChoixCoiffure.setAdapter(adapter);
     }
 
     @Override
@@ -92,18 +116,15 @@ public class ChoixCoiffureActivity extends AppCompatActivity implements View.OnC
                     Intent intent = new Intent(ChoixCoiffureActivity.this, ReservationAdresseActivity.class);
                     startActivity(intent);
                     finish();
-                }
-                else if (v == btPrestation){
+                } else if (v == btPrestation) {
                     Intent intent = new Intent(ChoixCoiffureActivity.this, GaleriePrestationActivity.class);
                     startActivity(intent);
                     finish();
-                }
-                else if (v == btCoiffeuse){
+                } else if (v == btCoiffeuse) {
                     Intent intent = new Intent(ChoixCoiffureActivity.this, GalerieCoiffeuseActivity.class);
                     startActivity(intent);
                     finish();
-                }
-                else if (v == btConseils){
+                } else if (v == btConseils) {
                     Intent intent = new Intent(ChoixCoiffureActivity.this, ConseilsActivity.class);
                     startActivity(intent);
                     finish();
@@ -198,18 +219,23 @@ public class ChoixCoiffureActivity extends AppCompatActivity implements View.OnC
 
     //A titre de test
     //Simulation d'un choix multiple de coiffures
-    public void onIvCoif1Click(View view) {
+    public static void onIvCoif1Click(Context context, PrestationBean prestationBean) {
 
-        reservation.setCoiffure("Tresses");
+        reservation.setCoiffure(prestationBean.getNomPrestation());
 
         //Lancement du prochain écran
-        Intent intent = new Intent(this, OptionsActivity.class);
+        Intent intent = new Intent(context, OptionsActivity.class);
         intent.putExtra("reservation2", reservation);
-        startActivity(intent);
-        finish();
+        context.startActivity(intent);
+        //finish();
     }
 
-    public void onIvCoif2Click(View view) {
+    @Override
+    public void onItemClick(View v, int position) {
+
+    }
+
+   /* public void onIvCoif2Click(View view) {
 
         reservation.setCoiffure("Perruque");
 
@@ -218,5 +244,5 @@ public class ChoixCoiffureActivity extends AppCompatActivity implements View.OnC
         intent.putExtra("reservation2", reservation);
         startActivity(intent);
         finish();
-    }
+    }*/
 }

@@ -152,7 +152,7 @@ public class CoiffeuseBean implements Parcelable {
             case 7 :
                 this.prenom = "Natsu";
                 this.nom = "Dragneer";
-                this.pretations = "Jonglage, saut périlleux arrière sur appui du pied droit, grande maitrise de la meringue au citron";
+                this.pretations = "Poing du dragon de feu, ailes du dragons de feu, et des trucs du dragon de feu";
                 this.secteurs = "QG de Fairy Tail, la chambre de Lucy, là où il fait chaud, là où ça castagne";
                 break;
             case 8 :
@@ -183,7 +183,7 @@ public class CoiffeuseBean implements Parcelable {
                 this.prenom = "Saga";
                 this.nom = "du Gémeau";
                 this.pretations = "Another dimension, Athéna exclamation";
-                this.secteurs = "Maison du grand Popo, sanctuaire d'Athéna, mais surtout pas dans la maison des gémeaux !";
+                this.secteurs = "Maison du grand Pope, sanctuaire d'Athéna, mais surtout pas dans la maison des gémeaux !";
                 break;
 
                 //Ajouter kenny XD

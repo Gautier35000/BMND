@@ -1,5 +1,6 @@
 package com.juju.bndapplication;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
@@ -8,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -16,21 +16,32 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.juju.bndapplication.Utils.ChoixCoiffeuseAdapter;
+import com.juju.bndapplication.Utils.ChoixCoiffureAdapter;
+import com.juju.bndapplication.models.CoiffeuseBean;
+import com.juju.bndapplication.models.PrestationBean;
 import com.juju.bndapplication.models.ReservationBean;
 
+import java.util.ArrayList;
+
 @RequiresApi(api = Build.VERSION_CODES.N)
-public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.OnClickListener {
+public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.OnClickListener, ChoixCoiffeuseAdapter.ItemClickListener {
 
     //Déclarations des objets du layout
     private ProgressBar progressBar2;
-
-    //Déclaration des variables locales
-    private ReservationBean reservation;
     private Button btRéservation;
     private Button btPrestation;
     private Button btCoiffeuse;
     private Button btConseils;
+    private RecyclerView rvChoixCoiffeuse;
+
+    //Déclaration des variables locales
+    private static ReservationBean reservation;
+    private final ArrayList<CoiffeuseBean> data = new ArrayList<>();
+    private ChoixCoiffeuseAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +54,7 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
         btPrestation = findViewById(R.id.btPrestation);
         btCoiffeuse = findViewById(R.id.btCoiffeuse);
         btConseils = findViewById(R.id.btConseils);
+        rvChoixCoiffeuse = findViewById(R.id.rvChoixCoiffeuse);
 
         //progressbar à 60%
         progressBar2.setProgress(60);
@@ -52,6 +64,12 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
         btCoiffeuse.setOnClickListener(this);
         btConseils.setOnClickListener(this);
         btPrestation.setOnClickListener(this);
+
+        for (int i = 1; i < 13; i++) {
+            CoiffeuseBean coiffeuse = new CoiffeuseBean();
+            coiffeuse.getCoiffeuse(i);
+            data.add(coiffeuse);
+        }
 
         //Récupération des informations de l'intent précédente
         Intent intentReservation = getIntent();
@@ -76,6 +94,11 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
             finish();
         }
 
+        rvChoixCoiffeuse.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new ChoixCoiffeuseAdapter(this, data);
+        adapter.setClickListener(this);
+        rvChoixCoiffeuse.setAdapter(adapter);
+
     }
 
     @Override
@@ -94,18 +117,15 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
                     Intent intent = new Intent(ChoixCoiffeuseActivity.this, ReservationAdresseActivity.class);
                     startActivity(intent);
                     finish();
-                }
-                else if (v == btPrestation){
+                } else if (v == btPrestation) {
                     Intent intent = new Intent(ChoixCoiffeuseActivity.this, GaleriePrestationActivity.class);
                     startActivity(intent);
                     finish();
-                }
-                else if (v == btCoiffeuse){
+                } else if (v == btCoiffeuse) {
                     Intent intent = new Intent(ChoixCoiffeuseActivity.this, GalerieCoiffeuseActivity.class);
                     startActivity(intent);
                     finish();
-                }
-                else if (v == btConseils){
+                } else if (v == btConseils) {
                     Intent intent = new Intent(ChoixCoiffeuseActivity.this, ConseilsActivity.class);
                     startActivity(intent);
                     finish();
@@ -200,18 +220,23 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
 
     //A titre de test
     //Simulation d'un choix multiple de coiffeuses
-    public void onMichelleClick(View view) {
+    public static void onMichelleClick(Context context, CoiffeuseBean coiffeuse) {
 
-        reservation.setCoiffeuse("Michelle");
+        reservation.setCoiffeuse(coiffeuse.getPrenom());
 
         //Vers choix du créneau horaire
-        Intent intent = new Intent(this, ChoixHoraireActivity.class);
+        Intent intent = new Intent(context, ChoixHoraireActivity.class);
         intent.putExtra("reservation4", reservation);
-        startActivity(intent);
-        finish();
+        context.startActivity(intent);
+        //finish();
     }
 
-    public void onRoselineClick(View view) {
+    @Override
+    public void onItemClick(View v, int position) {
+
+    }
+
+    /*public void onRoselineClick(View view) {
 
         reservation.setCoiffeuse("Roseline");
 
@@ -220,5 +245,5 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
         intent.putExtra("reservation4", reservation);
         startActivity(intent);
         finish();
-    }
+    }*/
 }

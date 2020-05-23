@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="25dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/ivChoixCoiffeuse"
+            android:layout_width="180dp"
+            android:layout_height="200dp"
+            app:srcCompat="@drawable/perruques_unsplash"
+            tools:srcCompat="@drawable/perruques_unsplash" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvNomChoixCoiffeuse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Prénom" />
+
+            <TextView
+                android:id="@+id/tvNoteChoixCoiffeuse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Note" />
+
+            <TextView
+                android:id="@+id/tvCommentaire"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Commentaires" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/ivStar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@android:drawable/btn_star_big_on"
+                tools:srcCompat="@android:drawable/btn_star_big_on" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+
+            <ImageView
+                android:id="@+id/ivViewProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:srcCompat="@android:drawable/btn_plus"
+                tools:srcCompat="@android:drawable/btn_plus" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="25dp" />
+</LinearLayout>
