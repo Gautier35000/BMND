@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+
+import com.juju.bndapplication.models.UserBean;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -17,8 +20,12 @@ public class LoginActivity extends AppCompatActivity {
     public void onBtLoginClick(View view) { //btValider
         //Déterminer ici si le login est bon ou pas
 
+        //Faux login pour test sur user1
+        UserBean user = new UserBean();
+        user.getUser(2);
         //Si login OK, redirection vers l'acceuil
         Intent intent = new Intent(this, AcceuilActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 

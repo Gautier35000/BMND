@@ -19,11 +19,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.juju.bndapplication.Utils.ChoixCoiffeuseAdapter;
-import com.juju.bndapplication.Utils.ChoixCoiffureAdapter;
+import com.juju.bndapplication.Adapters.ChoixCoiffeuseAdapter;
 import com.juju.bndapplication.models.CoiffeuseBean;
-import com.juju.bndapplication.models.PrestationBean;
 import com.juju.bndapplication.models.ReservationBean;
+import com.juju.bndapplication.models.UserBean;
 
 import java.util.ArrayList;
 
@@ -40,8 +39,10 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
 
     //Déclaration des variables locales
     private static ReservationBean reservation;
+    private static UserBean user;
     private final ArrayList<CoiffeuseBean> data = new ArrayList<>();
     private ChoixCoiffeuseAdapter adapter;
+    String test = "test";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +78,7 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
         if (intentReservation != null) {
             //Récupération de l'objet reservation de l'intent récupérée
             reservation = intentReservation.getParcelableExtra("reservation3");
+            user = intentReservation.getParcelableExtra("user");
             if (reservation.getOptions() == null) {
                 //Si erreur lors de la récupération, redirection vers la début de la réservation
                 Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
@@ -85,7 +87,7 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
                 finish();
             } else {
                 //A titre de test, à supp
-                Toast.makeText(this, reservation.getOptions(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, reservation.getOptions().get(1).getOptionNom(), Toast.LENGTH_SHORT).show();
             }
         } else {
             Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
@@ -115,18 +117,22 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
                 //Si oui, dirige vers la vue correspondant au bouton appuyé
                 if (v == btRéservation) {
                     Intent intent = new Intent(ChoixCoiffeuseActivity.this, ReservationAdresseActivity.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                     finish();
                 } else if (v == btPrestation) {
                     Intent intent = new Intent(ChoixCoiffeuseActivity.this, GaleriePrestationActivity.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                     finish();
                 } else if (v == btCoiffeuse) {
                     Intent intent = new Intent(ChoixCoiffeuseActivity.this, GalerieCoiffeuseActivity.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                     finish();
                 } else if (v == btConseils) {
                     Intent intent = new Intent(ChoixCoiffeuseActivity.this, ConseilsActivity.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                     finish();
                 }
@@ -198,9 +204,6 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
         alerte.setPositiveButton("ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
-                //Mettre fin à la session avant le retour vers la page de login
-
                 Intent intent = new Intent(ChoixCoiffeuseActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
@@ -220,13 +223,14 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
 
     //A titre de test
     //Simulation d'un choix multiple de coiffeuses
-    public static void onMichelleClick(Context context, CoiffeuseBean coiffeuse) {
+    public static void onIvCoiffeuseClick(Context context, CoiffeuseBean coiffeuse) {
 
-        reservation.setCoiffeuse(coiffeuse.getPrenom());
+        reservation.setCoiffeuse(coiffeuse);
 
         //Vers choix du créneau horaire
         Intent intent = new Intent(context, ChoixHoraireActivity.class);
         intent.putExtra("reservation4", reservation);
+        intent.putExtra("user", user);
         context.startActivity(intent);
         //finish();
     }
@@ -236,14 +240,4 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
 
     }
 
-    /*public void onRoselineClick(View view) {
-
-        reservation.setCoiffeuse("Roseline");
-
-        //Vers choix du créneau horaire
-        Intent intent = new Intent(this, ChoixHoraireActivity.class);
-        intent.putExtra("reservation4", reservation);
-        startActivity(intent);
-        finish();
-    }*/
 }

@@ -7,7 +7,7 @@
     android:background="#F1B753C5"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".ChoixCoiffureActivity">
+    tools:context=".ChoixPrestationActivity">
 
     <TextView
         android:id="@+id/tvReservation"

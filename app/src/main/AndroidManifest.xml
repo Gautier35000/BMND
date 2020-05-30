@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ConseilsActivity"></activity>
+        <activity android:name=".ReservationAutreAdresseActivity"></activity>
+        <activity android:name=".ConseilsActivity" />
         <activity android:name=".GalerieCoiffeuseActivity" />
         <activity android:name=".GaleriePrestationActivity" />
         <activity android:name=".CGActivity" />
@@ -19,7 +20,7 @@
         <activity android:name=".AcceuilActivity" />
         <activity android:name=".CreacptActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".ChoixCoiffureActivity" />
+        <activity android:name=".ChoixPrestationActivity" />
         <activity android:name=".SyntheseActivity" />
         <activity android:name=".ChoixHoraireActivity" />
         <activity android:name=".CommentActivity" />

@@ -1,4 +1,4 @@
-package com.juju.bndapplication.Utils;
+package com.juju.bndapplication.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.juju.bndapplication.ProfilCoiffeuseActivity;
 import com.juju.bndapplication.R;
 import com.juju.bndapplication.models.CoiffeuseBean;
+import com.juju.bndapplication.models.UserBean;
 
 import java.util.ArrayList;
 
@@ -22,12 +23,14 @@ public class CoiffeuseAdapter extends RecyclerView.Adapter<CoiffeuseAdapter.View
 
     private ArrayList<CoiffeuseBean> data;
     Context context;
+    UserBean user;
 
     private static ItemClickListener itemClickListener;
 
-    public CoiffeuseAdapter(Context context, ArrayList<CoiffeuseBean> data){
+    public CoiffeuseAdapter(Context context, ArrayList<CoiffeuseBean> data, UserBean user){
         this.context = context;
         this.data = data;
+        this.user = user;
     }
 
     protected static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -66,6 +69,7 @@ public class CoiffeuseAdapter extends RecyclerView.Adapter<CoiffeuseAdapter.View
             public void onClick(View v) {
                 Intent intent = new Intent(context, ProfilCoiffeuseActivity.class);
                 intent.putExtra("profilCoiffeuse", datum);
+                intent.putExtra("user", user);
                 context.startActivity(intent);
             }
         });

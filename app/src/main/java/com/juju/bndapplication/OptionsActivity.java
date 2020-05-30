@@ -17,13 +17,16 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.juju.bndapplication.models.OptionBean;
 import com.juju.bndapplication.models.ReservationBean;
+import com.juju.bndapplication.models.UserBean;
+
+import java.util.ArrayList;
 
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class OptionsActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ProgressBar progressBar2;
-    private ReservationBean reservation;
     private CheckBox cbOption1;
     private CheckBox cbOption2;
     private CheckBox cbOption3;
@@ -34,6 +37,9 @@ public class OptionsActivity extends AppCompatActivity implements View.OnClickLi
     private Button btPrestation;
     private Button btCoiffeuse;
     private Button btConseils;
+
+    private ReservationBean reservation;
+    private UserBean user;
 
     private String compteurOptions = "Options :";
 
@@ -60,13 +66,14 @@ public class OptionsActivity extends AppCompatActivity implements View.OnClickLi
 
         if (intentReservation != null) {
             reservation = intentReservation.getParcelableExtra("reservation2");
-            if (reservation.getCoiffure() == null) {
+            user = intentReservation.getParcelableExtra("user");
+            if (reservation.getPrestation() == null) {
                 Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
                 Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
                 startActivity(intent1);
                 finish();
             } else {
-                Toast.makeText(this, reservation.getCoiffure(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, reservation.getPrestation().getNomPrestation(), Toast.LENGTH_SHORT).show();
             }
         } else {
             Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
@@ -74,6 +81,21 @@ public class OptionsActivity extends AppCompatActivity implements View.OnClickLi
             startActivity(intent1);
             finish();
         }
+
+        for(int i = 1; i < 7; i++){
+            OptionBean tampOption = new OptionBean();
+            tampOption.getOption(i);
+            String text = tampOption.getOptionNom();
+            switch (i){
+                case 1 : cbOption1.setText(text); break;
+                case 2 : cbOption2.setText(text); break;
+                case 3 : cbOption3.setText(text); break;
+                case 4 : cbOption4.setText(text); break;
+                case 5 : cbOption5.setText(text); break;
+                case 6 : cbOption6.setText(text); break;
+            }
+        }
+
 
         btCoiffeuse.setOnClickListener(this);
         btConseils.setOnClickListener(this);
@@ -94,21 +116,25 @@ public class OptionsActivity extends AppCompatActivity implements View.OnClickLi
 
                 if (v == btRéservation) {
                     Intent intent = new Intent(OptionsActivity.this, ReservationAdresseActivity.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                     finish();
                 }
                 else if (v == btPrestation){
                     Intent intent = new Intent(OptionsActivity.this, GaleriePrestationActivity.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                     finish();
                 }
                 else if (v == btCoiffeuse){
                     Intent intent = new Intent(OptionsActivity.this, GalerieCoiffeuseActivity.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                     finish();
                 }
                 else if (v == btConseils){
                     Intent intent = new Intent(OptionsActivity.this, ConseilsActivity.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                     finish();
                 }
@@ -201,28 +227,44 @@ public class OptionsActivity extends AppCompatActivity implements View.OnClickLi
 
     public void onBtValiderClick(View view) {
 
+        String option = " pas d'option";
+        OptionBean optionBean = new OptionBean();
+
         if (cbOption1.isChecked()) {
-            compteurOptions = compteurOptions + " Shampoing,";
+            if(option == " pas d'option"){ option = "";}
+            optionBean.getOption(1);
+            option = option + " " + cbOption1.getText();
         }
         if (cbOption2.isChecked()) {
-            compteurOptions = compteurOptions + " Teinte,";
+            if(option == " pas d'option"){ option = "";}
+            optionBean.getOption(2);
+            option = option + " " + cbOption2.getText();
         }
         if (cbOption3.isChecked()) {
-            compteurOptions = compteurOptions + " Truc avec les cheveux,";
+            if(option == " pas d'option"){ option = "";}
+            optionBean.getOption(3);
+            option = option + " " + cbOption3.getText();
         }
         if (cbOption4.isChecked()) {
-            compteurOptions = compteurOptions + " Comptage de poux,";
+            if(option == " pas d'option"){ option = "";}
+            optionBean.getOption(4);
+            option = option + " " + cbOption4.getText();
         }
         if (cbOption5.isChecked()) {
-            compteurOptions = compteurOptions + " Grattage de l'oreille gauche,";
+            if(option == " pas d'option"){ option = "";}
+            optionBean.getOption(5);
+            option = option + " " + cbOption5.getText();
         }
         if (cbOption6.isChecked()) {
-            compteurOptions = compteurOptions + " Finition au fer à souder.";
+            if(option == " pas d'option"){ option = "";}
+            optionBean.getOption(6);
+            option = option + " " + cbOption6.getText();
         }
 
-        reservation.setOptions(compteurOptions);
+        reservation.setOptions(option);
 
         Intent intent = new Intent(this, ChoixCoiffeuseActivity.class);
+        intent.putExtra("user", user);
         intent.putExtra("reservation3", reservation);
         startActivity(intent);
         finish();

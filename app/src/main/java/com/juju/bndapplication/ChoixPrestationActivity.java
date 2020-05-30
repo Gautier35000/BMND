@@ -19,16 +19,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.juju.bndapplication.Utils.ChoixCoiffureAdapter;
-import com.juju.bndapplication.Utils.ConseilAdapter;
-import com.juju.bndapplication.models.ConseilBean;
+import com.juju.bndapplication.Adapters.ChoixCoiffureAdapter;
 import com.juju.bndapplication.models.PrestationBean;
 import com.juju.bndapplication.models.ReservationBean;
+import com.juju.bndapplication.models.UserBean;
 
 import java.util.ArrayList;
 
 @RequiresApi(api = Build.VERSION_CODES.N)
-public class ChoixCoiffureActivity extends AppCompatActivity implements View.OnClickListener, ChoixCoiffureAdapter.ItemClickListener {
+public class ChoixPrestationActivity extends AppCompatActivity implements View.OnClickListener, ChoixCoiffureAdapter.ItemClickListener {
 
     //Déclarations des objets du layout
     private ProgressBar progressBar;
@@ -36,12 +35,13 @@ public class ChoixCoiffureActivity extends AppCompatActivity implements View.OnC
     private Button btPrestation;
     private Button btCoiffeuse;
     private Button btConseils;
+    private RecyclerView rvChoixCoiffure;
 
     //Déclaration des variables locales
     private static ReservationBean reservation;
+    private static UserBean user;
     private final ArrayList<PrestationBean> data = new ArrayList<>();
     private ChoixCoiffureAdapter adapter;
-    private RecyclerView rvChoixCoiffure;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,14 +78,17 @@ public class ChoixCoiffureActivity extends AppCompatActivity implements View.OnC
         if (intentReservation != null) {
             //Récupération de l'objet reservation de l'intent récupérée
             reservation = intentReservation.getParcelableExtra("reservation1");
-            if (reservation.getAdresse() == null || reservation.getCpVille() == null) {
+            user = intentReservation.getParcelableExtra("user");
+            if (String.valueOf(reservation.getAdresseID()) == null) {
                 //Si erreur lors de la récupération, redirection vers la début de la réservation
                 Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
                 Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
                 startActivity(intent1);
                 finish();
             } else {
-                //Toast.makeText(this, reservation.getAdresse(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, String.valueOf(reservation.getAdresseID()), Toast.LENGTH_SHORT).show();
+
+                //Faire le tri des prestations
             }
         } else {
             Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
@@ -113,19 +116,23 @@ public class ChoixCoiffureActivity extends AppCompatActivity implements View.OnC
 
                 //Si oui, dirige vers la vue correspondant au bouton appuyé
                 if (v == btRéservation) {
-                    Intent intent = new Intent(ChoixCoiffureActivity.this, ReservationAdresseActivity.class);
+                    Intent intent = new Intent(ChoixPrestationActivity.this, ReservationAdresseActivity.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                     finish();
                 } else if (v == btPrestation) {
-                    Intent intent = new Intent(ChoixCoiffureActivity.this, GaleriePrestationActivity.class);
+                    Intent intent = new Intent(ChoixPrestationActivity.this, GaleriePrestationActivity.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                     finish();
                 } else if (v == btCoiffeuse) {
-                    Intent intent = new Intent(ChoixCoiffureActivity.this, GalerieCoiffeuseActivity.class);
+                    Intent intent = new Intent(ChoixPrestationActivity.this, GalerieCoiffeuseActivity.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                     finish();
                 } else if (v == btConseils) {
-                    Intent intent = new Intent(ChoixCoiffureActivity.this, ConseilsActivity.class);
+                    Intent intent = new Intent(ChoixPrestationActivity.this, ConseilsActivity.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                     finish();
                 }
@@ -200,7 +207,7 @@ public class ChoixCoiffureActivity extends AppCompatActivity implements View.OnC
 
                 //Mettre fin à la session avant le retour vers la page de login
 
-                Intent intent = new Intent(ChoixCoiffureActivity.this, LoginActivity.class);
+                Intent intent = new Intent(ChoixPrestationActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -217,15 +224,15 @@ public class ChoixCoiffureActivity extends AppCompatActivity implements View.OnC
 
     }
 
-    //A titre de test
-    //Simulation d'un choix multiple de coiffures
-    public static void onIvCoif1Click(Context context, PrestationBean prestationBean) {
+    //Récupération de la prestation
+    public static void onIvPrestationClick(Context context, PrestationBean prestationBean) {
 
-        reservation.setCoiffure(prestationBean.getNomPrestation());
+        reservation.setPrestation(prestationBean);
 
         //Lancement du prochain écran
         Intent intent = new Intent(context, OptionsActivity.class);
         intent.putExtra("reservation2", reservation);
+        intent.putExtra("user", user);
         context.startActivity(intent);
         //finish();
     }
@@ -235,14 +242,4 @@ public class ChoixCoiffureActivity extends AppCompatActivity implements View.OnC
 
     }
 
-   /* public void onIvCoif2Click(View view) {
-
-        reservation.setCoiffure("Perruque");
-
-        //Lancement du prochain écran
-        Intent intent = new Intent(this, OptionsActivity.class);
-        intent.putExtra("reservation2", reservation);
-        startActivity(intent);
-        finish();
-    }*/
 }

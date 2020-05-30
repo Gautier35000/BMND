@@ -17,6 +17,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.juju.bndapplication.models.ReservationBean;
+import com.juju.bndapplication.models.UserBean;
 
 import java.text.ParseException;
 
@@ -24,12 +25,13 @@ import java.text.ParseException;
 public class ChoixHoraireActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ProgressBar progressBar3;
-
-    private ReservationBean reservation;
     private Button btRéservation;
     private Button btPrestation;
     private Button btCoiffeuse;
     private Button btConseils;
+
+    private ReservationBean reservation;
+    private UserBean user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,13 +51,14 @@ public class ChoixHoraireActivity extends AppCompatActivity implements View.OnCl
 
         if (intentReservation != null) {
             reservation = intentReservation.getParcelableExtra("reservation4");
+            user = intentReservation.getParcelableExtra("user");
             if (reservation.getCoiffeuse() == null) {
                 Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
                 Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
                 startActivity(intent1);
                 finish();
             } else {
-                Toast.makeText(this, reservation.getCoiffeuse(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, reservation.getCoiffeuse().getPrenom(), Toast.LENGTH_SHORT).show();
             }
         } else {
             Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
@@ -83,21 +86,25 @@ public class ChoixHoraireActivity extends AppCompatActivity implements View.OnCl
 
                 if (v == btRéservation) {
                     Intent intent = new Intent(ChoixHoraireActivity.this, ReservationAdresseActivity.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                     finish();
                 }
                 else if (v == btPrestation){
                     Intent intent = new Intent(ChoixHoraireActivity.this, GaleriePrestationActivity.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                     finish();
                 }
                 else if (v == btCoiffeuse){
                     Intent intent = new Intent(ChoixHoraireActivity.this, GalerieCoiffeuseActivity.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                     finish();
                 }
                 else if (v == btConseils){
                     Intent intent = new Intent(ChoixHoraireActivity.this, ConseilsActivity.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                     finish();
                 }
@@ -198,6 +205,7 @@ public class ChoixHoraireActivity extends AppCompatActivity implements View.OnCl
 
         Intent intent = new Intent(this, SyntheseActivity.class);
         intent.putExtra("reservation5", reservation);
+        intent.putExtra("user", user);
         startActivity(intent);
         finish();
     }

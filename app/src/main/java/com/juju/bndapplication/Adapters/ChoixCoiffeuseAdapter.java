@@ -1,4 +1,4 @@
-package com.juju.bndapplication.Utils;
+package com.juju.bndapplication.Adapters;
 
 import android.content.Context;
 import android.os.Build;
@@ -13,7 +13,6 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.juju.bndapplication.ChoixCoiffeuseActivity;
-import com.juju.bndapplication.ChoixCoiffureActivity;
 import com.juju.bndapplication.R;
 import com.juju.bndapplication.models.CoiffeuseBean;
 
@@ -66,10 +65,7 @@ public class ChoixCoiffeuseAdapter extends RecyclerView.Adapter<ChoixCoiffeuseAd
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
-                /*Intent intent = new Intent(context, OptionsActivity.class);
-                intent.putExtra("reservation2", datum);
-                context.startActivity(intent);*/
-                ChoixCoiffeuseActivity.onMichelleClick(context, datum);
+                ChoixCoiffeuseActivity.onIvCoiffeuseClick(context, datum);
             }
         });
         holder.itemView.setOnClickListener(new View.OnClickListener() {

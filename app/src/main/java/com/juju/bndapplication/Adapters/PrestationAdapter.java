@@ -1,8 +1,7 @@
-package com.juju.bndapplication.Utils;
+package com.juju.bndapplication.Adapters;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.juju.bndapplication.MainActivity;
-import com.juju.bndapplication.ProfilCoiffeuseActivity;
 import com.juju.bndapplication.R;
-import com.juju.bndapplication.models.CoiffeuseBean;
 import com.juju.bndapplication.models.PrestationBean;
 
 import java.util.ArrayList;

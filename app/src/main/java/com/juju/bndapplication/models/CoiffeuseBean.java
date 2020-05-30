@@ -10,7 +10,7 @@ public class CoiffeuseBean implements Parcelable {
     private String secteurs;
     private int note;
     private String pretations;
-    private int id;
+    private int coiffeuseID;
 
     public CoiffeuseBean(String nom, String prenom, String secteurs, int note, String pretations) {
         this.nom = nom;
@@ -29,7 +29,7 @@ public class CoiffeuseBean implements Parcelable {
         secteurs = in.readString();
         note = in.readInt();
         pretations = in.readString();
-        id = in.readInt();
+        coiffeuseID = in.readInt();
     }
 
     @Override
@@ -39,7 +39,7 @@ public class CoiffeuseBean implements Parcelable {
         dest.writeString(secteurs);
         dest.writeInt(note);
         dest.writeString(pretations);
-        dest.writeInt(id);
+        dest.writeInt(coiffeuseID);
     }
 
     @Override
@@ -99,17 +99,17 @@ public class CoiffeuseBean implements Parcelable {
         this.prenom = prenom;
     }
 
-    public int getId() {
-        return id;
+    public int getCoiffeuseID() {
+        return coiffeuseID;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCoiffeuseID(int coiffeuseID) {
+        this.coiffeuseID = coiffeuseID;
     }
 
     //Template Coiffeuse
     public void getCoiffeuse(int id){
-        this.id = id;
+        this.coiffeuseID = id;
         this.note = id;
 
         switch (id){

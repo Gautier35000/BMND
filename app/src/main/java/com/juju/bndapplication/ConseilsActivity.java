@@ -6,24 +6,24 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.juju.bndapplication.Utils.CoiffeuseAdapter;
-import com.juju.bndapplication.Utils.ConseilAdapter;
-import com.juju.bndapplication.models.CoiffeuseBean;
+import com.juju.bndapplication.Adapters.ConseilAdapter;
 import com.juju.bndapplication.models.ConseilBean;
+import com.juju.bndapplication.models.UserBean;
 
 import java.util.ArrayList;
 
 public class ConseilsActivity extends AppCompatActivity implements ConseilAdapter.ItemClickListener {
 
     private final ArrayList<ConseilBean> data = new ArrayList<>();
+    private UserBean user;
     private ConseilAdapter adapter;
     private RecyclerView rvConseils;
 
@@ -38,6 +38,29 @@ public class ConseilsActivity extends AppCompatActivity implements ConseilAdapte
             ConseilBean conseil = new ConseilBean();
             conseil.setNomConseil("Conseil n°" + i);
             data.add(conseil);
+        }
+
+        //Récupération des informations de l'intent précédente
+        Intent currentIntent = getIntent();
+
+        if (currentIntent != null) {
+            //Récupération de l'objet reservation de l'intent récupérée
+            user = currentIntent.getParcelableExtra("user");
+            if (user.getPseudo() == null) {
+                //Si erreur lors de la récupération, redirection vers la début de la réservation
+                Intent intent1 = new Intent(this, LoginActivity.class);
+                Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
+                startActivity(intent1);
+                finish();
+            } else {
+                //A titre de test, à supp
+                Toast.makeText(this, user.getPseudo(), Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
+            Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
+            startActivity(intent1);
+            finish();
         }
 
         rvConseils.setLayoutManager(new LinearLayoutManager(this));
@@ -122,16 +145,19 @@ public class ConseilsActivity extends AppCompatActivity implements ConseilAdapte
 
     public void onBtReservtionClick(View view) {
         Intent intent = new Intent(this, ReservationAdresseActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 
     public void onBtPrestationClick(View view) {
         Intent intent = new Intent(this, GaleriePrestationActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 
     public void onBtCoiffeuseClick(View view) {
         Intent intent = new Intent(this, GalerieCoiffeuseActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 

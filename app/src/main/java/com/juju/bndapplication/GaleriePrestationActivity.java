@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -13,16 +14,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.juju.bndapplication.Utils.CoiffeuseAdapter;
-import com.juju.bndapplication.Utils.PrestationAdapter;
-import com.juju.bndapplication.models.CoiffeuseBean;
+import com.juju.bndapplication.Adapters.PrestationAdapter;
 import com.juju.bndapplication.models.PrestationBean;
+import com.juju.bndapplication.models.UserBean;
 
 import java.util.ArrayList;
 
 public class GaleriePrestationActivity extends AppCompatActivity implements PrestationAdapter.ItemClickListener {
 
     private final ArrayList<PrestationBean> data = new ArrayList<>();
+    private UserBean user;
     private PrestationAdapter adapter;
     private RecyclerView rvGaleriePrestation;
 
@@ -37,6 +38,29 @@ public class GaleriePrestationActivity extends AppCompatActivity implements Pres
             PrestationBean prestation = new PrestationBean();
             prestation.getPrestation(i);
             data.add(prestation);
+        }
+
+        //Récupération des informations de l'intent précédente
+        Intent currentIntent = getIntent();
+
+        if (currentIntent != null) {
+            //Récupération de l'objet reservation de l'intent récupérée
+            user = currentIntent.getParcelableExtra("user");
+            if (user.getPseudo() == null) {
+                //Si erreur lors de la récupération, redirection vers la début de la réservation
+                Intent intent1 = new Intent(this, LoginActivity.class);
+                Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
+                startActivity(intent1);
+                finish();
+            } else {
+                //A titre de test, à supp
+                //Toast.makeText(this, user.getPseudo(), Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
+            Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
+            startActivity(intent1);
+            finish();
         }
 
         rvGaleriePrestation.setLayoutManager(new GridLayoutManager(this, 2));
@@ -125,6 +149,7 @@ public class GaleriePrestationActivity extends AppCompatActivity implements Pres
     //Dirigent vers les vues du même nom
     public void onBtReservtionClick(View view) {
         Intent intent = new Intent(this, ReservationAdresseActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 
@@ -134,12 +159,14 @@ public class GaleriePrestationActivity extends AppCompatActivity implements Pres
 
     public void onBtCoiffeuseClick(View view) {
         Intent intent = new Intent(this, GalerieCoiffeuseActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
         finish();
     }
 
     public void onBtConseilClick(View view) {
         Intent intent = new Intent(this, ConseilsActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 

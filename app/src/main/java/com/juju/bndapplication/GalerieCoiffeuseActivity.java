@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -13,17 +14,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.juju.bndapplication.Utils.CoiffeuseAdapter;
+import com.juju.bndapplication.Adapters.CoiffeuseAdapter;
 import com.juju.bndapplication.models.CoiffeuseBean;
+import com.juju.bndapplication.models.UserBean;
 
 import java.util.ArrayList;
 
 public class GalerieCoiffeuseActivity extends AppCompatActivity implements CoiffeuseAdapter.ItemClickListener {
 
     private final ArrayList<CoiffeuseBean> data = new ArrayList<>();
+    private UserBean user;
     private CoiffeuseAdapter adapter;
     private RecyclerView rvGalerieCoiffeuse;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,28 @@ public class GalerieCoiffeuseActivity extends AppCompatActivity implements Coiff
 
         rvGalerieCoiffeuse = findViewById(R.id.rvGalerieCoiffeuse);
 
+        //Récupération des informations de l'intent précédente
+        Intent currentIntent = getIntent();
+
+        if (currentIntent != null) {
+            //Récupération de l'objet reservation de l'intent récupérée
+            user = currentIntent.getParcelableExtra("user");
+            if (user.getPseudo() == null) {
+                //Si erreur lors de la récupération, redirection vers la début de la réservation
+                Intent intent1 = new Intent(this, LoginActivity.class);
+                Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
+                startActivity(intent1);
+                finish();
+            } else {
+
+            }
+        } else {
+            Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
+            Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
+            startActivity(intent1);
+            finish();
+        }
+
         for (int i = 1; i < 13; i++) {
             CoiffeuseBean coiffeuse = new CoiffeuseBean();
             coiffeuse.getCoiffeuse(i);
@@ -39,7 +63,7 @@ public class GalerieCoiffeuseActivity extends AppCompatActivity implements Coiff
         }
 
         rvGalerieCoiffeuse.setLayoutManager(new GridLayoutManager(this, 2));
-        adapter = new CoiffeuseAdapter(this, data);
+        adapter = new CoiffeuseAdapter(this, data, user);
         adapter.setClickListener(this);
         rvGalerieCoiffeuse.setAdapter(adapter);
 
@@ -125,11 +149,13 @@ public class GalerieCoiffeuseActivity extends AppCompatActivity implements Coiff
     //Dirigent vers les vues du même nom
     public void onBtReservtionClick(View view) {
         Intent intent = new Intent(this, ReservationAdresseActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 
     public void onBtPrestationClick(View view) {
         Intent intent = new Intent(this, GaleriePrestationActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 
@@ -139,11 +165,12 @@ public class GalerieCoiffeuseActivity extends AppCompatActivity implements Coiff
 
     public void onBtConseilClick(View view) {
         Intent intent = new Intent(this, ConseilsActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 
     @Override
     public void onItemClick(View v, int position) {
-
+        Toast.makeText(this, "clic dans le onItemClick de GalerieCoiffeuseActivity", Toast.LENGTH_SHORT).show();
     }
 }

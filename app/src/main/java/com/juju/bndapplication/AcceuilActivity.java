@@ -1,23 +1,59 @@
 package com.juju.bndapplication;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.juju.bndapplication.models.UserBean;
+
 public class AcceuilActivity extends AppCompatActivity {
+
+    public static UserBean user;
+    private TextView tvBonjour;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_acceuil);
+
+        //FindViewByIDs
+        tvBonjour = findViewById(R.id.tvBonjour);
+
+        //Récupération des informations de l'intent précédente
+        Intent currentIntent = getIntent();
+
+        if (currentIntent != null) {
+            //Récupération de l'objet reservation de l'intent récupérée
+            user = currentIntent.getParcelableExtra("user");
+            if (user.getPseudo() == null) {
+                //Si erreur lors de la récupération, redirection vers la début de la réservation
+                Intent intent1 = new Intent(this, LoginActivity.class);
+                Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
+                startActivity(intent1);
+                finish();
+            } else {
+                //A titre de test, à supp
+                //Toast.makeText(this, user.getPseudo(), Toast.LENGTH_SHORT).show();
+                tvBonjour.setText("Bonjour " + user.getPseudo() + ",");
+                //Toast.makeText(this, String.valueOf(user.getUserID()), Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
+            Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
+            startActivity(intent1);
+            finish();
+        }
+
     }
 
     //Création du menu et de ses liens
@@ -100,21 +136,25 @@ public class AcceuilActivity extends AppCompatActivity {
     //Dirigent vers les vues du même nom
     public void onBtReservtionClick(View view) {
         Intent intent = new Intent(this, ReservationAdresseActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 
     public void onBtPrestationClick(View view) {
         Intent intent = new Intent(this, GaleriePrestationActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 
     public void onBtCoiffeuseClick(View view) {
         Intent intent = new Intent(this, GalerieCoiffeuseActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 
     public void onBtConseilClick(View view) {
         Intent intent = new Intent(this, ConseilsActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 }

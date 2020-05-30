@@ -14,6 +14,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.juju.bndapplication.models.CoiffeuseBean;
+import com.juju.bndapplication.models.UserBean;
 
 public class ProfilCoiffeuseActivity extends AppCompatActivity {
 
@@ -24,6 +25,7 @@ public class ProfilCoiffeuseActivity extends AppCompatActivity {
     private TextView tvPrestation;
 
     private CoiffeuseBean coiffeuse;
+    private UserBean user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,7 @@ public class ProfilCoiffeuseActivity extends AppCompatActivity {
         if (intentReservation != null) {
             //Récupération de l'objet reservation de l'intent récupérée
             coiffeuse = intentReservation.getParcelableExtra("profilCoiffeuse");
+            user = intentReservation.getParcelableExtra("user");
             if (coiffeuse.getNom() == null) {
                 //Si erreur lors de la récupération, redirection vers l'acceuil
                 Intent intent1 = new Intent(this, AcceuilActivity.class);
@@ -141,21 +144,25 @@ public class ProfilCoiffeuseActivity extends AppCompatActivity {
     //Dirigent vers les vues du même nom
     public void onBtReservtionClick(View view) {
         Intent intent = new Intent(this, ReservationAdresseActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 
     public void onBtPrestationClick(View view) {
         Intent intent = new Intent(this, GaleriePrestationActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 
     public void onBtCoiffeuseClick(View view) {
         Intent intent = new Intent(this, GalerieCoiffeuseActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 
     public void onBtConseilClick(View view) {
         Intent intent = new Intent(this, ConseilsActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 }

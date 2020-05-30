@@ -18,14 +18,16 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.juju.bndapplication.Utils.RequeteSet;
+import com.juju.bndapplication.models.AdresseBean;
+import com.juju.bndapplication.models.OptionBean;
 import com.juju.bndapplication.models.ReservationBean;
+import com.juju.bndapplication.models.UserBean;
 
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class SyntheseActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ProgressBar progressBar4;
-
-    private ReservationBean reservation;
     private TextView tvAdresse;
     private TextView tvCPVille;
     private TextView tvPrestation;
@@ -35,6 +37,10 @@ public class SyntheseActivity extends AppCompatActivity implements View.OnClickL
     private Button btPrestation;
     private Button btCoiffeuse;
     private Button btConseils;
+
+    private ReservationBean reservation;
+    private UserBean user;
+    private String optionString;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -59,16 +65,19 @@ public class SyntheseActivity extends AppCompatActivity implements View.OnClickL
 
         if (intentReservation != null) {
             reservation = intentReservation.getParcelableExtra("reservation5");
+            user = intentReservation.getParcelableExtra("user");
             if (reservation.getCreneauHoraire() == null) {
                 Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
                 Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
                 startActivity(intent1);
                 finish();
             } else {
-                tvAdresse.setText(reservation.getAdresse());
-                tvCPVille.setText(reservation.getCpVille());
-                tvPrestation.setText(reservation.getCoiffure() + " , " + reservation.getOptions());
-                tvCoiffeuse.setText(reservation.getCoiffeuse());
+                AdresseBean adresseBean = new AdresseBean();
+                adresseBean.getAdresse(reservation.getAdresseID());
+                tvAdresse.setText(adresseBean.getNuméro() + " " + adresseBean.getVoie())   ;
+                tvCPVille.setText(adresseBean.getCp() + " " + adresseBean.getVille());
+                tvPrestation.setText(reservation.getPrestation().getNomPrestation() + " ," + reservation.getOptions());
+                tvCoiffeuse.setText(reservation.getCoiffeuse().getPrenom() + " " + reservation.getCoiffeuse().getNom());
                 tvHoraire.setText(reservation.getDateReservation() + " à " + reservation.getCreneauHoraire());
             }
         } else {
@@ -97,21 +106,25 @@ public class SyntheseActivity extends AppCompatActivity implements View.OnClickL
 
                 if (v == btRéservation) {
                     Intent intent = new Intent(SyntheseActivity.this, ReservationAdresseActivity.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                     finish();
                 }
                 else if (v == btPrestation){
                     Intent intent = new Intent(SyntheseActivity.this, GaleriePrestationActivity.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                     finish();
                 }
                 else if (v == btCoiffeuse){
                     Intent intent = new Intent(SyntheseActivity.this, GalerieCoiffeuseActivity.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                     finish();
                 }
                 else if (v == btConseils){
                     Intent intent = new Intent(SyntheseActivity.this, ConseilsActivity.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                     finish();
                 }
@@ -204,6 +217,11 @@ public class SyntheseActivity extends AppCompatActivity implements View.OnClickL
 
     public void onBtValiderSyntheseClick(View view) {
         //Enregistrement de la commande
+        RequeteSet.validationReservation(this, reservation);
+        Intent intent = new Intent(this, AcceuilActivity.class);
+        intent.putExtra("user", user);
+        startActivity(intent);
+        finish();
     }
 
 }
