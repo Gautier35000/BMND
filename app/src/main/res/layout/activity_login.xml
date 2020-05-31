@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Adresse mail" />
+                android:text="test" />
 
             <EditText
                 android:id="@+id/etMDP"
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Mot de passe" />
+                android:text="test" />
         </LinearLayout>
 
         <Button

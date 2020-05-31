@@ -29,11 +29,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
-        /*etAdresseMail = findViewById(R.id.etAdresseMail);
+        etAdresseMail = findViewById(R.id.etAdresseMail);
         etMDP = findViewById(R.id.etMDP);
         btValider = findViewById(R.id.btValider);
-        tvOubliMDP = findViewById(R.id.tvOubliMDP);*/
+        tvOubliMDP = findViewById(R.id.tvOubliMDP);
     }
 
     public void onBtLoginClick(View view) { //btValider
@@ -47,8 +46,8 @@ public class LoginActivity extends AppCompatActivity {
         intent.putExtra("user", user);
         startActivity(intent);*/
 
-        //LoginAT loginAT = new LoginAT();
-        //loginAT.execute();
+        LoginAT loginAT = new LoginAT();
+        loginAT.execute();
     }
 
     //Lancement de l'activity de création de compte
@@ -60,7 +59,10 @@ public class LoginActivity extends AppCompatActivity {
     //Dirige vers un acceuil limité (ou vers une vidéo/pub présentant l'appli
     public void onBtDecouverteClick(View view) {
         //Pour l'exercice, relié vers accueil "normal"
+        UserBean user = new UserBean();
+        user.getUser(1);
         Intent intent = new Intent(this, AcceuilActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 
@@ -107,6 +109,12 @@ public class LoginActivity extends AppCompatActivity {
                     case "0":
                         //Connexion réussi
                         Toast.makeText(LoginActivity.this, text, Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(LoginActivity.this, AcceuilActivity.class);
+                        UserBean user;
+                        user = request.get(0);
+                        intent.putExtra("user", user);
+                        startActivity(intent);
+                        finish();
                         break;
                     case "1":
                         //Le mail ou le mot de passe ne sont pas valides

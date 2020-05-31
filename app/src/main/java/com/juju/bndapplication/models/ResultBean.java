@@ -7,6 +7,9 @@ public class ResultBean {
     private ArrayList<UserBean> results;
     private ErrorBean errors;
 
+    public ResultBean() {
+    }
+
     public void setResults(ArrayList<UserBean> results) {
         this.results = results;
     }
@@ -18,17 +21,9 @@ public class ResultBean {
     public ErrorBean getErrors() {
         return errors;
     }
+
     public void setErrors(ErrorBean errors) {
         this.errors = errors;
     }
-
-
-
-
-
-
-
-
-
 
 }
