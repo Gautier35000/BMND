@@ -86,8 +86,6 @@ public class ChoixPrestationActivity extends AppCompatActivity implements View.O
                 startActivity(intent1);
                 finish();
             } else {
-                Toast.makeText(this, String.valueOf(reservation.getAdresseID()), Toast.LENGTH_SHORT).show();
-
                 //Faire le tri des prestations
             }
         } else {

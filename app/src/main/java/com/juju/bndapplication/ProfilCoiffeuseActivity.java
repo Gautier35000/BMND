@@ -52,7 +52,7 @@ public class ProfilCoiffeuseActivity extends AppCompatActivity {
                 startActivity(intent1);
                 finish();
             } else {
-                //Toast.makeText(this, coiffeuse.getNom(), Toast.LENGTH_SHORT).show();
+
             }
         } else {
             Intent intent1 = new Intent(this, ReservationAdresseActivity.class);

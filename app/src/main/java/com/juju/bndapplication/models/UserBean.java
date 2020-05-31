@@ -5,16 +5,34 @@ import android.os.Parcelable;
 
 public class UserBean implements Parcelable {
 
-    int userID;
-    String pseudo;
-    String adresseMail;
-    String password;
-    int adresseID;
+    private int idUsers;
+    private String pseudo;
+    private String mail;
+    private String password;
+    private String token;
+    private String date_creation;
+    private String message;
+    private String code;
+    private String erreur;
+    private int adresseID;
+
+    public UserBean(int idUsers, String pseudo, String mail, String password, String token, String date_creation, String message, String code, String erreur, int adresseID) {
+        this.idUsers = idUsers;
+        this.pseudo = pseudo;
+        this.mail = mail;
+        this.password = password;
+        this.token = token;
+        this.date_creation = date_creation;
+        this.message = message;
+        this.code = code;
+        this.erreur = erreur;
+        this.adresseID = adresseID;
+    }
 
     public UserBean(int userID, String pseudo, String adresseMail, String password, int adresseID) {
-        this.userID = userID;
+        this.idUsers = userID;
         this.pseudo = pseudo;
-        this.adresseMail = adresseMail;
+        this.mail = adresseMail;
         this.password = password;
         this.adresseID = adresseID;
     }
@@ -24,19 +42,29 @@ public class UserBean implements Parcelable {
 
 
     protected UserBean(Parcel in) {
-        userID = in.readInt();
+        idUsers = in.readInt();
         pseudo = in.readString();
-        adresseMail = in.readString();
+        mail = in.readString();
         password = in.readString();
+        token = in.readString();
+        date_creation = in.readString();
+        message = in.readString();
+        code = in.readString();
+        erreur = in.readString();
         adresseID = in.readInt();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(userID);
+        dest.writeInt(idUsers);
         dest.writeString(pseudo);
-        dest.writeString(adresseMail);
+        dest.writeString(mail);
         dest.writeString(password);
+        dest.writeString(token);
+        dest.writeString(date_creation);
+        dest.writeString(message);
+        dest.writeString(code);
+        dest.writeString(erreur);
         dest.writeInt(adresseID);
     }
 
@@ -45,24 +73,24 @@ public class UserBean implements Parcelable {
         return 0;
     }
 
-    public static final Creator<UserBean> CREATOR = new Creator<UserBean>() {
+    public static final Creator<com.juju.bndapplication.models.UserBean> CREATOR = new Creator<com.juju.bndapplication.models.UserBean>() {
         @Override
-        public UserBean createFromParcel(Parcel in) {
-            return new UserBean(in);
+        public com.juju.bndapplication.models.UserBean createFromParcel(Parcel in) {
+            return new com.juju.bndapplication.models.UserBean(in);
         }
 
         @Override
-        public UserBean[] newArray(int size) {
-            return new UserBean[size];
+        public com.juju.bndapplication.models.UserBean[] newArray(int size) {
+            return new com.juju.bndapplication.models.UserBean[size];
         }
     };
 
-    public int getUserID() {
-        return userID;
+    public int getIdUsers() {
+        return idUsers;
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public void setIdUsers(int idUsers) {
+        this.idUsers = idUsers;
     }
 
     public String getPseudo() {
@@ -73,12 +101,12 @@ public class UserBean implements Parcelable {
         this.pseudo = pseudo;
     }
 
-    public String getAdresseMail() {
-        return adresseMail;
+    public String getMail() {
+        return mail;
     }
 
-    public void setAdresseMail(String adresseMail) {
-        this.adresseMail = adresseMail;
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     public String getPassword() {
@@ -97,9 +125,49 @@ public class UserBean implements Parcelable {
         this.adresseID = adresseID;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getDate_creation() {
+        return date_creation;
+    }
+
+    public void setDate_creation(String date_creation) {
+        this.date_creation = date_creation;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getErreur() {
+        return erreur;
+    }
+
+    public void setErreur(String erreur) {
+        this.erreur = erreur;
+    }
+
     public void getUser(int i){
-        this.userID = i;
-        this.adresseMail = "adresse@mail."+ i;
+        this.idUsers = i;
+        this.mail = "adresse@mail."+ i;
         this.adresseID = i;
         this.pseudo = "user"+i;
         this.password = "mdp"+i;

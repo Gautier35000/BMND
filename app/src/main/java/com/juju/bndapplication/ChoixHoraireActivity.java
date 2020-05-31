@@ -19,8 +19,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.juju.bndapplication.models.ReservationBean;
 import com.juju.bndapplication.models.UserBean;
 
-import java.text.ParseException;
-
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class ChoixHoraireActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -58,7 +56,7 @@ public class ChoixHoraireActivity extends AppCompatActivity implements View.OnCl
                 startActivity(intent1);
                 finish();
             } else {
-                Toast.makeText(this, reservation.getCoiffeuse().getPrenom(), Toast.LENGTH_SHORT).show();
+
             }
         } else {
             Intent intent1 = new Intent(this, ReservationAdresseActivity.class);

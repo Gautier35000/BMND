@@ -61,7 +61,6 @@ public class ReservationAdresseActivity extends AppCompatActivity {
                 //A titre de test, à supp
                 //Toast.makeText(this, user.getPseudo(), Toast.LENGTH_SHORT).show();
                 adresseReservation.getAdresse(user.getAdresseID());
-                Toast.makeText(this, String.valueOf(user.getAdresseID()), Toast.LENGTH_SHORT).show();
                 tvAdresse1.setText(adresseReservation.toStringAdresse1());
                 tvAdresse2.setText(adresseReservation.toStringAdresse2());
             }

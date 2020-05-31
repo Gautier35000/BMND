@@ -86,8 +86,7 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
                 startActivity(intent1);
                 finish();
             } else {
-                //A titre de test, à supp
-                //Toast.makeText(this, reservation.getOptions().get(1).getOptionNom(), Toast.LENGTH_SHORT).show();
+
             }
         } else {
             Intent intent1 = new Intent(this, ReservationAdresseActivity.class);

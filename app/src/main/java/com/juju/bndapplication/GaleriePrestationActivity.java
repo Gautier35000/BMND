@@ -53,8 +53,7 @@ public class GaleriePrestationActivity extends AppCompatActivity implements Pres
                 startActivity(intent1);
                 finish();
             } else {
-                //A titre de test, à supp
-                //Toast.makeText(this, user.getPseudo(), Toast.LENGTH_SHORT).show();
+
             }
         } else {
             Intent intent1 = new Intent(this, ReservationAdresseActivity.class);

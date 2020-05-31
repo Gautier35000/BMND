@@ -18,9 +18,8 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.juju.bndapplication.Utils.RequeteSet;
+import com.juju.bndapplication.Utils.RequeteSetDAO;
 import com.juju.bndapplication.models.AdresseBean;
-import com.juju.bndapplication.models.OptionBean;
 import com.juju.bndapplication.models.ReservationBean;
 import com.juju.bndapplication.models.UserBean;
 
@@ -217,7 +216,7 @@ public class SyntheseActivity extends AppCompatActivity implements View.OnClickL
 
     public void onBtValiderSyntheseClick(View view) {
         //Enregistrement de la commande
-        RequeteSet.validationReservation(this, reservation);
+        //RequeteSetDAO.validationReservation(this, reservation);
         Intent intent = new Intent(this, AcceuilActivity.class);
         intent.putExtra("user", user);
         startActivity(intent);

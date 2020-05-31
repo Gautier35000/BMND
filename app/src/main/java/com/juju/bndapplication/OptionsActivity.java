@@ -21,8 +21,6 @@ import com.juju.bndapplication.models.OptionBean;
 import com.juju.bndapplication.models.ReservationBean;
 import com.juju.bndapplication.models.UserBean;
 
-import java.util.ArrayList;
-
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class OptionsActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -73,7 +71,7 @@ public class OptionsActivity extends AppCompatActivity implements View.OnClickLi
                 startActivity(intent1);
                 finish();
             } else {
-                Toast.makeText(this, reservation.getPrestation().getNomPrestation(), Toast.LENGTH_SHORT).show();
+
             }
         } else {
             Intent intent1 = new Intent(this, ReservationAdresseActivity.class);

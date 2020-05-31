@@ -37,15 +37,12 @@ public class AcceuilActivity extends AppCompatActivity {
             user = currentIntent.getParcelableExtra("user");
             if (user.getPseudo() == null) {
                 //Si erreur lors de la récupération, redirection vers la début de la réservation
-                Intent intent1 = new Intent(this, LoginActivity.class);
+                Intent intent1 = new Intent(this, com.juju.bndapplication.LoginActivity.class);
                 Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
                 startActivity(intent1);
                 finish();
             } else {
-                //A titre de test, à supp
-                //Toast.makeText(this, user.getPseudo(), Toast.LENGTH_SHORT).show();
                 tvBonjour.setText("Bonjour " + user.getPseudo() + ",");
-                //Toast.makeText(this, String.valueOf(user.getUserID()), Toast.LENGTH_SHORT).show();
             }
         } else {
             Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
@@ -115,7 +112,7 @@ public class AcceuilActivity extends AppCompatActivity {
 
                 //Mettre fin à la session avant le retour vers la page de login
 
-                Intent intent = new Intent(AcceuilActivity.this, LoginActivity.class);
+                Intent intent = new Intent(AcceuilActivity.this, com.juju.bndapplication.LoginActivity.class);
                 startActivity(intent);
                 finish();
             }

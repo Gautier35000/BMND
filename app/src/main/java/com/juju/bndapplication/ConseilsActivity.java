@@ -53,8 +53,7 @@ public class ConseilsActivity extends AppCompatActivity implements ConseilAdapte
                 startActivity(intent1);
                 finish();
             } else {
-                //A titre de test, à supp
-                Toast.makeText(this, user.getPseudo(), Toast.LENGTH_SHORT).show();
+
             }
         } else {
             Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
