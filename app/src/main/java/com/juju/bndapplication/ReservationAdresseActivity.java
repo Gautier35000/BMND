@@ -181,12 +181,14 @@ public class ReservationAdresseActivity extends AppCompatActivity {
             //Passage à l'étape suivante
             Intent intent = new Intent(this, ChoixPrestationActivity.class);
             intent.putExtra("reservation1", reservation);
+            intent.putExtra("adresseReservation1", adresseReservation);
             intent.putExtra("user", user);
             startActivity(intent);
             finish();
         }
         else if(rdbtAutreAdresse.isChecked()){
             Intent intent = new Intent(this, ReservationAutreAdresseActivity.class);
+            intent.putExtra("user", user);
             startActivity(intent);
             finish();
         }

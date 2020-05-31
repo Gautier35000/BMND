@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.juju.bndapplication.Adapters.ChoixCoiffureAdapter;
+import com.juju.bndapplication.models.AdresseBean;
 import com.juju.bndapplication.models.PrestationBean;
 import com.juju.bndapplication.models.ReservationBean;
 import com.juju.bndapplication.models.UserBean;
@@ -42,6 +43,7 @@ public class ChoixPrestationActivity extends AppCompatActivity implements View.O
     private static UserBean user;
     private final ArrayList<PrestationBean> data = new ArrayList<>();
     private ChoixCoiffureAdapter adapter;
+    private static AdresseBean adresseReservation = new AdresseBean();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +81,7 @@ public class ChoixPrestationActivity extends AppCompatActivity implements View.O
             //Récupération de l'objet reservation de l'intent récupérée
             reservation = intentReservation.getParcelableExtra("reservation1");
             user = intentReservation.getParcelableExtra("user");
+            adresseReservation = intentReservation.getParcelableExtra("adresseReservation1");
             if (String.valueOf(reservation.getAdresseID()) == null) {
                 //Si erreur lors de la récupération, redirection vers la début de la réservation
                 Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
@@ -230,6 +233,7 @@ public class ChoixPrestationActivity extends AppCompatActivity implements View.O
         //Lancement du prochain écran
         Intent intent = new Intent(context, OptionsActivity.class);
         intent.putExtra("reservation2", reservation);
+        intent.putExtra("adresseReservation2", adresseReservation);
         intent.putExtra("user", user);
         context.startActivity(intent);
         //finish();

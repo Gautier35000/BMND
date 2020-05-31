@@ -33,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         etMDP = findViewById(R.id.etMDP);
         btValider = findViewById(R.id.btValider);
         tvOubliMDP = findViewById(R.id.tvOubliMDP);
+
     }
 
     public void onBtLoginClick(View view) { //btValider

@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.juju.bndapplication.Adapters.ChoixCoiffeuseAdapter;
+import com.juju.bndapplication.models.AdresseBean;
 import com.juju.bndapplication.models.CoiffeuseBean;
 import com.juju.bndapplication.models.ReservationBean;
 import com.juju.bndapplication.models.UserBean;
@@ -39,6 +40,7 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
 
     //Déclaration des variables locales
     private static ReservationBean reservation;
+    private static AdresseBean adresseReservation;
     private static UserBean user;
     private final ArrayList<CoiffeuseBean> data = new ArrayList<>();
     private ChoixCoiffeuseAdapter adapter;
@@ -78,7 +80,8 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
         if (intentReservation != null) {
             //Récupération de l'objet reservation de l'intent récupérée
             reservation = intentReservation.getParcelableExtra("reservation3");
-            user = intentReservation.getParcelableExtra("user");
+            adresseReservation = intentReservation.getParcelableExtra("adresseReservation3");
+                user = intentReservation.getParcelableExtra("user");
             if (reservation.getOptions() == null) {
                 //Si erreur lors de la récupération, redirection vers la début de la réservation
                 Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
@@ -229,6 +232,7 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
         //Vers choix du créneau horaire
         Intent intent = new Intent(context, ChoixHoraireActivity.class);
         intent.putExtra("reservation4", reservation);
+        intent.putExtra("adresseReservation4", adresseReservation);
         intent.putExtra("user", user);
         context.startActivity(intent);
         //finish();

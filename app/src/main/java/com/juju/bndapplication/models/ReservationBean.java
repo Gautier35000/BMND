@@ -6,8 +6,6 @@ import android.os.Parcelable;
 
 import androidx.annotation.RequiresApi;
 
-import java.util.ArrayList;
-
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class ReservationBean implements Parcelable {
 
@@ -17,18 +15,18 @@ public class ReservationBean implements Parcelable {
     private CoiffeuseBean coiffeuse;
     private String dateReservation; //Obligatoirement en format String, car les dates ne peuvent se tranférer d'une vue à l'autre
     private String creneauHoraire;
-    private String client; //à changer en model client ou en nomClient
+    private int clientID; //à changer en model client ou en nomClient
     //Peut-être rajouter l'ID
 
     //Constructeur full réservation sans ID
-    public ReservationBean(int adresseID, PrestationBean prestationID, String options, CoiffeuseBean coiffeuse, String dateReservation, String creneauHoraire, String client) {
+    public ReservationBean(int adresseID, PrestationBean prestationID, String options, CoiffeuseBean coiffeuse, String dateReservation, String creneauHoraire, int clientID) {
         this.adresseID = adresseID;
         this.prestation = prestationID;
         this.options = options;
         this.coiffeuse = coiffeuse;
         this.dateReservation = dateReservation;
         this.creneauHoraire = creneauHoraire;
-        this.client = client;
+        this.clientID = clientID;
     }
 
     public ReservationBean() {
@@ -42,7 +40,7 @@ public class ReservationBean implements Parcelable {
         coiffeuse = in.readParcelable(CoiffeuseBean.class.getClassLoader());
         dateReservation = in.readString();
         creneauHoraire = in.readString();
-        client = in.readString();
+        clientID = in.readInt();
     }
 
     @Override
@@ -53,7 +51,7 @@ public class ReservationBean implements Parcelable {
         dest.writeParcelable(coiffeuse, flags);
         dest.writeString(dateReservation);
         dest.writeString(creneauHoraire);
-        dest.writeString(client);
+        dest.writeInt(clientID);
     }
 
     @Override
@@ -113,12 +111,12 @@ public class ReservationBean implements Parcelable {
         this.creneauHoraire = creneauHoraire;
     }
 
-    public String getClient() {
-        return client;
+    public int getClientID() {
+        return clientID;
     }
 
-    public void setClient(String client) {
-        this.client = client;
+    public void setClientID(int clientID) {
+        this.clientID = clientID;
     }
 
     public String getDateReservation() {return dateReservation;}

@@ -17,6 +17,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.juju.bndapplication.models.AdresseBean;
 import com.juju.bndapplication.models.OptionBean;
 import com.juju.bndapplication.models.ReservationBean;
 import com.juju.bndapplication.models.UserBean;
@@ -37,6 +38,7 @@ public class OptionsActivity extends AppCompatActivity implements View.OnClickLi
     private Button btConseils;
 
     private ReservationBean reservation;
+    private AdresseBean adresseReservation;
     private UserBean user;
 
     private String compteurOptions = "Options :";
@@ -64,6 +66,7 @@ public class OptionsActivity extends AppCompatActivity implements View.OnClickLi
 
         if (intentReservation != null) {
             reservation = intentReservation.getParcelableExtra("reservation2");
+            adresseReservation = intentReservation.getParcelableExtra("adresseReservation2");
             user = intentReservation.getParcelableExtra("user");
             if (reservation.getPrestation() == null) {
                 Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
@@ -263,6 +266,7 @@ public class OptionsActivity extends AppCompatActivity implements View.OnClickLi
 
         Intent intent = new Intent(this, ChoixCoiffeuseActivity.class);
         intent.putExtra("user", user);
+        intent.putExtra("adresseReservation3", adresseReservation);
         intent.putExtra("reservation3", reservation);
         startActivity(intent);
         finish();

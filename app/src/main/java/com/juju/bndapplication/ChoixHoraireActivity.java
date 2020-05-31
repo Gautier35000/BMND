@@ -16,6 +16,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.juju.bndapplication.models.AdresseBean;
 import com.juju.bndapplication.models.ReservationBean;
 import com.juju.bndapplication.models.UserBean;
 
@@ -29,6 +30,7 @@ public class ChoixHoraireActivity extends AppCompatActivity implements View.OnCl
     private Button btConseils;
 
     private ReservationBean reservation;
+    private AdresseBean adresseReservation;
     private UserBean user;
 
     @Override
@@ -49,6 +51,7 @@ public class ChoixHoraireActivity extends AppCompatActivity implements View.OnCl
 
         if (intentReservation != null) {
             reservation = intentReservation.getParcelableExtra("reservation4");
+            adresseReservation = intentReservation.getParcelableExtra("adresseReservation4");
             user = intentReservation.getParcelableExtra("user");
             if (reservation.getCoiffeuse() == null) {
                 Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
@@ -199,10 +202,11 @@ public class ChoixHoraireActivity extends AppCompatActivity implements View.OnCl
         reservation.setCreneauHoraire("8h-18h");
         reservation.setDateReservation("20/02/2020");
 
-        Toast.makeText(this, reservation.getDateReservation(), Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, reservation.getDateReservation(), Toast.LENGTH_LONG).show();
 
         Intent intent = new Intent(this, SyntheseActivity.class);
         intent.putExtra("reservation5", reservation);
+        intent.putExtra("adresseReservation5", adresseReservation);
         intent.putExtra("user", user);
         startActivity(intent);
         finish();

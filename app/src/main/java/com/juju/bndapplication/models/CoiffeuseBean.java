@@ -189,4 +189,11 @@ public class CoiffeuseBean implements Parcelable {
                 //Ajouter kenny XD
         }
     }
+
+    @Override
+    public String toString(){
+        String text = this.nom + " " + this.prenom + " " + this.note + " " + " " + this.secteurs +
+                " " + this.pretations + " " + this.coiffeuseID;
+        return text;
+    }
 }

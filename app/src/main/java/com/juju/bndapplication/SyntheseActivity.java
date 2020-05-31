@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,6 +39,7 @@ public class SyntheseActivity extends AppCompatActivity implements View.OnClickL
     private Button btConseils;
 
     private ReservationBean reservation;
+    private AdresseBean adresseReservation;
     private UserBean user;
     private String optionString;
 
@@ -64,6 +66,7 @@ public class SyntheseActivity extends AppCompatActivity implements View.OnClickL
 
         if (intentReservation != null) {
             reservation = intentReservation.getParcelableExtra("reservation5");
+            adresseReservation = intentReservation.getParcelableExtra("adresseReservation5");
             user = intentReservation.getParcelableExtra("user");
             if (reservation.getCreneauHoraire() == null) {
                 Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
@@ -73,11 +76,19 @@ public class SyntheseActivity extends AppCompatActivity implements View.OnClickL
             } else {
                 AdresseBean adresseBean = new AdresseBean();
                 adresseBean.getAdresse(reservation.getAdresseID());
-                tvAdresse.setText(adresseBean.getNuméro() + " " + adresseBean.getVoie())   ;
-                tvCPVille.setText(adresseBean.getCp() + " " + adresseBean.getVille());
+                tvAdresse.setText(adresseReservation.getNuméro() + " " + adresseReservation.getVoie())   ;
+                tvCPVille.setText(adresseReservation.getCp() + " " + adresseReservation.getVille());
                 tvPrestation.setText(reservation.getPrestation().getNomPrestation() + " ," + reservation.getOptions());
                 tvCoiffeuse.setText(reservation.getCoiffeuse().getPrenom() + " " + reservation.getCoiffeuse().getNom());
                 tvHoraire.setText(reservation.getDateReservation() + " à " + reservation.getCreneauHoraire());
+                reservation.setClientID(user.getIdUsers());
+                Log.w("tagSynthese", String.valueOf(reservation.getClientID()));
+                Log.w("tagSynthese", reservation.getCreneauHoraire());
+                Log.w("tagSynthese", reservation.getDateReservation());
+                Log.w("tagSynthese", reservation.getOptions());
+                Log.w("tagSynthese", String.valueOf(reservation.getAdresseID()));
+                Log.w("tagSynthese", reservation.getCoiffeuse().toString());
+                Log.w("tagSynthese", reservation.getPrestation().getNomPrestation());
             }
         } else {
             Intent intent1 = new Intent(this, ReservationAdresseActivity.class);

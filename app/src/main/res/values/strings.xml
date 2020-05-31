@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">BNDApplication</string>
+    <string name="Valider">Valider</string>
+    <string name="tamp_login">Adresse mail</string>
+    <string name="tamp_mdp">Mot de passe</string>
+    <string name="nouvAdresseNum">Num</string>
+    <string name="nouvAdresseVoie">Voie</string>
+    <string name="nouvAdresseCP">CP</string>
+    <string name="nouvAdresseVille">Ville</string>
     <string name="loremIpsum">Et prima post Osdroenam quam, ut dictum est, ab hac descriptione discrevimus, Commagena, nunc Euphratensis, clementer adsurgit, Hierapoli, vetere Nino et Samosata civitatibus amplis inlustris.</string>
     <string name="introFAQ">Bienvenue dans la section FAQ de notre application. Vous trouverez ci-après les questions régulièrement posées par les utilisateurs. Si jamais vous ne trouvez pas de réponse dans cette section, veuillez nous contacter.</string>
 </resources>
