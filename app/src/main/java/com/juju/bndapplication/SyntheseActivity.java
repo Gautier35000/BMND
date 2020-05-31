@@ -23,6 +23,7 @@ import com.juju.bndapplication.Utils.RequeteSetDAO;
 import com.juju.bndapplication.models.AdresseBean;
 import com.juju.bndapplication.models.ReservationBean;
 import com.juju.bndapplication.models.UserBean;
+import com.juju.bndapplication.requete.post.Synthese;
 
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class SyntheseActivity extends AppCompatActivity implements View.OnClickListener {
@@ -62,9 +63,11 @@ public class SyntheseActivity extends AppCompatActivity implements View.OnClickL
 
         progressBar4.setProgress(100);
 
+        //Récupération de la vue précédente
         Intent intentReservation = getIntent();
 
         if (intentReservation != null) {
+            //Récupère les différents objets
             reservation = intentReservation.getParcelableExtra("reservation5");
             adresseReservation = intentReservation.getParcelableExtra("adresseReservation5");
             user = intentReservation.getParcelableExtra("user");
@@ -227,6 +230,7 @@ public class SyntheseActivity extends AppCompatActivity implements View.OnClickL
 
     public void onBtValiderSyntheseClick(View view) {
         //Enregistrement de la commande
+        Synthese.validerReservation(user, reservation, adresseReservation, this);
         //RequeteSetDAO.validationReservation(this, reservation);
         Intent intent = new Intent(this, AcceuilActivity.class);
         intent.putExtra("user", user);

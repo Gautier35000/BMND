@@ -140,17 +140,30 @@ public class ReservationAutreAdresseActivity extends AppCompatActivity {
 
     }
 
+    //Boutons de pied d'écran
+    //Dirigent vers les vues du même nom
     public void onBtReservtionClick(View view) {
+
     }
 
     public void onBtPrestationClick(View view) {
+        Intent intent = new Intent(this, GaleriePrestationActivity.class);
+        intent.putExtra("user", user);
+        startActivity(intent);
     }
 
     public void onBtCoiffeuseClick(View view) {
+        Intent intent = new Intent(this, GalerieCoiffeuseActivity.class);
+        intent.putExtra("user", user);
+        startActivity(intent);
     }
 
     public void onBtConseilClick(View view) {
+        Intent intent = new Intent(this, ConseilsActivity.class);
+        intent.putExtra("user", user);
+        startActivity(intent);
     }
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void onBtAutreAdresseValiderClick(View view) {
