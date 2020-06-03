@@ -34,12 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Lancement d'une tempo en AsyncTask pour ne pas bloquer la progressbar
-        //TempAsyncTask monAT = new TempAsyncTask(this);
-        //monAT.execute();
-
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-        finish();
+        TempAsyncTask monAT = new TempAsyncTask(this);
+        monAT.execute();
 
     }
 

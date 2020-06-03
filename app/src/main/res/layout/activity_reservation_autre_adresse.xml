@@ -6,16 +6,17 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="#F1B753C5"
+    android:background="@mipmap/bg_violet1"
     tools:context=".ReservationAutreAdresseActivity">
 
     <TextView
         android:id="@+id/tvReservation"
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:fontFamily="cursive"
         android:gravity="center"
         android:text="Réservation"
-        android:textSize="30sp" />
+        android:textSize="34sp" />
 
     <Space
         android:layout_width="match_parent"
@@ -35,6 +36,7 @@
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand"
         android:gravity="center"
         android:text="Veuillez renseigner la nouvelle adresse :"
         android:textSize="18sp" />
@@ -49,6 +51,7 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:fontFamily="@font/quicksand"
         android:hint="@string/nouvAdresseNum"
         android:inputType="textPersonName" />
 
@@ -73,6 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="11"
             android:ems="10"
+            android:fontFamily="@font/quicksand"
             android:hint="@string/nouvAdresseVoie"
             android:inputType="textPersonName" />
 
@@ -103,6 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:ems="10"
+            android:fontFamily="@font/quicksand"
             android:hint="@string/nouvAdresseCP"
             android:inputType="textPersonName" />
 
@@ -117,6 +122,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="8"
             android:ems="10"
+            android:fontFamily="@font/quicksand"
             android:hint="@string/nouvAdresseVille"
             android:inputType="textPersonName" />
 
@@ -135,6 +141,7 @@
         android:id="@+id/btValiderNouvAdresse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand"
         android:onClick="onBtAutreAdresseValiderClick"
         android:text="@string/Valider" />
 
@@ -152,9 +159,10 @@
             android:id="@+id/btRéservation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="11"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:drawableTint="@android:color/holo_blue_dark"
+            android:fontFamily="@font/quicksand"
             android:foregroundTint="@android:color/holo_blue_dark"
             android:onClick="onBtReservtionClick"
             android:text="Réservation"
@@ -166,9 +174,10 @@
             android:id="@+id/btPrestation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="10"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:drawableTint="@android:color/holo_blue_dark"
+            android:fontFamily="@font/quicksand"
             android:foregroundTint="@android:color/holo_blue_dark"
             android:onClick="onBtPrestationClick"
             android:text="Prestation"
@@ -180,9 +189,10 @@
             android:id="@+id/btCoiffeuse"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="10"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:drawableTint="@android:color/holo_blue_dark"
+            android:fontFamily="@font/quicksand"
             android:foregroundTint="@android:color/holo_blue_dark"
             android:onClick="onBtCoiffeuseClick"
             android:text="Coiffeuse"
@@ -194,10 +204,11 @@
             android:id="@+id/btConseils"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="10"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:backgroundTintMode="multiply"
             android:drawableTint="@android:color/holo_blue_dark"
+            android:fontFamily="@font/quicksand"
             android:foregroundTint="@android:color/holo_blue_dark"
             android:onClick="onBtConseilClick"
             android:text="Conseils"

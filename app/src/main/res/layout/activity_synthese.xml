@@ -6,16 +6,17 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="#F1B753C5"
+    android:background="@mipmap/bg_violet1"
     tools:context=".SyntheseActivity">
 
     <TextView
         android:id="@+id/tvReservation2"
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:fontFamily="cursive"
         android:gravity="center"
         android:text="Réservation"
-        android:textSize="30sp" />
+        android:textSize="34sp" />
 
     <Space
         android:layout_width="match_parent"
@@ -35,6 +36,7 @@
         android:id="@+id/tvSyntheseTitre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand"
         android:text="Synthèse :"
         android:textSize="24sp" />
 
@@ -58,6 +60,7 @@
             android:id="@+id/tvMessageAdresse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
             android:gravity="center"
             android:text="Adresse de prestation :"
             android:textSize="18sp" />
@@ -66,6 +69,7 @@
             android:id="@+id/tvAdresse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
             android:gravity="center"
             android:text="186 Route de Grenade"
             android:textSize="18sp" />
@@ -74,6 +78,7 @@
             android:id="@+id/tvCPVille"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
             android:gravity="center"
             android:text="31700 Blagnac"
             android:textSize="18sp" />
@@ -87,6 +92,7 @@
             android:id="@+id/tvMessagePrestation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
             android:gravity="center"
             android:text="Prestation :"
             android:textSize="18sp" />
@@ -95,6 +101,7 @@
             android:id="@+id/tvPrestation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
             android:gravity="center"
             android:text="Mulet"
             android:textSize="18sp" />
@@ -108,6 +115,7 @@
             android:id="@+id/tvCoiffeuseMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
             android:gravity="center"
             android:text="Coiffeuse :"
             android:textSize="18sp" />
@@ -116,6 +124,7 @@
             android:id="@+id/tvCoiffeuse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
             android:gravity="center"
             android:text="Micheline"
             android:textSize="18sp" />
@@ -129,6 +138,7 @@
             android:id="@+id/tvHoraireMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
             android:gravity="center"
             android:text="Horaire :"
             android:textSize="18sp" />
@@ -137,6 +147,7 @@
             android:id="@+id/tvHoraire"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
             android:gravity="center"
             android:text="37 : 72"
             android:textSize="18sp" />
@@ -148,10 +159,11 @@
 
         <Button
             android:id="@+id/btValider"
-            android:onClick="onBtValiderSyntheseClick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/quicksand"
+            android:onClick="onBtValiderSyntheseClick"
             android:text="Valider" />
 
         <Space
@@ -170,40 +182,43 @@
             android:id="@+id/btRéservation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="11"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:drawableTint="@android:color/holo_blue_dark"
+            android:fontFamily="@font/quicksand"
             android:foregroundTint="@android:color/holo_blue_dark"
+            android:stateListAnimator="@null"
             android:text="Réservation"
             android:textColor="#000000"
             android:textColorHint="#C83D3D"
-            android:stateListAnimator="@null"
             android:textSize="10sp" />
 
         <Button
             android:id="@+id/btPrestation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="10"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:drawableTint="@android:color/holo_blue_dark"
+            android:fontFamily="@font/quicksand"
             android:foregroundTint="@android:color/holo_blue_dark"
+            android:stateListAnimator="@null"
             android:text="Prestation"
             android:textColor="#000000"
             android:textColorHint="#C83D3D"
-            android:stateListAnimator="@null"
             android:textSize="10sp" />
 
         <Button
             android:id="@+id/btCoiffeuse"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="10"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:drawableTint="@android:color/holo_blue_dark"
+            android:fontFamily="@font/quicksand"
             android:foregroundTint="@android:color/holo_blue_dark"
-            android:text="Coiffeuse"
             android:stateListAnimator="@null"
+            android:text="Coiffeuse"
             android:textColor="#000000"
             android:textColorHint="#C83D3D"
             android:textSize="10sp" />
@@ -212,14 +227,15 @@
             android:id="@+id/btConseils"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="10"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:backgroundTintMode="multiply"
             android:drawableTint="@android:color/holo_blue_dark"
+            android:fontFamily="@font/quicksand"
             android:foregroundTint="@android:color/holo_blue_dark"
+            android:stateListAnimator="@null"
             android:text="Conseils"
             android:textColor="#000000"
-            android:stateListAnimator="@null"
             android:textColorHint="#C83D3D"
             android:textSize="10sp" />
 

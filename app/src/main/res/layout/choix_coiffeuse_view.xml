@@ -32,18 +32,21 @@
                 android:id="@+id/tvNomChoixCoiffeuse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand"
                 android:text="Prénom" />
 
             <TextView
                 android:id="@+id/tvNoteChoixCoiffeuse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand"
                 android:text="Note" />
 
             <TextView
                 android:id="@+id/tvCommentaire"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand"
                 android:text="Commentaires" />
         </LinearLayout>
 

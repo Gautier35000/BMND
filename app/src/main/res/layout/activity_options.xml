@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="#F1B753C5"
+    android:background="@mipmap/bg_violet1"
     android:orientation="vertical"
     tools:context=".OptionsActivity">
 
@@ -13,9 +13,10 @@
         android:id="@+id/tvReservation2"
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:fontFamily="cursive"
         android:gravity="center"
         android:text="Réservation"
-        android:textSize="30sp" />
+        android:textSize="34sp" />
 
     <Space
         android:layout_width="match_parent"
@@ -35,6 +36,7 @@
         android:id="@+id/tvOption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand"
         android:gravity="center"
         android:text="Options"
         android:textSize="20sp" />
@@ -55,6 +57,7 @@
             android:id="@+id/cbOption1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
             android:text="CheckBox" />
 
         <Space
@@ -65,6 +68,7 @@
             android:id="@+id/cbOption2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
             android:text="CheckBox" />
     </LinearLayout>
 
@@ -84,6 +88,7 @@
             android:id="@+id/cbOption3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
             android:text="CheckBox" />
 
         <Space
@@ -94,6 +99,7 @@
             android:id="@+id/cbOption4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
             android:text="CheckBox" />
     </LinearLayout>
 
@@ -113,6 +119,7 @@
             android:id="@+id/cbOption5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
             android:text="CheckBox" />
 
         <Space
@@ -123,6 +130,7 @@
             android:id="@+id/cbOption6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
             android:text="CheckBox" />
     </LinearLayout>
 
@@ -133,9 +141,10 @@
 
     <Button
         android:id="@+id/btValider"
-        android:onClick="onBtValiderClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand"
+        android:onClick="onBtValiderClick"
         android:text="Valider" />
 
     <Space
@@ -152,9 +161,10 @@
             android:id="@+id/btRéservation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="11"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:drawableTint="@android:color/holo_blue_dark"
+            android:fontFamily="@font/quicksand"
             android:foregroundTint="@android:color/holo_blue_dark"
             android:text="Réservation"
             android:textColor="#000000"
@@ -165,9 +175,10 @@
             android:id="@+id/btPrestation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="10"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:drawableTint="@android:color/holo_blue_dark"
+            android:fontFamily="@font/quicksand"
             android:foregroundTint="@android:color/holo_blue_dark"
             android:text="Prestation"
             android:textColor="#000000"
@@ -178,9 +189,10 @@
             android:id="@+id/btCoiffeuse"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="10"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:drawableTint="@android:color/holo_blue_dark"
+            android:fontFamily="@font/quicksand"
             android:foregroundTint="@android:color/holo_blue_dark"
             android:text="Coiffeuse"
             android:textColor="#000000"
@@ -191,10 +203,11 @@
             android:id="@+id/btConseils"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="10"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:backgroundTintMode="multiply"
             android:drawableTint="@android:color/holo_blue_dark"
+            android:fontFamily="@font/quicksand"
             android:foregroundTint="@android:color/holo_blue_dark"
             android:text="Conseils"
             android:textColor="#000000"

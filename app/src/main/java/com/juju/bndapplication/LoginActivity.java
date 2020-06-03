@@ -111,9 +111,7 @@ public class LoginActivity extends AppCompatActivity {
                         //Connexion réussi
                         Toast.makeText(LoginActivity.this, text, Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(LoginActivity.this, AcceuilActivity.class);
-                        UserBean user;
-                        user = request.get(0);
-                        intent.putExtra("user", user);
+                        intent.putExtra("user", request.get(0));
                         startActivity(intent);
                         finish();
                         break;
@@ -125,5 +123,4 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
     }
-
 }

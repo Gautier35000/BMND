@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F1B753C5"
+    android:background="@mipmap/bg_violet1"
     tools:context=".GaleriePrestationActivity">
 
     <LinearLayout
@@ -24,6 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="cursive"
                 android:text="Bread me next Door"
                 android:textSize="30sp" />
 
@@ -32,6 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="cursive"
                 android:gravity="right"
                 android:text="Galerie des prestations"
                 android:textSize="24sp" />
@@ -39,7 +41,7 @@
 
         <ImageView
             android:id="@+id/imageView32"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="100dp"
             app:srcCompat="@drawable/artboard_8" />
     </LinearLayout>
@@ -59,9 +61,10 @@
             android:id="@+id/btRéservation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="11"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:drawableTint="@android:color/holo_blue_dark"
+            android:fontFamily="@font/quicksand"
             android:foregroundTint="@android:color/holo_blue_dark"
             android:onClick="onBtReservtionClick"
             android:text="Réservation"
@@ -73,9 +76,10 @@
             android:id="@+id/btPrestation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="10"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:drawableTint="@android:color/holo_blue_dark"
+            android:fontFamily="@font/quicksand"
             android:foregroundTint="@android:color/holo_blue_dark"
             android:onClick="onBtPrestationClick"
             android:text="Prestation"
@@ -87,9 +91,10 @@
             android:id="@+id/btCoiffeuse"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="10"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:drawableTint="@android:color/holo_blue_dark"
+            android:fontFamily="@font/quicksand"
             android:foregroundTint="@android:color/holo_blue_dark"
             android:onClick="onBtCoiffeuseClick"
             android:text="Coiffeuse"
@@ -101,10 +106,11 @@
             android:id="@+id/btConseils"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="10"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:backgroundTintMode="multiply"
             android:drawableTint="@android:color/holo_blue_dark"
+            android:fontFamily="@font/quicksand"
             android:foregroundTint="@android:color/holo_blue_dark"
             android:onClick="onBtConseilClick"
             android:text="Conseils"

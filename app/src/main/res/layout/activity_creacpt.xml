@@ -32,6 +32,7 @@
                 android:id="@+id/tvBienvenue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand"
                 android:text="Bienvenue à" />
 
             <Space
@@ -42,6 +43,7 @@
                 android:id="@+id/tvBMND"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="cursive"
                 android:text="                                  Bread Me Next Door" />
         </LinearLayout>
 
@@ -62,6 +64,7 @@
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:fontFamily="@font/quicksand"
         android:inputType="textPersonName"
         android:text="Pseudo" />
 
@@ -75,6 +78,7 @@
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:fontFamily="@font/quicksand"
         android:inputType="textPersonName"
         android:text="Adresse mail" />
 
@@ -88,6 +92,7 @@
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:fontFamily="@font/quicksand"
         android:inputType="textPersonName"
         android:text="Mot de passe" />
 
@@ -101,6 +106,7 @@
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:fontFamily="@font/quicksand"
         android:inputType="textPersonName"
         android:text="Confirmez mot de passe" />
 
@@ -111,9 +117,10 @@
 
     <Button
         android:id="@+id/btValider"
-        android:onClick="onCreacptBt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand"
+        android:onClick="onCreacptBt"
         android:text="Valider" />
 
     <Space

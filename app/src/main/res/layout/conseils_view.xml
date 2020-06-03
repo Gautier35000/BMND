@@ -37,6 +37,7 @@
             android:id="@+id/tvNumberConseil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
             android:text="userconseilname" />
 
         <Space
@@ -53,6 +54,7 @@
         android:id="@+id/tvConseilTexte"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand"
         android:gravity="center"
         android:text="@string/loremIpsum" />
 

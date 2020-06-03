@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F1B753C5"
+    android:background="@mipmap/bg_violet1"
     tools:context=".CommentActivity">
 
     <Space
@@ -16,9 +16,10 @@
         android:id="@+id/tcCommentaire"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="cursive"
         android:gravity="center"
         android:text="Commentaires :"
-        android:textSize="24sp" />
+        android:textSize="34sp" />
 
     <Space
         android:layout_width="match_parent"
@@ -49,6 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="@font/quicksand"
                 android:text="NomCommentateur" />
         </LinearLayout>
 
@@ -60,6 +62,7 @@
             android:id="@+id/textView3"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
             android:text="@string/loremIpsum" />
 
     </LinearLayout>
@@ -93,6 +96,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="@font/quicksand"
                 android:text="NomCommentateur" />
         </LinearLayout>
 
@@ -104,6 +108,7 @@
             android:id="@+id/textViewt2"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
             android:text="@string/loremIpsum" />
 
     </LinearLayout>
@@ -122,9 +127,10 @@
             android:id="@+id/btRéservation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="11"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:drawableTint="@android:color/holo_blue_dark"
+            android:fontFamily="@font/quicksand"
             android:foregroundTint="@android:color/holo_blue_dark"
             android:onClick="onBtReservtionClick"
             android:text="Réservation"
@@ -136,9 +142,10 @@
             android:id="@+id/btPrestation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="10"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:drawableTint="@android:color/holo_blue_dark"
+            android:fontFamily="@font/quicksand"
             android:foregroundTint="@android:color/holo_blue_dark"
             android:onClick="onBtPrestationClick"
             android:text="Prestation"
@@ -150,9 +157,10 @@
             android:id="@+id/btCoiffeuse"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="10"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:drawableTint="@android:color/holo_blue_dark"
+            android:fontFamily="@font/quicksand"
             android:foregroundTint="@android:color/holo_blue_dark"
             android:onClick="onBtCoiffeuseClick"
             android:text="Coiffeuse"
@@ -164,10 +172,11 @@
             android:id="@+id/btConseils"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="10"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:backgroundTintMode="multiply"
             android:drawableTint="@android:color/holo_blue_dark"
+            android:fontFamily="@font/quicksand"
             android:foregroundTint="@android:color/holo_blue_dark"
             android:onClick="onBtConseilClick"
             android:text="Conseils"
