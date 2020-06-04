@@ -3,6 +3,7 @@ package com.juju.bndapplication;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +25,8 @@ import com.juju.bndapplication.models.AdresseBean;
 import com.juju.bndapplication.models.ReservationBean;
 import com.juju.bndapplication.models.UserBean;
 import com.juju.bndapplication.requete.post.Synthese;
+
+import java.util.ArrayList;
 
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class SyntheseActivity extends AppCompatActivity implements View.OnClickListener {
@@ -79,7 +82,7 @@ public class SyntheseActivity extends AppCompatActivity implements View.OnClickL
             } else {
                 AdresseBean adresseBean = new AdresseBean();
                 adresseBean.getAdresse(reservation.getAdresseID());
-                tvAdresse.setText(adresseReservation.getNuméro() + " " + adresseReservation.getVoie())   ;
+                tvAdresse.setText(adresseReservation.getNuméro() + " " + adresseReservation.getVoie());
                 tvCPVille.setText(adresseReservation.getCp() + " " + adresseReservation.getVille());
                 tvPrestation.setText(reservation.getPrestation().getNomPrestation() + " ," + reservation.getOptions());
                 tvCoiffeuse.setText(reservation.getCoiffeuse().getPrenom() + " " + reservation.getCoiffeuse().getNom());
@@ -122,20 +125,17 @@ public class SyntheseActivity extends AppCompatActivity implements View.OnClickL
                     intent.putExtra("user", user);
                     startActivity(intent);
                     finish();
-                }
-                else if (v == btPrestation){
+                } else if (v == btPrestation) {
                     Intent intent = new Intent(SyntheseActivity.this, GaleriePrestationActivity.class);
                     intent.putExtra("user", user);
                     startActivity(intent);
                     finish();
-                }
-                else if (v == btCoiffeuse){
+                } else if (v == btCoiffeuse) {
                     Intent intent = new Intent(SyntheseActivity.this, GalerieCoiffeuseActivity.class);
                     intent.putExtra("user", user);
                     startActivity(intent);
                     finish();
-                }
-                else if (v == btConseils){
+                } else if (v == btConseils) {
                     Intent intent = new Intent(SyntheseActivity.this, ConseilsActivity.class);
                     intent.putExtra("user", user);
                     startActivity(intent);
@@ -229,13 +229,49 @@ public class SyntheseActivity extends AppCompatActivity implements View.OnClickL
     }
 
     public void onBtValiderSyntheseClick(View view) {
-        //Enregistrement de la commande
-        Synthese.validerReservation(user, reservation, adresseReservation, this);
-        //RequeteSetDAO.validationReservation(this, reservation);
-        Intent intent = new Intent(this, AcceuilActivity.class);
-        intent.putExtra("user", user);
-        startActivity(intent);
-        finish();
+
+        SyntheseAT syntheseAT = new SyntheseAT();
+        syntheseAT.execute();
+
+    }
+
+
+    public class SyntheseAT extends AsyncTask {
+        Exception exception;
+        ArrayList<UserBean> request;
+
+        @Override
+        protected Object doInBackground(Object[] objects) {
+            //Enregistrement de la commande
+            try {
+               request= Synthese.validerReservation(user, reservation, adresseReservation);
+            } catch (Exception e) {
+                e.printStackTrace();
+                exception = e;
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+            super.onPostExecute(o);
+            //RequeteSetDAO.validationReservation(this, reservation);
+            if (exception != null) {
+//                Toast.makeText(SyntheseActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }else{
+                String text = "";
+                for (UserBean userBean : request) {
+                    text = userBean.getMessage();
+//                    Intent intent = new Intent(SyntheseActivity.this, AcceuilActivity.class);
+//                    intent.putExtra("user", user);
+//                    startActivity(intent);
+//                    finish();
+                    Toast.makeText(SyntheseActivity.this, text, Toast.LENGTH_LONG).show();
+
+                }
+            }
+        }
     }
 
 }

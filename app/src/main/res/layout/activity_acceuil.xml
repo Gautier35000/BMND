@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@mipmap/bg_violet1"
+    android:background="@mipmap/bg_violet1_foreground"
     tools:context=".AcceuilActivity">
 
     <LinearLayout
@@ -42,7 +42,12 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/quicksand"
             android:gravity="center"
-            android:text="@string/loremIpsum" />
+            android:shadowColor="@android:color/background_light"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
+            android:text="@string/loremIpsum"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/imageView29"

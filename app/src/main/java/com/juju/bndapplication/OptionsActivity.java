@@ -234,32 +234,32 @@ public class OptionsActivity extends AppCompatActivity implements View.OnClickLi
         if (cbOption1.isChecked()) {
             if(option == " pas d'option"){ option = "";}
             optionBean.getOption(1);
-            option = option + " " + cbOption1.getText();
+            option = option + "/" + cbOption1.getText();
         }
         if (cbOption2.isChecked()) {
             if(option == " pas d'option"){ option = "";}
             optionBean.getOption(2);
-            option = option + " " + cbOption2.getText();
+            option = option + "/" + cbOption2.getText();
         }
         if (cbOption3.isChecked()) {
             if(option == " pas d'option"){ option = "";}
             optionBean.getOption(3);
-            option = option + " " + cbOption3.getText();
+            option = option + "/" + cbOption3.getText();
         }
         if (cbOption4.isChecked()) {
             if(option == " pas d'option"){ option = "";}
             optionBean.getOption(4);
-            option = option + " " + cbOption4.getText();
+            option = option + "/" + cbOption4.getText();
         }
         if (cbOption5.isChecked()) {
             if(option == " pas d'option"){ option = "";}
             optionBean.getOption(5);
-            option = option + " " + cbOption5.getText();
+            option = option + "/" + cbOption5.getText();
         }
         if (cbOption6.isChecked()) {
             if(option == " pas d'option"){ option = "";}
             optionBean.getOption(6);
-            option = option + " " + cbOption6.getText();
+            option = option + "/" + cbOption6.getText();
         }
 
         reservation.setOptions(option);

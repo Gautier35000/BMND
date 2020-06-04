@@ -15,10 +15,11 @@ public class ReservationBean implements Parcelable {
     private CoiffeuseBean coiffeuse;
     private String dateReservation; //Obligatoirement en format String, car les dates ne peuvent se tranférer d'une vue à l'autre
     private String creneauHoraire;
+    private String commentaire;
     private int clientID; //à changer en model client ou en nomClient
     //Peut-être rajouter l'ID
 
-    //Constructeur full réservation sans ID
+    //Constructeur full réservation
     public ReservationBean(int adresseID, PrestationBean prestationID, String options, CoiffeuseBean coiffeuse, String dateReservation, String creneauHoraire, int clientID) {
         this.adresseID = adresseID;
         this.prestation = prestationID;
@@ -40,6 +41,7 @@ public class ReservationBean implements Parcelable {
         coiffeuse = in.readParcelable(CoiffeuseBean.class.getClassLoader());
         dateReservation = in.readString();
         creneauHoraire = in.readString();
+        commentaire = in.readString();
         clientID = in.readInt();
     }
 
@@ -51,6 +53,7 @@ public class ReservationBean implements Parcelable {
         dest.writeParcelable(coiffeuse, flags);
         dest.writeString(dateReservation);
         dest.writeString(creneauHoraire);
+        dest.writeString(commentaire);
         dest.writeInt(clientID);
     }
 
@@ -122,4 +125,12 @@ public class ReservationBean implements Parcelable {
     public String getDateReservation() {return dateReservation;}
 
     public void setDateReservation(String dateReservation) {this.dateReservation = dateReservation;}
+
+    public String getCommentaire() {
+        return commentaire;
+    }
+
+    public void setCommentaire(String commentaire) {
+        this.commentaire = commentaire;
+    }
 }

@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="cursive"
-                android:text="Bread me next Door"
+                android:text="Braid me next Door"
                 android:textSize="30sp" />
 
             <TextView
