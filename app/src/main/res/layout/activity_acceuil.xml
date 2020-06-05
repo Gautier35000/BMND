@@ -99,6 +99,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@android:color/background_light"
         android:orientation="horizontal">
 
         <Button
@@ -106,14 +107,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="11"
-            android:backgroundTint="@android:color/holo_blue_dark"
-            android:drawableTint="@android:color/holo_blue_dark"
+            android:backgroundTint="@android:color/background_light"
             android:fontFamily="@font/quicksand"
-            android:foregroundTint="@android:color/holo_blue_dark"
             android:onClick="onBtReservtionClick"
+            android:shadowColor="@android:color/background_dark"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
             android:text="Réservation"
-            android:textColor="#000000"
-            android:textColorHint="#C83D3D"
+            android:textColor="@android:color/background_light"
             android:textSize="10sp" />
 
         <Button
@@ -121,14 +123,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="10"
-            android:backgroundTint="@android:color/holo_blue_dark"
-            android:drawableTint="@android:color/holo_blue_dark"
+            android:backgroundTint="@android:color/background_light"
             android:fontFamily="@font/quicksand"
-            android:foregroundTint="@android:color/holo_blue_dark"
             android:onClick="onBtPrestationClick"
+            android:shadowColor="@android:color/background_dark"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
             android:text="Prestation"
-            android:textColor="#000000"
-            android:textColorHint="#C83D3D"
+            android:textColor="@android:color/background_light"
             android:textSize="10sp" />
 
         <Button
@@ -136,14 +139,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="10"
-            android:backgroundTint="@android:color/holo_blue_dark"
-            android:drawableTint="@android:color/holo_blue_dark"
+            android:backgroundTint="@android:color/background_light"
             android:fontFamily="@font/quicksand"
-            android:foregroundTint="@android:color/holo_blue_dark"
             android:onClick="onBtCoiffeuseClick"
+            android:shadowColor="@android:color/background_dark"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
             android:text="Coiffeuse"
-            android:textColor="#000000"
-            android:textColorHint="#C83D3D"
+            android:textColor="@android:color/background_light"
             android:textSize="10sp" />
 
         <Button
@@ -151,15 +155,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="10"
-            android:backgroundTint="@android:color/holo_blue_dark"
+            android:backgroundTint="@android:color/background_light"
             android:backgroundTintMode="multiply"
-            android:drawableTint="@android:color/holo_blue_dark"
             android:fontFamily="@font/quicksand"
-            android:foregroundTint="@android:color/holo_blue_dark"
             android:onClick="onBtConseilClick"
+            android:shadowColor="@android:color/background_dark"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
             android:text="Conseils"
-            android:textColor="#000000"
-            android:textColorHint="#C83D3D"
+            android:textColor="@android:color/background_light"
             android:textSize="10sp" />
 
     </LinearLayout>

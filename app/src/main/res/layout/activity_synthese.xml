@@ -25,7 +25,7 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="25dp" />
+        android:layout_height="15dp" />
 
     <ProgressBar
         android:id="@+id/progressBar4"
@@ -35,7 +35,7 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="45dp" />
+        android:layout_height="25dp" />
 
     <TextView
         android:id="@+id/tvSyntheseTitre"
@@ -52,7 +52,7 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="25dp" />
+        android:layout_height="10dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -63,7 +63,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="15dp"
+            android:layout_height="10dp"
             android:layout_weight="1" />
 
         <TextView
@@ -216,7 +216,6 @@
             android:id="@+id/btValider"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:fontFamily="@font/quicksand"
             android:onClick="onBtValiderSyntheseClick"
             android:text="Valider" />
@@ -240,17 +239,13 @@
             android:layout_weight="11"
             android:backgroundTint="@android:color/background_light"
             android:fontFamily="@font/quicksand"
-            android:foregroundTint="@android:color/background_light"
             android:shadowColor="@android:color/background_dark"
             android:shadowDx="-2"
             android:shadowDy="-2"
             android:shadowRadius="1"
-            android:stateListAnimator="@null"
             android:text="Réservation"
             android:textColor="@android:color/background_light"
-            android:textColorHint="#C83D3D"
-            android:textSize="10sp"
-            android:textStyle="bold" />
+            android:textSize="10sp" />
 
         <Button
             android:id="@+id/btPrestation"
@@ -259,17 +254,13 @@
             android:layout_weight="10"
             android:backgroundTint="@android:color/background_light"
             android:fontFamily="@font/quicksand"
-            android:foregroundTint="@android:color/background_light"
             android:shadowColor="@android:color/background_dark"
             android:shadowDx="-2"
             android:shadowDy="-2"
             android:shadowRadius="1"
-            android:stateListAnimator="@null"
             android:text="Prestation"
             android:textColor="@android:color/background_light"
-            android:textColorHint="#C83D3D"
-            android:textSize="10sp"
-            android:textStyle="bold" />
+            android:textSize="10sp" />
 
         <Button
             android:id="@+id/btCoiffeuse"
@@ -278,17 +269,13 @@
             android:layout_weight="10"
             android:backgroundTint="@android:color/background_light"
             android:fontFamily="@font/quicksand"
-            android:foregroundTint="@android:color/background_light"
             android:shadowColor="@android:color/background_dark"
             android:shadowDx="-2"
             android:shadowDy="-2"
             android:shadowRadius="1"
-            android:stateListAnimator="@null"
             android:text="Coiffeuse"
             android:textColor="@android:color/background_light"
-            android:textColorHint="#C83D3D"
-            android:textSize="10sp"
-            android:textStyle="bold" />
+            android:textSize="10sp" />
 
         <Button
             android:id="@+id/btConseils"
@@ -298,17 +285,13 @@
             android:backgroundTint="@android:color/background_light"
             android:backgroundTintMode="multiply"
             android:fontFamily="@font/quicksand"
-            android:foregroundTint="@android:color/background_light"
             android:shadowColor="@android:color/background_dark"
             android:shadowDx="-2"
             android:shadowDy="-2"
             android:shadowRadius="1"
-            android:stateListAnimator="@null"
             android:text="Conseils"
             android:textColor="@android:color/background_light"
-            android:textColorHint="#C83D3D"
-            android:textSize="10sp"
-            android:textStyle="bold" />
+            android:textSize="10sp" />
 
     </LinearLayout>
 

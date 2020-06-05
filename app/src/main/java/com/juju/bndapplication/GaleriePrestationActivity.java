@@ -72,10 +72,11 @@ public class GaleriePrestationActivity extends AppCompatActivity implements Pres
     //Les menu dirigent vers les activities du même nom
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add(0, 1, 0, "Paramètres");
-        menu.add(0, 2, 0, "Contact");
-        menu.add(0, 3, 0, "CGV/CGU");
-        menu.add(0, 4, 0, "Déconnexion");
+        menu.add(0, 1, 0, "Mes réservations");
+        menu.add(0, 2, 0, "Paramètres");
+        menu.add(0, 3, 0, "Contact");
+        menu.add(0, 4, 0, "CGV/CGU");
+        menu.add(0, 5, 0, "Déconnexion");
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -83,20 +84,28 @@ public class GaleriePrestationActivity extends AppCompatActivity implements Pres
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case 1:
-                launchParametre();
+                launchConsultReservation();
                 break;
-            case 2:
-                launchContact();
+            case 2 :
+                launchParametre();;
                 break;
             case 3:
-                launchCG();
+                launchContact();
                 break;
             case 4:
+                launchCG();
+                break;
+            case 5:
                 deconnexion();
                 break;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void launchConsultReservation(){
+        Intent intent = new Intent(this, ConsultReservationActivity.class);
+        startActivity(intent);
     }
 
     private void launchParametre() {
