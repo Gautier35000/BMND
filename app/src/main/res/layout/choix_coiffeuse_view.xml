@@ -33,6 +33,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/quicksand"
+                android:shadowDx="-2"
+                android:shadowDy="-2"
+                android:shadowRadius="1"
+                android:textStyle="bold"
+                android:shadowColor="@android:color/background_light"
                 android:text="Prénom" />
 
             <TextView
@@ -40,6 +45,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/quicksand"
+                android:shadowDx="-2"
+                android:shadowDy="-2"
+                android:shadowRadius="1"
+                android:textStyle="bold"
+                android:shadowColor="@android:color/background_light"
                 android:text="Note" />
 
             <TextView
@@ -47,6 +57,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/quicksand"
+                android:shadowDx="-2"
+                android:shadowDy="-2"
+                android:shadowRadius="1"
+                android:textStyle="bold"
+                android:shadowColor="@android:color/background_light"
                 android:text="Commentaires" />
         </LinearLayout>
 

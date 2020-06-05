@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="@mipmap/bg_violet1"
+    android:background="@mipmap/bg_violet1_foreground"
     android:orientation="vertical"
     tools:context=".ConseilsActivity">
 
@@ -23,6 +23,11 @@
             android:fontFamily="cursive"
             android:gravity="center"
             android:text="FAQ"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
+            android:textStyle="bold"
+            android:shadowColor="@android:color/background_light"
             android:textSize="34sp" />
 
         <ImageView
@@ -37,6 +42,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/quicksand"
+        android:shadowDx="-2"
+        android:shadowDy="-2"
+        android:shadowRadius="1"
+        android:textStyle="bold"
+        android:shadowColor="@android:color/background_light"
         android:text="@string/introFAQ" />
 
     <Space

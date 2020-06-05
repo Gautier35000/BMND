@@ -20,7 +20,6 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.juju.bndapplication.Utils.RequeteSetDAO;
 import com.juju.bndapplication.models.AdresseBean;
 import com.juju.bndapplication.models.ReservationBean;
 import com.juju.bndapplication.models.UserBean;
@@ -82,7 +81,7 @@ public class SyntheseActivity extends AppCompatActivity implements View.OnClickL
             } else {
                 AdresseBean adresseBean = new AdresseBean();
                 adresseBean.getAdresse(reservation.getAdresseID());
-                tvAdresse.setText(adresseReservation.getNuméro() + " " + adresseReservation.getVoie());
+                tvAdresse.setText(adresseReservation.getNumero() + " " + adresseReservation.getVoie());
                 tvCPVille.setText(adresseReservation.getCp() + " " + adresseReservation.getVille());
                 tvPrestation.setText(reservation.getPrestation().getNomPrestation() + " ," + reservation.getOptions());
                 tvCoiffeuse.setText(reservation.getCoiffeuse().getPrenom() + " " + reservation.getCoiffeuse().getNom());

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@mipmap/bg_violet1"
+    android:background="@mipmap/bg_violet1_foreground"
     tools:context=".CommentActivity">
 
     <Space
@@ -19,6 +19,11 @@
         android:fontFamily="cursive"
         android:gravity="center"
         android:text="Commentaires :"
+        android:shadowDx="-2"
+        android:shadowDy="-2"
+        android:shadowRadius="1"
+        android:textStyle="bold"
+        android:shadowColor="@android:color/background_light"
         android:textSize="34sp" />
 
     <Space

@@ -5,12 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="@mipmap/bg_violet1"
+    android:background="@mipmap/bg_violet1_foreground"
     android:orientation="vertical"
     tools:context=".ChoixCoiffeuseActivity">
 
     <TextView
         android:id="@+id/tvReservation2"
+        android:shadowDx="-2"
+        android:shadowDy="-2"
+        android:shadowRadius="1"
+        android:textStyle="bold"
+        android:shadowColor="@android:color/background_light"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:fontFamily="cursive"

@@ -6,40 +6,53 @@ import android.os.Parcelable;
 public class AdresseBean implements Parcelable {
 
     private int adresseID;
-    private int numéro;
+    private int numero;
     private String voie;
     private String ville;
     private int cp;
+    private String message;
+    private String code;
+    private String erreur;
     private int userID;
 
-    public AdresseBean(int adresseID, int numéro, String voie, String ville, int cp, int userID) {
+    public AdresseBean(int adresseID, int numero, String voie, String ville, int cp, String message, String code, String erreur, int userID) {
         this.adresseID = adresseID;
-        this.numéro = numéro;
+        this.numero = numero;
         this.voie = voie;
         this.ville = ville;
         this.cp = cp;
+        this.message = message;
+        this.code = code;
+        this.erreur = erreur;
         this.userID = userID;
     }
 
     public AdresseBean() {
     }
 
+
     protected AdresseBean(Parcel in) {
         adresseID = in.readInt();
-        numéro = in.readInt();
+        numero = in.readInt();
         voie = in.readString();
         ville = in.readString();
         cp = in.readInt();
+        message = in.readString();
+        code = in.readString();
+        erreur = in.readString();
         userID = in.readInt();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(adresseID);
-        dest.writeInt(numéro);
+        dest.writeInt(numero);
         dest.writeString(voie);
         dest.writeString(ville);
         dest.writeInt(cp);
+        dest.writeString(message);
+        dest.writeString(code);
+        dest.writeString(erreur);
         dest.writeInt(userID);
     }
 
@@ -68,12 +81,12 @@ public class AdresseBean implements Parcelable {
         this.adresseID = adresseID;
     }
 
-    public int getNuméro() {
-        return numéro;
+    public int getNumero() {
+        return numero;
     }
 
-    public void setNuméro(int numéro) {
-        this.numéro = numéro;
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 
     public String getVoie() {
@@ -111,7 +124,7 @@ public class AdresseBean implements Parcelable {
     public void getAdresse(int i) {
 
         this.adresseID = i;
-        this.numéro = i;
+        this.numero = i;
         this.voie = "voie du numéro " + i;
         this.ville = "ville"+i;
         this.cp = 31000 + i;
@@ -120,12 +133,36 @@ public class AdresseBean implements Parcelable {
     }
 
     public String toStringAdresse1(){
-        String adresse1 = this.getNuméro() + " " + this.getVoie();
+        String adresse1 = this.getNumero() + " " + this.getVoie();
         return adresse1;
     }
 
     public  String toStringAdresse2(){
         String adresse2 = this.getCp() + " " + this.getVille();
         return adresse2;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getErreur() {
+        return erreur;
+    }
+
+    public void setErreur(String erreur) {
+        this.erreur = erreur;
     }
 }

@@ -16,17 +16,22 @@ public class ReservationBean implements Parcelable {
     private String dateReservation; //Obligatoirement en format String, car les dates ne peuvent se tranférer d'une vue à l'autre
     private String creneauHoraire;
     private String commentaire;
+    private int id;//id de la réservation
     private int clientID; //à changer en model client ou en nomClient
     //Peut-être rajouter l'ID
 
     //Constructeur full réservation
-    public ReservationBean(int adresseID, PrestationBean prestationID, String options, CoiffeuseBean coiffeuse, String dateReservation, String creneauHoraire, int clientID) {
+
+
+    public ReservationBean(int adresseID, PrestationBean prestation, String options, CoiffeuseBean coiffeuse, String dateReservation, String creneauHoraire, String commentaire, int id, int clientID) {
         this.adresseID = adresseID;
-        this.prestation = prestationID;
+        this.prestation = prestation;
         this.options = options;
         this.coiffeuse = coiffeuse;
         this.dateReservation = dateReservation;
         this.creneauHoraire = creneauHoraire;
+        this.commentaire = commentaire;
+        this.id = id;
         this.clientID = clientID;
     }
 
@@ -42,6 +47,7 @@ public class ReservationBean implements Parcelable {
         dateReservation = in.readString();
         creneauHoraire = in.readString();
         commentaire = in.readString();
+        id = in.readInt();
         clientID = in.readInt();
     }
 
@@ -54,6 +60,7 @@ public class ReservationBean implements Parcelable {
         dest.writeString(dateReservation);
         dest.writeString(creneauHoraire);
         dest.writeString(commentaire);
+        dest.writeInt(id);
         dest.writeInt(clientID);
     }
 
@@ -132,5 +139,13 @@ public class ReservationBean implements Parcelable {
 
     public void setCommentaire(String commentaire) {
         this.commentaire = commentaire;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="@mipmap/bg_violet1"
+    android:background="@mipmap/bg_violet1_foreground"
     android:orientation="vertical"
     tools:context=".OptionsActivity">
 
@@ -16,6 +16,11 @@
         android:fontFamily="cursive"
         android:gravity="center"
         android:text="Réservation"
+        android:shadowDx="-2"
+        android:shadowDy="-2"
+        android:shadowRadius="1"
+        android:textStyle="bold"
+        android:shadowColor="@android:color/background_light"
         android:textSize="34sp" />
 
     <Space
@@ -39,6 +44,11 @@
         android:fontFamily="@font/quicksand"
         android:gravity="center"
         android:text="Options"
+        android:shadowDx="-2"
+        android:shadowDy="-2"
+        android:shadowRadius="1"
+        android:textStyle="bold"
+        android:shadowColor="@android:color/background_light"
         android:textSize="20sp" />
 
     <Space
@@ -58,6 +68,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/quicksand"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
+            android:textStyle="bold"
+            android:shadowColor="@android:color/background_light"
             android:text="CheckBox" />
 
         <Space
@@ -69,6 +84,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/quicksand"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
+            android:textStyle="bold"
+            android:shadowColor="@android:color/background_light"
             android:text="CheckBox" />
     </LinearLayout>
 
@@ -89,6 +109,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/quicksand"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
+            android:textStyle="bold"
+            android:shadowColor="@android:color/background_light"
             android:text="CheckBox" />
 
         <Space
@@ -100,6 +125,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/quicksand"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
+            android:textStyle="bold"
+            android:shadowColor="@android:color/background_light"
             android:text="CheckBox" />
     </LinearLayout>
 
@@ -120,6 +150,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/quicksand"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
+            android:textStyle="bold"
+            android:shadowColor="@android:color/background_light"
             android:text="CheckBox" />
 
         <Space
@@ -131,6 +166,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/quicksand"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
+            android:textStyle="bold"
+            android:shadowColor="@android:color/background_light"
             android:text="CheckBox" />
     </LinearLayout>
 

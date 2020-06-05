@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="@mipmap/bg_violet1"
+    android:background="@mipmap/bg_violet1_foreground"
     tools:context=".SyntheseActivity">
 
     <TextView
@@ -16,6 +16,11 @@
         android:fontFamily="cursive"
         android:gravity="center"
         android:text="Réservation"
+        android:shadowDx="-2"
+        android:shadowDy="-2"
+        android:shadowRadius="1"
+        android:textStyle="bold"
+        android:shadowColor="@android:color/background_light"
         android:textSize="34sp" />
 
     <Space
@@ -38,6 +43,11 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/quicksand"
         android:text="Synthèse :"
+        android:shadowDx="-2"
+        android:shadowDy="-2"
+        android:shadowRadius="1"
+        android:textStyle="bold"
+        android:shadowColor="@android:color/background_light"
         android:textSize="24sp" />
 
     <Space
@@ -63,6 +73,11 @@
             android:fontFamily="@font/quicksand"
             android:gravity="center"
             android:text="Adresse de prestation :"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
+            android:textStyle="bold"
+            android:shadowColor="@android:color/background_light"
             android:textSize="18sp" />
 
         <TextView
@@ -72,6 +87,11 @@
             android:fontFamily="@font/quicksand"
             android:gravity="center"
             android:text="186 Route de Grenade"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
+            android:textStyle="bold"
+            android:shadowColor="@android:color/background_light"
             android:textSize="18sp" />
 
         <TextView
@@ -81,6 +101,11 @@
             android:fontFamily="@font/quicksand"
             android:gravity="center"
             android:text="31700 Blagnac"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
+            android:textStyle="bold"
+            android:shadowColor="@android:color/background_light"
             android:textSize="18sp" />
 
         <Space
@@ -95,6 +120,11 @@
             android:fontFamily="@font/quicksand"
             android:gravity="center"
             android:text="Prestation :"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
+            android:textStyle="bold"
+            android:shadowColor="@android:color/background_light"
             android:textSize="18sp" />
 
         <TextView
@@ -104,6 +134,11 @@
             android:fontFamily="@font/quicksand"
             android:gravity="center"
             android:text="Mulet"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
+            android:textStyle="bold"
+            android:shadowColor="@android:color/background_light"
             android:textSize="18sp" />
 
         <Space
@@ -118,6 +153,11 @@
             android:fontFamily="@font/quicksand"
             android:gravity="center"
             android:text="Coiffeuse :"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
+            android:textStyle="bold"
+            android:shadowColor="@android:color/background_light"
             android:textSize="18sp" />
 
         <TextView
@@ -127,6 +167,11 @@
             android:fontFamily="@font/quicksand"
             android:gravity="center"
             android:text="Micheline"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
+            android:textStyle="bold"
+            android:shadowColor="@android:color/background_light"
             android:textSize="18sp" />
 
         <Space
@@ -141,6 +186,11 @@
             android:fontFamily="@font/quicksand"
             android:gravity="center"
             android:text="Horaire :"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
+            android:textStyle="bold"
+            android:shadowColor="@android:color/background_light"
             android:textSize="18sp" />
 
         <TextView
@@ -150,6 +200,11 @@
             android:fontFamily="@font/quicksand"
             android:gravity="center"
             android:text="37 : 72"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
+            android:textStyle="bold"
+            android:shadowColor="@android:color/background_light"
             android:textSize="18sp" />
 
         <Space
@@ -175,7 +230,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_blue_dark"
+        android:background="@android:color/background_light"
         android:orientation="horizontal">
 
         <Button
@@ -183,61 +238,77 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="11"
-            android:backgroundTint="@android:color/holo_blue_dark"
-            android:drawableTint="@android:color/holo_blue_dark"
+            android:backgroundTint="@android:color/background_light"
             android:fontFamily="@font/quicksand"
-            android:foregroundTint="@android:color/holo_blue_dark"
+            android:foregroundTint="@android:color/background_light"
+            android:shadowColor="@android:color/background_dark"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
             android:stateListAnimator="@null"
             android:text="Réservation"
-            android:textColor="#000000"
+            android:textColor="@android:color/background_light"
             android:textColorHint="#C83D3D"
-            android:textSize="10sp" />
+            android:textSize="10sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btPrestation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="10"
-            android:backgroundTint="@android:color/holo_blue_dark"
-            android:drawableTint="@android:color/holo_blue_dark"
+            android:backgroundTint="@android:color/background_light"
             android:fontFamily="@font/quicksand"
-            android:foregroundTint="@android:color/holo_blue_dark"
+            android:foregroundTint="@android:color/background_light"
+            android:shadowColor="@android:color/background_dark"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
             android:stateListAnimator="@null"
             android:text="Prestation"
-            android:textColor="#000000"
+            android:textColor="@android:color/background_light"
             android:textColorHint="#C83D3D"
-            android:textSize="10sp" />
+            android:textSize="10sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btCoiffeuse"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="10"
-            android:backgroundTint="@android:color/holo_blue_dark"
-            android:drawableTint="@android:color/holo_blue_dark"
+            android:backgroundTint="@android:color/background_light"
             android:fontFamily="@font/quicksand"
-            android:foregroundTint="@android:color/holo_blue_dark"
+            android:foregroundTint="@android:color/background_light"
+            android:shadowColor="@android:color/background_dark"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
             android:stateListAnimator="@null"
             android:text="Coiffeuse"
-            android:textColor="#000000"
+            android:textColor="@android:color/background_light"
             android:textColorHint="#C83D3D"
-            android:textSize="10sp" />
+            android:textSize="10sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btConseils"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="10"
-            android:backgroundTint="@android:color/holo_blue_dark"
+            android:backgroundTint="@android:color/background_light"
             android:backgroundTintMode="multiply"
-            android:drawableTint="@android:color/holo_blue_dark"
             android:fontFamily="@font/quicksand"
-            android:foregroundTint="@android:color/holo_blue_dark"
+            android:foregroundTint="@android:color/background_light"
+            android:shadowColor="@android:color/background_dark"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
             android:stateListAnimator="@null"
             android:text="Conseils"
-            android:textColor="#000000"
+            android:textColor="@android:color/background_light"
             android:textColorHint="#C83D3D"
-            android:textSize="10sp" />
+            android:textSize="10sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

@@ -30,12 +30,22 @@ public class Synthese {
         String prestation= String.valueOf(reservation.getPrestation().getPrestationID());
         String adresse= String.valueOf(adresseReservation.getAdresseID());
         String json ="";
+        String post = "";
+
+
+        if(reservation.getId() != 0){
+            post="upload_synthese";
+            String id= String.valueOf(reservation.getId());
+        }else{
+            post="synthese";
+            String id = "0";
+        }
 
 
         Gson gson1 = new Gson();
         final Map<String, String> valeurs = new HashMap<String, String>();
         valeurs.put("request", "request");
-        valeurs.put("key","synthese");
+        valeurs.put("key",post);
         valeurs.put("idUser",idUser);
         valeurs.put("date_reservation", date_reservation);
         valeurs.put("commentaire", commentaire);

@@ -179,7 +179,7 @@ public class ReservationAutreAdresseActivity extends AppCompatActivity {
         adresseReservation.setCp(Integer.parseInt(tampCP));
         adresseReservation.setVoie(tampVoie);
         adresseReservation.setVille(tampVille);
-        adresseReservation.setNuméro(Integer.parseInt(tampNumero));
+        adresseReservation.setNumero(Integer.parseInt(tampNumero));
         reservation.setAdresseID(adresseReservation.getAdresseID());
 
         //Passage à l'étape suivante

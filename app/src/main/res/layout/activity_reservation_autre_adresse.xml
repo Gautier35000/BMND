@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="@mipmap/bg_violet1"
+    android:background="@mipmap/bg_violet1_foreground"
     tools:context=".ReservationAutreAdresseActivity">
 
     <TextView
@@ -16,6 +16,11 @@
         android:fontFamily="cursive"
         android:gravity="center"
         android:text="Réservation"
+        android:shadowDx="-2"
+        android:shadowDy="-2"
+        android:shadowRadius="1"
+        android:textStyle="bold"
+        android:shadowColor="@android:color/background_light"
         android:textSize="34sp" />
 
     <Space
@@ -39,6 +44,11 @@
         android:fontFamily="@font/quicksand"
         android:gravity="center"
         android:text="Veuillez renseigner la nouvelle adresse :"
+        android:shadowDx="-2"
+        android:shadowDy="-2"
+        android:shadowRadius="1"
+        android:textStyle="bold"
+        android:shadowColor="@android:color/background_light"
         android:textSize="18sp" />
 
     <Space
