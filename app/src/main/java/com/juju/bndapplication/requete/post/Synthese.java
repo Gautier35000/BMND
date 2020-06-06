@@ -70,6 +70,5 @@ public class Synthese {
             return resultBean.getResults();
         }
 
-
     }
 }

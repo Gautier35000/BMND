@@ -178,28 +178,34 @@ public class ReservationAutreAdresseActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void onBtAutreAdresseValiderClick(View view) {
-        //Enregistrement de l'adresse
-        ReservationBean reservation = new ReservationBean();
-        AdresseBean adresseReservation = new AdresseBean();
 
         tampCP = String.valueOf(etNouvAdresseCP.getText());
         tampNumero = String.valueOf(etNouvAdresseNum.getText());
         tampVille = String.valueOf(etNouvAdresseVille.getText());
         tampVoie = String.valueOf(etNouvAdresseVoie.getText());
 
-        adresseReservation.setCp(Integer.parseInt(tampCP));
-        adresseReservation.setVoie(tampVoie);
-        adresseReservation.setVille(tampVille);
-        adresseReservation.setNumero(Integer.parseInt(tampNumero));
-        reservation.setAdresseID(adresseReservation.getAdresseID());
+//        if (tampCP != "" && tampNumero != "" && tampVille != "" && tampVoie != "") {
+            //Enregistrement de l'adresse
+            ReservationBean reservation = new ReservationBean();
+            AdresseBean adresseReservation = new AdresseBean();
 
-        //Passage à l'étape suivante
-        Intent intent = new Intent(this, ChoixPrestationActivity.class);
-        intent.putExtra("reservation1", reservation);
-        intent.putExtra("adresseReservation1", adresseReservation);
-        intent.putExtra("user", user);
-        startActivity(intent);
-        finish();
+            adresseReservation.setCp(Integer.parseInt(tampCP));
+            adresseReservation.setVoie(tampVoie);
+            adresseReservation.setVille(tampVille);
+            adresseReservation.setNumero(Integer.parseInt(tampNumero));
+            reservation.setAdresseID(adresseReservation.getAdresseID());
+
+            //Passage à l'étape suivante
+            Intent intent = new Intent(this, ChoixPrestationActivity.class);
+            intent.putExtra("reservation1", reservation);
+            intent.putExtra("adresseReservation1", adresseReservation);
+            intent.putExtra("user", user);
+            startActivity(intent);
+            finish();
+//        }
+//        else{
+ //           Toast.makeText(this, "Veuillez renseigner tous les champs", Toast.LENGTH_SHORT).show();
+ //       }
     }
 
     @Override

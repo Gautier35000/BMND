@@ -2,6 +2,7 @@ package com.juju.bndapplication;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,15 +18,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.juju.bndapplication.Adapters.CoiffeuseAdapter;
 import com.juju.bndapplication.models.CoiffeuseBean;
 import com.juju.bndapplication.models.UserBean;
+import com.juju.bndapplication.requete.post.Coiffeuse;
 
 import java.util.ArrayList;
 
 public class GalerieCoiffeuseActivity extends AppCompatActivity implements CoiffeuseAdapter.ItemClickListener {
 
-    private final ArrayList<CoiffeuseBean> data = new ArrayList<>();
+    private ArrayList<CoiffeuseBean> data = new ArrayList<>();
+    private UserBean user;
     private CoiffeuseAdapter adapter;
     private RecyclerView rvGalerieCoiffeuse;
-    private UserBean user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class GalerieCoiffeuseActivity extends AppCompatActivity implements Coiff
         setContentView(R.layout.activity_galerie_coiffeuse);
 
         rvGalerieCoiffeuse = findViewById(R.id.rvGalerieCoiffeuse);
+
 
         //Récupération des informations de l'intent précédente
         Intent currentIntent = getIntent();
@@ -56,16 +59,19 @@ public class GalerieCoiffeuseActivity extends AppCompatActivity implements Coiff
             finish();
         }
 
-        for (int i = 1; i < 13; i++) {
-            CoiffeuseBean coiffeuse = new CoiffeuseBean();
-            coiffeuse.getCoiffeuse(i);
-            data.add(coiffeuse);
-        }
+//        for (int i = 1; i < 13; i++) {
+//            CoiffeuseBean coiffeuse = new CoiffeuseBean();
+//            coiffeuse.getCoiffeuse(i);
+//            data.add(coiffeuse);
+//        }
 
-        rvGalerieCoiffeuse.setLayoutManager(new GridLayoutManager(this, 2));
-        adapter = new CoiffeuseAdapter(this, data, user);
-        adapter.setClickListener(this);
-        rvGalerieCoiffeuse.setAdapter(adapter);
+        RandomAT randomAT = new RandomAT();
+        randomAT.execute();
+
+//        rvGalerieCoiffeuse.setLayoutManager(new GridLayoutManager(this, 2));
+//        adapter = new CoiffeuseAdapter(this, data, user);
+//        adapter.setClickListener(this);
+//        rvGalerieCoiffeuse.setAdapter(adapter);
 
     }
 
@@ -73,11 +79,10 @@ public class GalerieCoiffeuseActivity extends AppCompatActivity implements Coiff
     //Les menu dirigent vers les activities du même nom
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add(0, 1, 0, "Mes réservations");
-        menu.add(0, 2, 0, "Paramètres");
-        menu.add(0, 3, 0, "Contact");
-        menu.add(0, 4, 0, "CGV/CGU");
-        menu.add(0, 5, 0, "Déconnexion");
+        menu.add(0, 1, 0, "Paramètres");
+        menu.add(0, 2, 0, "Contact");
+        menu.add(0, 3, 0, "CGV/CGU");
+        menu.add(0, 4, 0, "Déconnexion");
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -85,28 +90,20 @@ public class GalerieCoiffeuseActivity extends AppCompatActivity implements Coiff
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case 1:
-                launchConsultReservation();
+                launchParametre();
                 break;
-            case 2 :
-                launchParametre();;
-                break;
-            case 3:
+            case 2:
                 launchContact();
                 break;
-            case 4:
+            case 3:
                 launchCG();
                 break;
-            case 5:
+            case 4:
                 deconnexion();
                 break;
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    private void launchConsultReservation(){
-        Intent intent = new Intent(this, ConsultReservationActivity.class);
-        startActivity(intent);
     }
 
     private void launchParametre() {
@@ -183,8 +180,40 @@ public class GalerieCoiffeuseActivity extends AppCompatActivity implements Coiff
         Toast.makeText(this, "clic dans le onItemClick de GalerieCoiffeuseActivity", Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public void onBackPressed() {
-    }
 
+
+
+    public class RandomAT extends AsyncTask {
+        Exception exception;
+        ArrayList<CoiffeuseBean> request;
+
+        @Override
+        protected Object doInBackground(Object[] objects) {
+            try{
+                request= Coiffeuse.randomCoiffeuse();
+            }catch (Exception e){
+                e.printStackTrace();
+                exception = e;
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+            super.onPostExecute(o);
+            if(exception != null){
+                Toast.makeText(GalerieCoiffeuseActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+            }else{
+                for(CoiffeuseBean coiffeuseBean:request){
+                    //todo
+                    data = request;
+
+                    rvGalerieCoiffeuse.setLayoutManager(new GridLayoutManager(GalerieCoiffeuseActivity.this, 2));
+                    adapter = new CoiffeuseAdapter(GalerieCoiffeuseActivity.this, data, user);
+                    adapter.setClickListener(GalerieCoiffeuseActivity.this);
+                    rvGalerieCoiffeuse.setAdapter(adapter);
+                }
+            }
+        }
+    }
 }

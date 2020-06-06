@@ -67,9 +67,9 @@ public class ReservationAdresseActivity extends AppCompatActivity {
             } else {
                 //A titre de test, à supp
                 //Toast.makeText(this, user.getPseudo(), Toast.LENGTH_SHORT).show();
-                adresseReservation.getAdresse(user.getAdresseID());
+                /*adresseReservation.getAdresse(user.getAdresseID());
                 tvAdresse1.setText(adresseReservation.toStringAdresse1());
-                tvAdresse2.setText(adresseReservation.toStringAdresse2());
+                tvAdresse2.setText(adresseReservation.toStringAdresse2());*/
             }
         } else {
             Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
@@ -79,6 +79,8 @@ public class ReservationAdresseActivity extends AppCompatActivity {
         }
         ReservationAT reservationAT = new ReservationAT(user.getAdresseID(), 1);
         reservationAT.execute();
+
+
     }
 
     @Override
@@ -234,8 +236,16 @@ public class ReservationAdresseActivity extends AppCompatActivity {
             } else {
                 for (AdresseBean adresseBean : request) {
                     //todo
+                    adresseReservation = request.get(0);
+                    tvAdresse1.setText(adresseReservation.toStringAdresse1());
+                    tvAdresse2.setText(adresseReservation.toStringAdresse2());
                 }
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 }
