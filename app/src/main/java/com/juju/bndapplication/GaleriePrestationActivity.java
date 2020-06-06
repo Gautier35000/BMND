@@ -182,4 +182,9 @@ public class GaleriePrestationActivity extends AppCompatActivity implements Pres
     public void onItemClick(View v, int position) {
 
     }
+
+    @Override
+    public void onBackPressed() {
+    }
+
 }

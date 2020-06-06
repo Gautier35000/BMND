@@ -201,4 +201,9 @@ public class ReservationAutreAdresseActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+    @Override
+    public void onBackPressed() {
+    }
+
 }

@@ -113,4 +113,9 @@ public class CommentActivity extends AppCompatActivity {
 
     public void onBtConseilClick(View view) {
     }
+
+    @Override
+    public void onBackPressed() {
+    }
+
 }

@@ -182,4 +182,9 @@ public class GalerieCoiffeuseActivity extends AppCompatActivity implements Coiff
     public void onItemClick(View v, int position) {
         Toast.makeText(this, "clic dans le onItemClick de GalerieCoiffeuseActivity", Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onBackPressed() {
+    }
+
 }

@@ -177,4 +177,9 @@ public class ConseilsActivity extends AppCompatActivity implements ConseilAdapte
     public void onItemClick(View v, int position) {
 
     }
+
+    @Override
+    public void onBackPressed() {
+    }
+
 }

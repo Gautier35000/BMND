@@ -163,4 +163,10 @@ public class AcceuilActivity extends AppCompatActivity {
         intent.putExtra("user", user);
         startActivity(intent);
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
+
 }

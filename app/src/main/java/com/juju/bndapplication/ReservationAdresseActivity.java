@@ -2,6 +2,7 @@ package com.juju.bndapplication;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,6 +21,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.juju.bndapplication.models.AdresseBean;
 import com.juju.bndapplication.models.ReservationBean;
 import com.juju.bndapplication.models.UserBean;
+import com.juju.bndapplication.requete.post.Adresse;
+import com.juju.bndapplication.requete.post.Reservation;
+
+import java.util.ArrayList;
 
 public class ReservationAdresseActivity extends AppCompatActivity {
 
@@ -48,6 +53,8 @@ public class ReservationAdresseActivity extends AppCompatActivity {
         //Récupération des informations de l'intent précédente
         Intent currentIntent = getIntent();
 
+
+
         if (currentIntent != null) {
             //Récupération de l'objet reservation de l'intent récupérée
             user = currentIntent.getParcelableExtra("user");
@@ -70,18 +77,16 @@ public class ReservationAdresseActivity extends AppCompatActivity {
             startActivity(intent1);
             finish();
         }
-
+        ReservationAT reservationAT = new ReservationAT(user.getAdresseID(), 1);
+        reservationAT.execute();
     }
 
-    //Création du menu et de ses liens
-    //Les menu dirigent vers les activities du même nom
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add(0, 1, 0, "Mes réservations");
-        menu.add(0, 2, 0, "Paramètres");
-        menu.add(0, 3, 0, "Contact");
-        menu.add(0, 4, 0, "CGV/CGU");
-        menu.add(0, 5, 0, "Déconnexion");
+        menu.add(0, 1, 0, "Paramètres");
+        menu.add(0, 2, 0, "Contact");
+        menu.add(0, 3, 0, "CGV/CGU");
+        menu.add(0, 4, 0, "Déconnexion");
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -89,28 +94,20 @@ public class ReservationAdresseActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case 1:
-                launchConsultReservation();
+                launchParametre();
                 break;
-            case 2 :
-                launchParametre();;
-                break;
-            case 3:
+            case 2:
                 launchContact();
                 break;
-            case 4:
+            case 3:
                 launchCG();
                 break;
-            case 5:
+            case 4:
                 deconnexion();
                 break;
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    private void launchConsultReservation(){
-        Intent intent = new Intent(this, ConsultReservationActivity.class);
-        startActivity(intent);
     }
 
     private void launchParametre() {
@@ -183,7 +180,7 @@ public class ReservationAdresseActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void onBtValiderAdresseClick(View view) {
         //Choix Adresse ou autre vue
-        if(rdbtAdresseActuelle.isChecked()) {
+        if (rdbtAdresseActuelle.isChecked()) {
 
             //Enregistrement de l'adresse
             ReservationBean reservation = new ReservationBean();
@@ -196,15 +193,49 @@ public class ReservationAdresseActivity extends AppCompatActivity {
             intent.putExtra("user", user);
             startActivity(intent);
             finish();
-        }
-        else if(rdbtAutreAdresse.isChecked()){
+        } else if (rdbtAutreAdresse.isChecked()) {
             Intent intent = new Intent(this, ReservationAutreAdresseActivity.class);
             intent.putExtra("user", user);
             startActivity(intent);
             finish();
-        }
-        else{
+        } else {
             Toast.makeText(this, "Veuillez faire un choix", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public class ReservationAT extends AsyncTask {
+        Exception exception;
+        ArrayList<AdresseBean> request;
+        int adresseID;
+        int principal;
+
+        public ReservationAT(int adresseID, int principal) {
+            this.adresseID=adresseID;
+            this.principal=principal;
+        }
+
+
+        @Override
+        protected Object doInBackground(Object[] objects) {
+            try {
+                request = Adresse.getAdresse(adresseID,principal);
+            } catch (Exception e) {
+                e.printStackTrace();
+                exception = e;
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+            super.onPostExecute(o);
+            if (exception != null) {
+                Toast.makeText(ReservationAdresseActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+            } else {
+                for (AdresseBean adresseBean : request) {
+                    //todo
+                }
+            }
         }
     }
 }

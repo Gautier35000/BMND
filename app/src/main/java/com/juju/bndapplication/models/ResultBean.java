@@ -7,11 +7,13 @@ public class ResultBean {
     private ArrayList<UserBean> results;
     private ErrorBean errors;
     private ArrayList<AdresseBean> result_adresse;
+    private ArrayList<CoiffeuseBean> result_coiffeuse;
 
-    public ResultBean(ArrayList<UserBean> results, ErrorBean errors, ArrayList<AdresseBean> result_adresse) {
+    public ResultBean(ArrayList<UserBean> results, ErrorBean errors, ArrayList<AdresseBean> result_adresse, ArrayList<CoiffeuseBean> result_coiffeuse) {
         this.results = results;
         this.errors = errors;
         this.result_adresse = result_adresse;
+        this.result_coiffeuse = result_coiffeuse;
     }
 
     public ResultBean() {
@@ -39,5 +41,13 @@ public class ResultBean {
 
     public void setResult_adresse(ArrayList<AdresseBean> result_adresse) {
         this.result_adresse = result_adresse;
+    }
+
+    public ArrayList<CoiffeuseBean> getResult_coiffeuse() {
+        return result_coiffeuse;
+    }
+
+    public void setResult_coiffeuse(ArrayList<CoiffeuseBean> result_coiffeuse) {
+        this.result_coiffeuse = result_coiffeuse;
     }
 }

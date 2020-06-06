@@ -253,4 +253,8 @@ public class ChoixPrestationActivity extends AppCompatActivity implements View.O
 
     }
 
+    @Override
+    public void onBackPressed() {
+    }
+
 }

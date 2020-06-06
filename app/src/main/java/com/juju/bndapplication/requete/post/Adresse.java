@@ -11,34 +11,36 @@ import java.util.Map;
 
 public class Adresse {
     private final static String URL = "http://jeanmarie-gautier.fr/integration/request.php";
-    public static ArrayList<AdresseBean>validerAdresse(AdresseBean adresse)throws Exception{
+
+    public static ArrayList<AdresseBean> validerAdresse(AdresseBean adresse) throws Exception {
         String voie = adresse.getVoie();
-        String numero= String.valueOf(adresse.getNumero());
-        String ville=adresse.getVille();
-        String cp= String.valueOf(adresse.getCp());
+        String numero = String.valueOf(adresse.getNumero());
+        String ville = adresse.getVille();
+        String cp = String.valueOf(adresse.getCp());
         String post = "";
 
-        if(adresse.getAdresseID() != 0){
-             post="upload_adress";
-            String id= String.valueOf(adresse.getAdresseID());
-        }else{
-             post="record_adress";
+
+        if (adresse.getAdresseID() != 0) {
+            post = "upload_adress";
+            String id = String.valueOf(adresse.getAdresseID());
+        } else {
+            post = "record_adress";
             String id = "0";
         }
-        String json ="";
+        String json = "";
 
-        Gson gson= new Gson();
+        Gson gson = new Gson();
         final Map<String, String> valeurs = new HashMap<String, String>();
         valeurs.put("request", "request");
-        valeurs.put("key",post);
-        valeurs.put("voie",voie);
-        valeurs.put("ville",ville);
-        valeurs.put("cp",cp);
+        valeurs.put("key", post);
+        valeurs.put("voie", voie);
+        valeurs.put("ville", ville);
+        valeurs.put("cp", cp);
         String requete = gson.toJson(valeurs);
 
-        try{
-            json= AccesHTTP.sendGetOkHttpRequest(URL,requete);
-        }catch (Exception e) {
+        try {
+            json = AccesHTTP.sendGetOkHttpRequest(URL, requete);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         Gson gson2 = new Gson();
@@ -51,6 +53,36 @@ public class Adresse {
             return resultBean.getResult_adresse();
         }
 
+    }
+
+    public static ArrayList<AdresseBean> getAdresse(int adresseID, int principal) throws Exception {
+        String id = String.valueOf(adresseID);
+        String princip = String.valueOf(principal);
+        String json = "";
+
+        Gson gson = new Gson();
+        final Map<String, String> valeurs = new HashMap<String, String>();
+        valeurs.put("request", "request");
+        valeurs.put("key", "request_adresse");
+        valeurs.put("users_idusers", id);
+        valeurs.put("principal", princip);
+        String requete = gson.toJson(valeurs);
+
+        try {
+            json = AccesHTTP.sendGetOkHttpRequest(URL, requete);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        Gson gson2 = new Gson();
+        ResultBean resultBean = gson2.fromJson(json, ResultBean.class);
+
+
+        if (resultBean.getErrors() != null) {
+            throw new Exception(resultBean.getErrors().getMessage());
+        } else {
+            return resultBean.getResult_adresse();
+        }
 
     }
 }

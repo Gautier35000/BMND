@@ -11,4 +11,9 @@ public class ParametreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parametre);
     }
+
+    @Override
+    public void onBackPressed() {
+    }
+
 }

@@ -283,4 +283,8 @@ public class OptionsActivity extends AppCompatActivity implements View.OnClickLi
         finish();
     }
 
+    @Override
+    public void onBackPressed() {
+    }
+
 }

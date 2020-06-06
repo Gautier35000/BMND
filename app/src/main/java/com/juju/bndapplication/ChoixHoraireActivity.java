@@ -223,4 +223,8 @@ public class ChoixHoraireActivity extends AppCompatActivity implements View.OnCl
         finish();
     }
 
+    @Override
+    public void onBackPressed() {
+    }
+
 }

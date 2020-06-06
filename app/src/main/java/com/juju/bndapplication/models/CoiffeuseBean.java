@@ -11,6 +11,19 @@ public class CoiffeuseBean implements Parcelable {
     private int note;
     private String pretations;
     private int coiffeuseID;
+    private int nbr_notes;
+    private int cumul;
+
+    public CoiffeuseBean(String nom, String prenom, String secteurs, int note, String pretations, int coiffeuseID, int nbr_notes, int cumul) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.secteurs = secteurs;
+        this.note = note;
+        this.pretations = pretations;
+        this.coiffeuseID = coiffeuseID;
+        this.nbr_notes = nbr_notes;
+        this.cumul = cumul;
+    }
 
     public CoiffeuseBean(String nom, String prenom, String secteurs, int note, String pretations) {
         this.nom = nom;
@@ -23,6 +36,7 @@ public class CoiffeuseBean implements Parcelable {
     public CoiffeuseBean() {
     }
 
+
     protected CoiffeuseBean(Parcel in) {
         nom = in.readString();
         prenom = in.readString();
@@ -30,6 +44,8 @@ public class CoiffeuseBean implements Parcelable {
         note = in.readInt();
         pretations = in.readString();
         coiffeuseID = in.readInt();
+        nbr_notes = in.readInt();
+        cumul = in.readInt();
     }
 
     @Override
@@ -40,6 +56,8 @@ public class CoiffeuseBean implements Parcelable {
         dest.writeInt(note);
         dest.writeString(pretations);
         dest.writeInt(coiffeuseID);
+        dest.writeInt(nbr_notes);
+        dest.writeInt(cumul);
     }
 
     @Override
@@ -105,6 +123,22 @@ public class CoiffeuseBean implements Parcelable {
 
     public void setCoiffeuseID(int coiffeuseID) {
         this.coiffeuseID = coiffeuseID;
+    }
+
+    public int getNbr_notes() {
+        return nbr_notes;
+    }
+
+    public void setNbr_notes(int nbr_notes) {
+        this.nbr_notes = nbr_notes;
+    }
+
+    public int getCumul() {
+        return cumul;
+    }
+
+    public void setCumul(int cumul) {
+        this.cumul = cumul;
     }
 
     //Template Coiffeuse

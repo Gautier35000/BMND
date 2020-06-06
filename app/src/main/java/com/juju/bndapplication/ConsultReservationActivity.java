@@ -75,4 +75,9 @@ public class ConsultReservationActivity extends AppCompatActivity implements Con
         Toast.makeText(this, "POUF", Toast.LENGTH_SHORT).show();
 
     }
+
+    @Override
+    public void onBackPressed() {
+    }
+
 }

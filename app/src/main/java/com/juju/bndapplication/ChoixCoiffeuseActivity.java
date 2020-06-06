@@ -251,4 +251,8 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
 
     }
 
+    @Override
+    public void onBackPressed() {
+    }
+
 }

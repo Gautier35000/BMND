@@ -29,14 +29,6 @@ public class UserBean implements Parcelable {
         this.adresseID = adresseID;
     }
 
-    public UserBean(int userID, String pseudo, String adresseMail, String password, int adresseID) {
-        this.idUsers = userID;
-        this.pseudo = pseudo;
-        this.mail = adresseMail;
-        this.password = password;
-        this.adresseID = adresseID;
-    }
-
     public UserBean() {
     }
 
@@ -52,6 +44,10 @@ public class UserBean implements Parcelable {
         code = in.readString();
         erreur = in.readString();
         adresseID = in.readInt();
+    }
+
+    public UserBean(int userID, String pseudo, String adresseMail, String password, int adresseID) {
+
     }
 
     @Override

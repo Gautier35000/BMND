@@ -276,4 +276,8 @@ public class SyntheseActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
+    @Override
+    public void onBackPressed() {
+    }
+
 }
