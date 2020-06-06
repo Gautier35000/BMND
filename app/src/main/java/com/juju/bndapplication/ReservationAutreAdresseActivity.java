@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -133,7 +134,6 @@ public class ReservationAutreAdresseActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
 
                 //Mettre fin à la session avant le retour vers la page de login
-
                 Intent intent = new Intent(ReservationAutreAdresseActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
@@ -179,12 +179,35 @@ public class ReservationAutreAdresseActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void onBtAutreAdresseValiderClick(View view) {
 
+        boolean digitsOnlyCP, digitsOnlyNumero;
+
         tampCP = String.valueOf(etNouvAdresseCP.getText());
         tampNumero = String.valueOf(etNouvAdresseNum.getText());
         tampVille = String.valueOf(etNouvAdresseVille.getText());
         tampVoie = String.valueOf(etNouvAdresseVoie.getText());
 
-//        if (tampCP != "" && tampNumero != "" && tampVille != "" && tampVoie != "") {
+        digitsOnlyCP = TextUtils.isDigitsOnly(tampCP);
+        digitsOnlyNumero = TextUtils.isDigitsOnly(tampNumero);
+
+        if (tampNumero .equals("")){
+            Toast.makeText(this, "Veuillez renseigner le numéro", Toast.LENGTH_SHORT).show();
+        }
+        else if (digitsOnlyNumero == false){
+            Toast.makeText(this, "Le numéro renseigné est incorrect", Toast.LENGTH_SHORT).show();
+        }
+        else if(tampVoie.equals("")){
+            Toast.makeText(this, "Veuillez renseigner la voie", Toast.LENGTH_SHORT).show();
+        }
+        else if (tampCP.equals("")){
+            Toast.makeText(this, "Veuillez renseigner le code postal", Toast.LENGTH_SHORT).show();
+        }
+        else if (digitsOnlyCP == false){
+            Toast.makeText(this, "Le code postal renseigné est incorrect", Toast.LENGTH_SHORT).show();
+        }
+        else if (tampVille.equals("")){
+            Toast.makeText(this, "Veuillez renseigner la ville", Toast.LENGTH_SHORT).show();
+        }
+        else {
             //Enregistrement de l'adresse
             ReservationBean reservation = new ReservationBean();
             AdresseBean adresseReservation = new AdresseBean();
@@ -202,10 +225,7 @@ public class ReservationAutreAdresseActivity extends AppCompatActivity {
             intent.putExtra("user", user);
             startActivity(intent);
             finish();
-//        }
-//        else{
- //           Toast.makeText(this, "Veuillez renseigner tous les champs", Toast.LENGTH_SHORT).show();
- //       }
+        }
     }
 
     @Override
