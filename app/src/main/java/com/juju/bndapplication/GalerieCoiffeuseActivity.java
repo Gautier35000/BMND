@@ -23,9 +23,9 @@ import java.util.ArrayList;
 public class GalerieCoiffeuseActivity extends AppCompatActivity implements CoiffeuseAdapter.ItemClickListener {
 
     private final ArrayList<CoiffeuseBean> data = new ArrayList<>();
-    private UserBean user;
     private CoiffeuseAdapter adapter;
     private RecyclerView rvGalerieCoiffeuse;
+    private UserBean user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

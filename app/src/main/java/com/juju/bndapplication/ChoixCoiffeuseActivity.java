@@ -44,7 +44,6 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
     private static UserBean user;
     private final ArrayList<CoiffeuseBean> data = new ArrayList<>();
     private ChoixCoiffeuseAdapter adapter;
-    String test = "test";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +80,7 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
             //Récupération de l'objet reservation de l'intent récupérée
             reservation = intentReservation.getParcelableExtra("reservation3");
             adresseReservation = intentReservation.getParcelableExtra("adresseReservation3");
-                user = intentReservation.getParcelableExtra("user");
+            user = intentReservation.getParcelableExtra("user");
             if (reservation.getOptions() == null) {
                 //Si erreur lors de la récupération, redirection vers la début de la réservation
                 Intent intent1 = new Intent(this, ReservationAdresseActivity.class);

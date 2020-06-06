@@ -44,7 +44,6 @@ public class SyntheseActivity extends AppCompatActivity implements View.OnClickL
     private ReservationBean reservation;
     private AdresseBean adresseReservation;
     private UserBean user;
-    private String optionString;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -83,17 +82,10 @@ public class SyntheseActivity extends AppCompatActivity implements View.OnClickL
                 adresseBean.getAdresse(reservation.getAdresseID());
                 tvAdresse.setText(adresseReservation.getNumero() + " " + adresseReservation.getVoie());
                 tvCPVille.setText(adresseReservation.getCp() + " " + adresseReservation.getVille());
-                tvPrestation.setText(reservation.getPrestation().getNomPrestation() + " ," + reservation.getOptions());
+                tvPrestation.setText(reservation.getPrestation().getNomPrestation() + reservation.getOptions().replaceAll("/",", "));
                 tvCoiffeuse.setText(reservation.getCoiffeuse().getPrenom() + " " + reservation.getCoiffeuse().getNom());
                 tvHoraire.setText(reservation.getDateReservation() + " à " + reservation.getCreneauHoraire());
                 reservation.setClientID(user.getIdUsers());
-                Log.w("tagSynthese", String.valueOf(reservation.getClientID()));
-                Log.w("tagSynthese", reservation.getCreneauHoraire());
-                Log.w("tagSynthese", reservation.getDateReservation());
-                Log.w("tagSynthese", reservation.getOptions());
-                Log.w("tagSynthese", String.valueOf(reservation.getAdresseID()));
-                Log.w("tagSynthese", reservation.getCoiffeuse().toString());
-                Log.w("tagSynthese", reservation.getPrestation().getNomPrestation());
             }
         } else {
             Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
