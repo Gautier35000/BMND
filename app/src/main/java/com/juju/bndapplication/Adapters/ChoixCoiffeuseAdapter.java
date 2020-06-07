@@ -1,6 +1,7 @@
 package com.juju.bndapplication.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,11 +14,13 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.juju.bndapplication.ChoixCoiffeuseActivity;
+import com.juju.bndapplication.ProfilCoiffeuseActivity;
 import com.juju.bndapplication.R;
 import com.juju.bndapplication.models.CoiffeuseBean;
 
 import java.util.ArrayList;
 
+@RequiresApi(api = Build.VERSION_CODES.N)
 public class ChoixCoiffeuseAdapter extends RecyclerView.Adapter<ChoixCoiffeuseAdapter.ViewHolder>{
 
     private ArrayList<CoiffeuseBean> data;
@@ -33,13 +36,14 @@ public class ChoixCoiffeuseAdapter extends RecyclerView.Adapter<ChoixCoiffeuseAd
     protected static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView tvNomChoixCoiffeuse, tvNoteChoixCoiffeuse;
-        ImageView ivChoixCoiffeuse;
+        ImageView ivChoixCoiffeuse, ivViewProfile;
 
         public ViewHolder(View itemView){
             super(itemView);
             tvNomChoixCoiffeuse = itemView.findViewById(R.id.tvNomChoixCoiffeuse);
             tvNoteChoixCoiffeuse = itemView.findViewById(R.id.tvNoteChoixCoiffeuse);
             ivChoixCoiffeuse = itemView.findViewById(R.id.ivChoixCoiffeuse);
+            ivViewProfile = itemView.findViewById(R.id.ivViewProfile);
         }
 
         @Override
@@ -61,17 +65,16 @@ public class ChoixCoiffeuseAdapter extends RecyclerView.Adapter<ChoixCoiffeuseAd
         final CoiffeuseBean datum = data.get(position);
         holder.tvNomChoixCoiffeuse.setText(datum.getPrenom() + " " + datum.getNom());
         holder.tvNoteChoixCoiffeuse.setText(String.valueOf(datum.getNote()));
-        holder.ivChoixCoiffeuse.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
+        holder.ivViewProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ChoixCoiffeuseActivity.onIvCoiffeuseClick(context, datum);
+                ChoixCoiffeuseActivity.showProfile(context, datum);
             }
         });
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(context, data.get(position).getPrenom(), Toast.LENGTH_SHORT).show();
+                ChoixCoiffeuseActivity.onIvCoiffeuseClick(context, datum);
             }
         });
     }

@@ -59,19 +59,8 @@ public class GalerieCoiffeuseActivity extends AppCompatActivity implements Coiff
             finish();
         }
 
-//        for (int i = 1; i < 13; i++) {
-//            CoiffeuseBean coiffeuse = new CoiffeuseBean();
-//            coiffeuse.getCoiffeuse(i);
-//            data.add(coiffeuse);
-//        }
-
         RandomAT randomAT = new RandomAT();
         randomAT.execute();
-
-//        rvGalerieCoiffeuse.setLayoutManager(new GridLayoutManager(this, 2));
-//        adapter = new CoiffeuseAdapter(this, data, user);
-//        adapter.setClickListener(this);
-//        rvGalerieCoiffeuse.setAdapter(adapter);
 
     }
 
@@ -153,6 +142,12 @@ public class GalerieCoiffeuseActivity extends AppCompatActivity implements Coiff
 
     //Boutons de pied d'écran
     //Dirigent vers les vues du même nom
+    public void onBtAccueilClick(View view){
+        Intent intent = new Intent(this, AcceuilActivity.class);
+        intent.putExtra("user", user);
+        startActivity(intent);
+    }
+
     public void onBtReservtionClick(View view) {
         Intent intent = new Intent(this, ReservationAdresseActivity.class);
         intent.putExtra("user", user);
@@ -163,10 +158,6 @@ public class GalerieCoiffeuseActivity extends AppCompatActivity implements Coiff
         Intent intent = new Intent(this, GaleriePrestationActivity.class);
         intent.putExtra("user", user);
         startActivity(intent);
-    }
-
-    public void onBtCoiffeuseClick(View view) {
-
     }
 
     public void onBtConseilClick(View view) {
@@ -204,16 +195,17 @@ public class GalerieCoiffeuseActivity extends AppCompatActivity implements Coiff
             if(exception != null){
                 Toast.makeText(GalerieCoiffeuseActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
             }else{
-                for(CoiffeuseBean coiffeuseBean:request){
-                    //todo
-                    data = request;
-
-                    rvGalerieCoiffeuse.setLayoutManager(new GridLayoutManager(GalerieCoiffeuseActivity.this, 2));
-                    adapter = new CoiffeuseAdapter(GalerieCoiffeuseActivity.this, data, user);
-                    adapter.setClickListener(GalerieCoiffeuseActivity.this);
-                    rvGalerieCoiffeuse.setAdapter(adapter);
-                }
+                data = request;
+                rvGalerieCoiffeuse.setLayoutManager(new GridLayoutManager(GalerieCoiffeuseActivity.this, 2));
+                adapter = new CoiffeuseAdapter(GalerieCoiffeuseActivity.this, data, user);
+                adapter.setClickListener(GalerieCoiffeuseActivity.this);
+                rvGalerieCoiffeuse.setAdapter(adapter);
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 }

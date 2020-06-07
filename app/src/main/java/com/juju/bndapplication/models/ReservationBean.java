@@ -21,8 +21,6 @@ public class ReservationBean implements Parcelable {
     //Peut-être rajouter l'ID
 
     //Constructeur full réservation
-
-
     public ReservationBean(int adresseID, PrestationBean prestation, String options, CoiffeuseBean coiffeuse, String dateReservation, String creneauHoraire, String commentaire, int id, int clientID) {
         this.adresseID = adresseID;
         this.prestation = prestation;
@@ -37,7 +35,6 @@ public class ReservationBean implements Parcelable {
 
     public ReservationBean() {
     }
-
 
     protected ReservationBean(Parcel in) {
         adresseID = in.readInt();

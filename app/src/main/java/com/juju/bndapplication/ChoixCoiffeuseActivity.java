@@ -32,7 +32,6 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
 
     //Déclarations des objets du layout
     private ProgressBar progressBar2;
-    private Button btRéservation;
     private Button btPrestation;
     private Button btCoiffeuse;
     private Button btConseils;
@@ -42,7 +41,7 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
     private static ReservationBean reservation;
     private static AdresseBean adresseReservation;
     private static UserBean user;
-    private final ArrayList<CoiffeuseBean> data = new ArrayList<>();
+    private ArrayList<CoiffeuseBean> data = new ArrayList<>();
     private ChoixCoiffeuseAdapter adapter;
 
     @Override
@@ -52,7 +51,6 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
 
         //FindViewByIDs
         progressBar2 = findViewById(R.id.progressBar2);
-        btRéservation = findViewById(R.id.btRéservation);
         btPrestation = findViewById(R.id.btPrestation);
         btCoiffeuse = findViewById(R.id.btCoiffeuse);
         btConseils = findViewById(R.id.btConseils);
@@ -62,7 +60,6 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
         progressBar2.setProgress(60);
 
         //setOnClickListenner pour les boutons du bas
-        btRéservation.setOnClickListener(this);
         btCoiffeuse.setOnClickListener(this);
         btConseils.setOnClickListener(this);
         btPrestation.setOnClickListener(this);
@@ -104,6 +101,31 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
 
     }
 
+    public void onBtAccueilClick(View view) {
+
+        AlertDialog.Builder alerte = new AlertDialog.Builder(this);
+        alerte.setMessage("Souhaitez-vous vraiment vous abandonner votre réservation en cours ?");
+        alerte.setTitle("Quitter commande");
+        alerte.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(ChoixCoiffeuseActivity.this, AcceuilActivity.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+                finish();
+            }
+        });
+        alerte.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        alerte.setIcon(R.mipmap.ic_launcher_round);
+        alerte.show();
+    }
+
     @Override
     public void onClick(final View v) {
 
@@ -116,12 +138,7 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
             public void onClick(DialogInterface dialog, int which) {
 
                 //Si oui, dirige vers la vue correspondant au bouton appuyé
-                if (v == btRéservation) {
-                    Intent intent = new Intent(ChoixCoiffeuseActivity.this, ReservationAdresseActivity.class);
-                    intent.putExtra("user", user);
-                    startActivity(intent);
-                    finish();
-                } else if (v == btPrestation) {
+                if (v == btPrestation) {
                     Intent intent = new Intent(ChoixCoiffeuseActivity.this, GaleriePrestationActivity.class);
                     intent.putExtra("user", user);
                     startActivity(intent);
@@ -243,7 +260,12 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
         intent.putExtra("adresseReservation4", adresseReservation);
         intent.putExtra("user", user);
         context.startActivity(intent);
-        //finish();
+    }
+
+    public static void showProfile(Context context, CoiffeuseBean datum) {
+        Intent intent = new Intent(context, ProfilCoiffeuseActivity.class);
+        intent.putExtra("profilCoiffeuse", datum);
+        context.startActivity(intent);
     }
 
     @Override

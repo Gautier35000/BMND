@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/bg_violet1_foreground"
+    android:gravity="center"
     android:orientation="vertical"
     tools:context=".CGActivity">
 
@@ -70,77 +71,16 @@
         android:layout_width="match_parent"
         android:layout_height="20dp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btCGRetour"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/background_light"
-        android:orientation="horizontal">
+        android:fontFamily="@font/quicksand"
+        android:onClick="onBtCGRetourClick"
+        android:text="Retour" />
 
-        <Button
-            android:id="@+id/btRéservation"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="11"
-            android:backgroundTint="@android:color/background_light"
-            android:fontFamily="@font/quicksand"
-            android:onClick="onBtReservtionClick"
-            android:shadowColor="@android:color/background_dark"
-            android:shadowDx="-2"
-            android:shadowDy="-2"
-            android:shadowRadius="1"
-            android:text="Réservation"
-            android:textColor="@android:color/background_light"
-            android:textSize="10sp" />
-
-        <Button
-            android:id="@+id/btPrestation"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="10"
-            android:backgroundTint="@android:color/background_light"
-            android:fontFamily="@font/quicksand"
-            android:onClick="onBtPrestationClick"
-            android:shadowColor="@android:color/background_dark"
-            android:shadowDx="-2"
-            android:shadowDy="-2"
-            android:shadowRadius="1"
-            android:text="Prestation"
-            android:textColor="@android:color/background_light"
-            android:textSize="10sp" />
-
-        <Button
-            android:id="@+id/btCoiffeuse"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="10"
-            android:backgroundTint="@android:color/background_light"
-            android:fontFamily="@font/quicksand"
-            android:onClick="onBtCoiffeuseClick"
-            android:shadowColor="@android:color/background_dark"
-            android:shadowDx="-2"
-            android:shadowDy="-2"
-            android:shadowRadius="1"
-            android:text="Coiffeuse"
-            android:textColor="@android:color/background_light"
-            android:textSize="10sp" />
-
-        <Button
-            android:id="@+id/btConseils"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="10"
-            android:backgroundTint="@android:color/background_light"
-            android:backgroundTintMode="multiply"
-            android:fontFamily="@font/quicksand"
-            android:onClick="onBtConseilClick"
-            android:shadowColor="@android:color/background_dark"
-            android:shadowDx="-2"
-            android:shadowDy="-2"
-            android:shadowRadius="1"
-            android:text="Conseils"
-            android:textColor="@android:color/background_light"
-            android:textSize="10sp" />
-
-    </LinearLayout>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
 
 </LinearLayout>

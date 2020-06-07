@@ -20,6 +20,7 @@ import com.juju.bndapplication.models.AdresseBean;
 import com.juju.bndapplication.models.ReservationBean;
 import com.juju.bndapplication.models.UserBean;
 
+@RequiresApi(api = Build.VERSION_CODES.N)
 public class ReservationAutreAdresseActivity extends AppCompatActivity {
 
     private EditText etNouvAdresseNum;
@@ -33,6 +34,8 @@ public class ReservationAutreAdresseActivity extends AppCompatActivity {
     private String tampNumero;
 
     private UserBean user = new UserBean();
+    ReservationBean reservation = new ReservationBean();
+    AdresseBean adresseReservation = new AdresseBean();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -153,8 +156,10 @@ public class ReservationAutreAdresseActivity extends AppCompatActivity {
 
     //Boutons de pied d'écran
     //Dirigent vers les vues du même nom
-    public void onBtReservtionClick(View view) {
-
+    public void onBtAccueilClick(View view) {
+        Intent intent = new Intent(this, AcceuilActivity.class);
+        intent.putExtra("user", user);
+        startActivity(intent);
     }
 
     public void onBtPrestationClick(View view) {
@@ -179,7 +184,7 @@ public class ReservationAutreAdresseActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void onBtAutreAdresseValiderClick(View view) {
 
-        boolean digitsOnlyCP, digitsOnlyNumero;
+        boolean digitsOnlyCP, digitsOnlyNumero, code_postal_ok;
 
         tampCP = String.valueOf(etNouvAdresseCP.getText());
         tampNumero = String.valueOf(etNouvAdresseNum.getText());
@@ -188,6 +193,8 @@ public class ReservationAutreAdresseActivity extends AppCompatActivity {
 
         digitsOnlyCP = TextUtils.isDigitsOnly(tampCP);
         digitsOnlyNumero = TextUtils.isDigitsOnly(tampNumero);
+
+        code_postal_ok = true; //A enlever une fois l'asyncTask ajoutée /////////////////////////////
 
         if (tampNumero .equals("")){
             Toast.makeText(this, "Veuillez renseigner le numéro", Toast.LENGTH_SHORT).show();
@@ -204,28 +211,55 @@ public class ReservationAutreAdresseActivity extends AppCompatActivity {
         else if (digitsOnlyCP == false){
             Toast.makeText(this, "Le code postal renseigné est incorrect", Toast.LENGTH_SHORT).show();
         }
+        else if (code_postal_ok == false){
+            Toast.makeText(this, "Le code postal n'est pas dans la zone couverte", Toast.LENGTH_SHORT).show();
+        }
         else if (tampVille.equals("")){
             Toast.makeText(this, "Veuillez renseigner la ville", Toast.LENGTH_SHORT).show();
         }
-        else {
-            //Enregistrement de l'adresse
-            ReservationBean reservation = new ReservationBean();
-            AdresseBean adresseReservation = new AdresseBean();
-
+        else {//A mettre dans le on post execute////////////////////////////
+            //Enregistrement de l'adresse pour la réservation
             adresseReservation.setCp(Integer.parseInt(tampCP));
             adresseReservation.setVoie(tampVoie);
             adresseReservation.setVille(tampVille);
             adresseReservation.setNumero(Integer.parseInt(tampNumero));
             reservation.setAdresseID(adresseReservation.getAdresseID());
 
-            //Passage à l'étape suivante
-            Intent intent = new Intent(this, ChoixPrestationActivity.class);
-            intent.putExtra("reservation1", reservation);
-            intent.putExtra("adresseReservation1", adresseReservation);
-            intent.putExtra("user", user);
-            startActivity(intent);
-            finish();
+            AlertDialog.Builder alerte = new AlertDialog.Builder(this);
+            alerte.setMessage("Souhaitez-vous cette adresse comme adresse par défaut ?");
+            alerte.setTitle("Nouvelle adresse");
+            alerte.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    //Enregistrer la nouvelle adresse
+
+                    //Passage à l'étape suivante
+                    nextStep();
+                }
+            });
+            alerte.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //Passage direct à la prochaine étape
+                    nextStep();
+                }
+            });
+
+            alerte.setIcon(R.mipmap.ic_launcher_round);
+            alerte.show();
+
         }
+    }
+
+    public void nextStep(){
+        //Passage à l'étape suivante
+        Intent intent = new Intent(this, ChoixPrestationActivity.class);
+        intent.putExtra("reservation1", reservation);
+        intent.putExtra("adresseReservation1", adresseReservation);
+        intent.putExtra("user", user);
+        startActivity(intent);
+        finish();
     }
 
     @Override

@@ -151,6 +151,12 @@ public class ConseilsActivity extends AppCompatActivity implements ConseilAdapte
 
     }
 
+    public void onBtAccueilClick(View view) {
+        Intent intent = new Intent(this, AcceuilActivity.class);
+        intent.putExtra("user", user);
+        startActivity(intent);
+    }
+
     public void onBtReservtionClick(View view) {
         Intent intent = new Intent(this, ReservationAdresseActivity.class);
         intent.putExtra("user", user);
@@ -167,10 +173,6 @@ public class ConseilsActivity extends AppCompatActivity implements ConseilAdapte
         Intent intent = new Intent(this, GalerieCoiffeuseActivity.class);
         intent.putExtra("user", user);
         startActivity(intent);
-    }
-
-    public void onBtConseilClick(View view) {
-        //laissée vide car déjà dans conseils
     }
 
     @Override

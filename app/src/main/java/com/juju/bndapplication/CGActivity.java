@@ -129,24 +129,17 @@ public class CGActivity extends AppCompatActivity implements CGAdapter.ItemClick
 
     }
 
+    public void onBtCGRetourClick(View view) {
+        finish();
+    }
+
     @Override
     public void onBackPressed() {
-    }
-
-    public void onBtReservtionClick(View view) {
-    }
-
-    public void onBtPrestationClick(View view) {
-    }
-
-    public void onBtCoiffeuseClick(View view) {
-    }
-
-    public void onBtConseilClick(View view) {
     }
 
     @Override
     public void onItemClick(View v, int position) {
 
     }
+
 }

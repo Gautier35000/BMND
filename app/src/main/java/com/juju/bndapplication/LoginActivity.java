@@ -113,7 +113,7 @@ public class LoginActivity extends AppCompatActivity {
                         Intent intent = new Intent(LoginActivity.this, AcceuilActivity.class);
                         intent.putExtra("user", request.get(0));
                         startActivity(intent);
-                        //finish();
+                        finish();
                         break;
                     case "1":
                         //Le mail ou le mot de passe ne sont pas valides
@@ -122,12 +122,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         }
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        finish();
     }
 
     @Override

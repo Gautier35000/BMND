@@ -32,7 +32,6 @@ public class OptionsActivity extends AppCompatActivity implements View.OnClickLi
     private CheckBox cbOption4;
     private CheckBox cbOption5;
     private CheckBox cbOption6;
-    private Button btRéservation;
     private Button btPrestation;
     private Button btCoiffeuse;
     private Button btConseils;
@@ -55,7 +54,6 @@ public class OptionsActivity extends AppCompatActivity implements View.OnClickLi
         cbOption4 = findViewById(R.id.cbOption4);
         cbOption5 = findViewById(R.id.cbOption5);
         cbOption6 = findViewById(R.id.cbOption6);
-        btRéservation = findViewById(R.id.btRéservation);
         btPrestation = findViewById(R.id.btPrestation);
         btCoiffeuse = findViewById(R.id.btCoiffeuse);
         btConseils = findViewById(R.id.btConseils);
@@ -101,8 +99,32 @@ public class OptionsActivity extends AppCompatActivity implements View.OnClickLi
         btCoiffeuse.setOnClickListener(this);
         btConseils.setOnClickListener(this);
         btPrestation.setOnClickListener(this);
-        btRéservation.setOnClickListener(this);
 
+    }
+
+    public void onBtAccueilClick(View view) {
+
+        AlertDialog.Builder alerte = new AlertDialog.Builder(this);
+        alerte.setMessage("Souhaitez-vous vraiment vous abandonner votre réservation en cours ?");
+        alerte.setTitle("Quitter commande");
+        alerte.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(OptionsActivity.this, AcceuilActivity.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+                finish();
+            }
+        });
+        alerte.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        alerte.setIcon(R.mipmap.ic_launcher_round);
+        alerte.show();
     }
 
     @Override
@@ -115,13 +137,7 @@ public class OptionsActivity extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                if (v == btRéservation) {
-                    Intent intent = new Intent(OptionsActivity.this, ReservationAdresseActivity.class);
-                    intent.putExtra("user", user);
-                    startActivity(intent);
-                    finish();
-                }
-                else if (v == btPrestation){
+                if (v == btPrestation){
                     Intent intent = new Intent(OptionsActivity.this, GaleriePrestationActivity.class);
                     intent.putExtra("user", user);
                     startActivity(intent);

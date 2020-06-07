@@ -181,4 +181,7 @@ public class ProfilCoiffeuseActivity extends AppCompatActivity {
     public void onBackPressed() {
     }
 
+    public void onBtProfilRetourClick(View view) {
+        finish();
+    }
 }

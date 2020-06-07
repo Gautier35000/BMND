@@ -3,6 +3,7 @@ package com.juju.bndapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 
 public class ContactActivity extends AppCompatActivity {
 
@@ -16,4 +17,7 @@ public class ContactActivity extends AppCompatActivity {
     public void onBackPressed() {
     }
 
+    public void onBtCGRetourClick(View view) {
+        finish();
+    }
 }

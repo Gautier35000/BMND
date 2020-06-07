@@ -157,8 +157,10 @@ public class ReservationAdresseActivity extends AppCompatActivity {
 
     //Boutons de pied d'écran
     //Dirigent vers les vues du même nom
-    public void onBtReservtionClick(View view) {
-
+    public void onBtAccueilClick(View view) {
+        Intent intent = new Intent(this, AcceuilActivity.class);
+        intent.putExtra("user", user);
+        startActivity(intent);
     }
 
     public void onBtPrestationClick(View view) {

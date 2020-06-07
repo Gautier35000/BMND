@@ -5,12 +5,188 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/bg_violet1_foreground"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".ParametreActivity">
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:id="@+id/tvParametre"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:fontFamily="cursive"
+        android:gravity="center"
+        android:shadowColor="@android:color/background_light"
+        android:shadowDx="-2"
+        android:shadowDy="-2"
+        android:shadowRadius="1"
+        android:text="Paramètres"
+        android:textSize="34sp"
+        android:textStyle="bold" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="15dp" />
+
+    <TextView
+        android:id="@+id/tvParamAccueil"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="PARAMETRES"
-        android:textSize="36sp" />
+        android:gravity="center"
+        android:shadowColor="@android:color/background_light"
+        android:shadowDx="-2"
+        android:shadowDy="-2"
+        android:shadowRadius="1"
+        android:text="@string/accueilParam" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <EditText
+        android:id="@+id/etPseudo"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Pseudo"
+        android:inputType="textPersonName"
+        android:shadowColor="@android:color/background_light"
+        android:shadowDx="-2"
+        android:shadowDy="-2"
+        android:shadowRadius="1" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="match_parent" />
+
+        <EditText
+            android:id="@+id/etAdresseMail"
+            android:layout_width="155dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Adresse Mail"
+            android:inputType="textPersonName"
+            android:shadowColor="@android:color/background_light"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1" />
+
+        <TextView
+            android:id="@+id/tvParamAt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:shadowColor="@android:color/background_light"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
+            android:text="@string/arobase" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName5"
+            android:layout_width="155dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="bmnd.com"
+            android:shadowColor="@android:color/background_light"
+            android:shadowDx="-2"
+            android:shadowDy="-2"
+            android:shadowRadius="1"
+            android:inputType="textPersonName" />
+
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <EditText
+        android:id="@+id/etMdp"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Mot de passe"
+        android:inputType="textPersonName"
+        android:shadowColor="@android:color/background_light"
+        android:shadowDx="-2"
+        android:shadowDy="-2"
+        android:shadowRadius="1" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <EditText
+        android:id="@+id/etConfirmMdp"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Confirmez mot de passe"
+        android:inputType="textPersonName"
+        android:shadowColor="@android:color/background_light"
+        android:shadowDx="-2"
+        android:shadowDy="-2"
+        android:shadowRadius="1" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3" />
+
+        <Button
+            android:id="@+id/btParamRetour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
+            android:onClick="onBtParamRetourClick"
+            android:text="Retour" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2" />
+
+        <Button
+            android:id="@+id/btParamValider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
+            android:onClick="onBtParamValiderCLick"
+            android:text="Valider" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3" />
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+
 </LinearLayout>

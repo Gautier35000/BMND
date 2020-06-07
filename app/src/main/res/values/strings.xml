@@ -7,6 +7,9 @@
     <string name="nouvAdresseVoie">Voie</string>
     <string name="nouvAdresseCP">CP</string>
     <string name="nouvAdresseVille">Ville</string>
+    <string name="arobase">\@</string>
+    <string name="accueilParam">Vous pouvez ici modifier des informations de votre profil. Pour cela, renseignez la nouvelle valeur dans le champ de votre choix. Attention, pour modifier le mot de passe, vous devez remplir les 2 champs associés de façon identique.</string>
+    <string name="accueilContact">Si vous avez des réclamations ou souhaitez un renseignement que vous ne trouvez pas dnas notre FAQ, veuillez nous contacter aux coordonnées suivantes :</string>
     <string name="loremIpsum">Et prima post Osdroenam quam, ut dictum est, ab hac descriptione discrevimus, Commagena, nunc Euphratensis, clementer adsurgit, Hierapoli, vetere Nino et Samosata civitatibus amplis inlustris.</string>
     <string name="introFAQ">Bienvenue dans la section FAQ de notre application. Vous trouverez ci-après les questions régulièrement posées par les utilisateurs. Si jamais vous ne trouvez pas de réponse dans cette section, veuillez nous contacter.</string>
 </resources>

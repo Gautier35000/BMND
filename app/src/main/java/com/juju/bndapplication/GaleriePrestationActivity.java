@@ -155,14 +155,16 @@ public class GaleriePrestationActivity extends AppCompatActivity implements Pres
 
     //Boutons de pied d'écran
     //Dirigent vers les vues du même nom
-    public void onBtReservtionClick(View view) {
-        Intent intent = new Intent(this, ReservationAdresseActivity.class);
+    public void onBtAccueilClick(View view) {
+        Intent intent = new Intent(this, AcceuilActivity.class);
         intent.putExtra("user", user);
         startActivity(intent);
     }
 
-    public void onBtPrestationClick(View view) {
-
+    public void onBtReservtionClick(View view) {
+        Intent intent = new Intent(this, ReservationAdresseActivity.class);
+        intent.putExtra("user", user);
+        startActivity(intent);
     }
 
     public void onBtCoiffeuseClick(View view) {
