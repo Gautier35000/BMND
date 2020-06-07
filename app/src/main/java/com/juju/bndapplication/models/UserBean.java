@@ -15,6 +15,7 @@ public class UserBean implements Parcelable {
     private String code;
     private String erreur;
     private int adresseID;
+    private int principal;
 
     public UserBean(int idUsers, String pseudo, String mail, String password, String token, String date_creation, String message, String code, String erreur, int adresseID) {
         this.idUsers = idUsers;
@@ -44,10 +45,15 @@ public class UserBean implements Parcelable {
         code = in.readString();
         erreur = in.readString();
         adresseID = in.readInt();
+        principal = in.readInt();
     }
 
-    public UserBean(int userID, String pseudo, String adresseMail, String password, int adresseID) {
-
+    public UserBean(int idUsers, String pseudo, String mail, String password, int adresseID) {
+        this.idUsers = idUsers;
+        this.pseudo = pseudo;
+        this.mail = mail;
+        this.password = password;
+        this.adresseID = adresseID;
     }
 
     @Override
@@ -62,6 +68,7 @@ public class UserBean implements Parcelable {
         dest.writeString(code);
         dest.writeString(erreur);
         dest.writeInt(adresseID);
+        dest.writeInt(principal);
     }
 
     @Override
@@ -69,15 +76,15 @@ public class UserBean implements Parcelable {
         return 0;
     }
 
-    public static final Creator<com.juju.bndapplication.models.UserBean> CREATOR = new Creator<com.juju.bndapplication.models.UserBean>() {
+    public static final Creator<UserBean> CREATOR = new Creator<UserBean>() {
         @Override
-        public com.juju.bndapplication.models.UserBean createFromParcel(Parcel in) {
-            return new com.juju.bndapplication.models.UserBean(in);
+        public UserBean createFromParcel(Parcel in) {
+            return new UserBean(in);
         }
 
         @Override
-        public com.juju.bndapplication.models.UserBean[] newArray(int size) {
-            return new com.juju.bndapplication.models.UserBean[size];
+        public UserBean[] newArray(int size) {
+            return new UserBean[size];
         }
     };
 
@@ -159,6 +166,14 @@ public class UserBean implements Parcelable {
 
     public void setErreur(String erreur) {
         this.erreur = erreur;
+    }
+
+    public int getPrincipal() {
+        return principal;
+    }
+
+    public void setPrincipal(int principal) {
+        this.principal = principal;
     }
 
     public void getUser(int i){

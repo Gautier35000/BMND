@@ -2,6 +2,7 @@ package com.juju.bndapplication;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -21,6 +22,9 @@ import com.juju.bndapplication.models.AdresseBean;
 import com.juju.bndapplication.models.OptionBean;
 import com.juju.bndapplication.models.ReservationBean;
 import com.juju.bndapplication.models.UserBean;
+import com.juju.bndapplication.requete.post.Option;
+
+import java.util.ArrayList;
 
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class OptionsActivity extends AppCompatActivity implements View.OnClickListener {
@@ -81,7 +85,7 @@ public class OptionsActivity extends AppCompatActivity implements View.OnClickLi
             finish();
         }
 
-        for(int i = 1; i < 7; i++){
+        /*for(int i = 1; i < 7; i++){
             OptionBean tampOption = new OptionBean();
             tampOption.getOption(i);
             String text = tampOption.getOptionNom();
@@ -93,12 +97,15 @@ public class OptionsActivity extends AppCompatActivity implements View.OnClickLi
                 case 5 : cbOption5.setText(text); break;
                 case 6 : cbOption6.setText(text); break;
             }
-        }
+        }*/
 
 
         btCoiffeuse.setOnClickListener(this);
         btConseils.setOnClickListener(this);
         btPrestation.setOnClickListener(this);
+
+        ChoixOptionsAT choixOptionsAT = new ChoixOptionsAT();
+        choixOptionsAT.execute();
 
     }
 
@@ -303,6 +310,45 @@ public class OptionsActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onBackPressed() {
+    }
+
+    public class ChoixOptionsAT extends AsyncTask {
+        ArrayList<OptionBean> request;
+        Exception exception;
+
+        @Override
+        protected Object doInBackground(Object[] objects) {
+            try {
+                request = Option.OptionSelect();
+            } catch (Exception e) {
+                e.printStackTrace();
+                exception = e;
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+            super.onPostExecute(o);
+            if (exception != null) {
+                Toast.makeText(OptionsActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+
+            } else {
+                int i = 1;
+                String text;
+                for (OptionBean optionBean : request) {
+                    switch (i){
+                        case 1 : cbOption1.setText(optionBean.getOptionNom()); break;
+                        case 2 : cbOption2.setText(optionBean.getOptionNom()); break;
+                        case 3 : cbOption3.setText(optionBean.getOptionNom()); break;
+                        case 4 : cbOption4.setText(optionBean.getOptionNom()); break;
+                        case 5 : cbOption5.setText(optionBean.getOptionNom()); break;
+                        case 6 : cbOption6.setText(optionBean.getOptionNom()); break;
+                    }
+                    i++;
+                }
+            }
+        }
     }
 
 }

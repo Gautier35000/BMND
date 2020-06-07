@@ -3,6 +3,7 @@ package com.juju.bndapplication;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -24,6 +25,7 @@ import com.juju.bndapplication.models.AdresseBean;
 import com.juju.bndapplication.models.CoiffeuseBean;
 import com.juju.bndapplication.models.ReservationBean;
 import com.juju.bndapplication.models.UserBean;
+import com.juju.bndapplication.requete.post.Coiffeuse;
 
 import java.util.ArrayList;
 
@@ -64,11 +66,11 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
         btConseils.setOnClickListener(this);
         btPrestation.setOnClickListener(this);
 
-        for (int i = 1; i < 13; i++) {
+        /*for (int i = 1; i < 13; i++) {
             CoiffeuseBean coiffeuse = new CoiffeuseBean();
             coiffeuse.getCoiffeuse(i);
             data.add(coiffeuse);
-        }
+        }*/
 
         //Récupération des informations de l'intent précédente
         Intent intentReservation = getIntent();
@@ -94,10 +96,14 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
             finish();
         }
 
-        rvChoixCoiffeuse.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new ChoixCoiffeuseAdapter(this, data);
-        adapter.setClickListener(this);
-        rvChoixCoiffeuse.setAdapter(adapter);
+        ChoixCoiffeuseAT choixCoiffeuseAT = new ChoixCoiffeuseAT();
+        choixCoiffeuseAT.execute();
+
+
+//        rvChoixCoiffeuse.setLayoutManager(new LinearLayoutManager(this));
+//        adapter = new ChoixCoiffeuseAdapter(this, data);
+//        adapter.setClickListener(this);
+//        rvChoixCoiffeuse.setAdapter(adapter);
 
     }
 
@@ -279,6 +285,42 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
 
     @Override
     public void onBackPressed() {
+    }
+
+    public class ChoixCoiffeuseAT extends AsyncTask {
+        Exception exception;
+        ArrayList<CoiffeuseBean> request;
+
+        @Override
+        protected Object doInBackground(Object[] objects) {
+            try{
+                request= Coiffeuse.CoiffeusesListSelect(reservation);
+            }catch (Exception e){
+                e.printStackTrace();
+                exception = e;
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+            super.onPostExecute(o);
+            if (exception != null) {
+                Toast.makeText(ChoixCoiffeuseActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }else{
+                //String text = "";
+                for (CoiffeuseBean coiffeuseBean : request) {
+
+                    data.add(coiffeuseBean);
+
+                }
+                rvChoixCoiffeuse.setLayoutManager(new LinearLayoutManager(ChoixCoiffeuseActivity.this));
+                adapter = new ChoixCoiffeuseAdapter(ChoixCoiffeuseActivity.this, data);
+                adapter.setClickListener(ChoixCoiffeuseActivity.this);
+                rvChoixCoiffeuse.setAdapter(adapter);
+            }
+        }
     }
 
 }
