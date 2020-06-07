@@ -109,11 +109,13 @@ public class ReservationAutreAdresseActivity extends AppCompatActivity {
 
     private void launchConsultReservation(){
         Intent intent = new Intent(this, ConsultReservationActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 
     private void launchParametre() {
         Intent intent = new Intent(this, ParametreActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 
@@ -137,6 +139,7 @@ public class ReservationAutreAdresseActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
 
                 //Mettre fin à la session avant le retour vers la page de login
+
                 Intent intent = new Intent(ReservationAutreAdresseActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();

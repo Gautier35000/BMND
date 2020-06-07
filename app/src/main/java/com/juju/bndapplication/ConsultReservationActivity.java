@@ -1,11 +1,17 @@
 package com.juju.bndapplication;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,6 +21,7 @@ import com.juju.bndapplication.Adapters.ConsultReservationAdapter;
 import com.juju.bndapplication.models.CoiffeuseBean;
 import com.juju.bndapplication.models.PrestationBean;
 import com.juju.bndapplication.models.ReservationBean;
+import com.juju.bndapplication.models.UserBean;
 
 import java.util.ArrayList;
 
@@ -22,8 +29,9 @@ public class ConsultReservationActivity extends AppCompatActivity implements Con
 
     private final ArrayList<ReservationBean> data = new ArrayList<>();
     private ConsultReservationAdapter adapter;
-    private RecyclerView rvMesReservations;
+    private UserBean user;
 
+    private RecyclerView rvMesReservations;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -52,18 +60,6 @@ public class ConsultReservationActivity extends AppCompatActivity implements Con
         adapter.setClickListener(this);
         rvMesReservations.setAdapter(adapter);
 
-    }
-
-    public void onBtReservtionClick(View view) {
-    }
-
-    public void onBtPrestationClick(View view) {
-    }
-
-    public void onBtCoiffeuseClick(View view) {
-    }
-
-    public void onBtConseilClick(View view) {
     }
 
     public void onBtRetourClick(View view) {

@@ -90,21 +90,25 @@ public class AcceuilActivity extends AppCompatActivity {
 
     private void launchConsultReservation(){
         Intent intent = new Intent(this, ConsultReservationActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 
     private void launchParametre() {
         Intent intent = new Intent(this, ParametreActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 
     private void launchContact() {
         Intent intent = new Intent(this, ContactActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 
     private void launchCG() {
         Intent intent = new Intent(this, CGActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 

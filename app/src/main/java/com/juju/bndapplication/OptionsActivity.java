@@ -207,11 +207,13 @@ public class OptionsActivity extends AppCompatActivity implements View.OnClickLi
 
     private void launchConsultReservation(){
         Intent intent = new Intent(this, ConsultReservationActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 
     private void launchParametre() {
         Intent intent = new Intent(this, ParametreActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 

@@ -11,7 +11,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.juju.bndapplication.models.UserBean;
+
 public class CommentActivity extends AppCompatActivity {
+
+    UserBean user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,21 +60,25 @@ public class CommentActivity extends AppCompatActivity {
 
     private void launchConsultReservation(){
         Intent intent = new Intent(this, ConsultReservationActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 
     private void launchParametre() {
         Intent intent = new Intent(this, ParametreActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 
     private void launchContact() {
         Intent intent = new Intent(this, ContactActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 
     private void launchCG() {
         Intent intent = new Intent(this, CGActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 

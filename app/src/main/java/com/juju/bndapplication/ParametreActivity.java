@@ -38,91 +38,28 @@ public class ParametreActivity extends AppCompatActivity {
         etAdresseMail = findViewById(R.id.etAdresseMail);
         etMdp = findViewById(R.id.etMdp);
         etConfirmMdp = findViewById(R.id.etConfirmMdp);
-    }
 
-    //Création du menu et de ses liens
-    //Les menu dirigent vers les activities du même nom
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add(0, 1, 0, "Mes réservations");
-        menu.add(0, 2, 0, "Paramètres");
-        menu.add(0, 3, 0, "Contact");
-        menu.add(0, 4, 0, "CGV/CGU");
-        menu.add(0, 5, 0, "Déconnexion");
-        return super.onCreateOptionsMenu(menu);
-    }
+        //Récupération des informations de l'intent précédente
+        Intent currentIntent = getIntent();
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case 1:
-                launchConsultReservation();
-                break;
-            case 2:
-                launchParametre();
-                ;
-                break;
-            case 3:
-                launchContact();
-                break;
-            case 4:
-                launchCG();
-                break;
-            case 5:
-                deconnexion();
-                break;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void launchConsultReservation() {
-        Intent intent = new Intent(this, ConsultReservationActivity.class);
-        startActivity(intent);
-    }
-
-    private void launchParametre() {
-        Intent intent = new Intent(this, ParametreActivity.class);
-        startActivity(intent);
-    }
-
-    private void launchContact() {
-        Intent intent = new Intent(this, ContactActivity.class);
-        startActivity(intent);
-    }
-
-    private void launchCG() {
-        Intent intent = new Intent(this, CGActivity.class);
-        startActivity(intent);
-    }
-
-    private void deconnexion() {
-
-        //Création d'une alertDialog demandant confirmation de l'utilisateur avant de quitter la session
-        //Et redirection vers la page de login si confirmation
-        AlertDialog.Builder alerte = new AlertDialog.Builder(this);
-        alerte.setMessage("Souhaitez-vous vraiment vous déconnecter ?");
-        alerte.setTitle("Déconnexion");
-        alerte.setPositiveButton("ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-                //Mettre fin à la session avant le retour vers la page de login
-
-                Intent intent = new Intent(ParametreActivity.this, LoginActivity.class);
-                startActivity(intent);
+        if (currentIntent != null) {
+            //Récupération de l'objet reservation de l'intent récupérée
+            user = currentIntent.getParcelableExtra("user");
+            if (user.getPseudo() == null) {
+                //Si erreur lors de la récupération, redirection vers la début de la réservation
+                Intent intent1 = new Intent(this, com.juju.bndapplication.LoginActivity.class);
+                Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
+                startActivity(intent1);
                 finish();
-            }
-        });
-        alerte.setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+            } else {
 
             }
-        });
-
-        alerte.setIcon(R.mipmap.ic_launcher_round);
-        alerte.show();
+        } else {
+            Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
+            Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
+            startActivity(intent1);
+            finish();
+        }
 
     }
 
@@ -140,7 +77,7 @@ public class ParametreActivity extends AppCompatActivity {
         if ((tampPseudo.equals("") == false) || (tampMail.equals("") == false) || (tampMdp.equals("") == false) || (tampConfirmMdp.equals("") == false)){
 
             AlertDialog.Builder alerte = new AlertDialog.Builder(this);
-            alerte.setMessage("Souhaitez-vous vraiment Modifier vos données ?");
+            alerte.setMessage("Souhaitez-vous vraiment Modifier vos données ? (cela vous renverra vers l'accueil)");
             alerte.setTitle("Déconnexion");
             alerte.setPositiveButton("ok", new DialogInterface.OnClickListener() {
                 @Override
@@ -154,9 +91,10 @@ public class ParametreActivity extends AppCompatActivity {
                             if (tampMdp.equals("") == false){user.setPassword(tampPseudo);}
 
                             //Mise à jour BdD////////////////////////////////////////
-                            //intent.putExtra("user", user);
-                            Toast.makeText(ParametreActivity.this, "Modif validée", Toast.LENGTH_SHORT).show();
-                            finish();//A mettre dans le onPostExecute
+                            Toast.makeText(ParametreActivity.this, "Mise à jour des données", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(ParametreActivity.this, AcceuilActivity.class);
+                            intent.putExtra("user", user);
+                            finish();//A mettre dans le onPostExecute////////////////
 
                         }
                         else {
@@ -167,12 +105,12 @@ public class ParametreActivity extends AppCompatActivity {
                     else{
                         if (tampPseudo.equals("") == false){user.setPseudo(tampPseudo);}
                         if (tampMail.equals("") == false){user.setMail(tampMail);}
-                        if (tampMdp.equals("") == false){user.setPassword(tampPseudo);}
 
                         //Mise à jour BdD////////////////////////////////////////
-                        //intent.putExtra("user", user);
-                        Toast.makeText(ParametreActivity.this, "Modif validée", Toast.LENGTH_SHORT).show();
-                        finish();//A mettre dans le onPostExecute
+                        Toast.makeText(ParametreActivity.this, "Pseudo et/ou adresse mail modifiée", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(ParametreActivity.this, AcceuilActivity.class);
+                        intent.putExtra("user", user);
+                        finish();//A mettre dans le onPostExecute////////////////
                     }
 
                 }
