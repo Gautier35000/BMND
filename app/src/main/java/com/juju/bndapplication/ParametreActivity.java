@@ -94,6 +94,7 @@ public class ParametreActivity extends AppCompatActivity {
                             Toast.makeText(ParametreActivity.this, "Mise à jour des données", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(ParametreActivity.this, AcceuilActivity.class);
                             intent.putExtra("user", user);
+                            startActivity(intent);
                             finish();//A mettre dans le onPostExecute////////////////
 
                         }
@@ -110,6 +111,7 @@ public class ParametreActivity extends AppCompatActivity {
                         Toast.makeText(ParametreActivity.this, "Pseudo et/ou adresse mail modifiée", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(ParametreActivity.this, AcceuilActivity.class);
                         intent.putExtra("user", user);
+                        startActivity(intent);
                         finish();//A mettre dans le onPostExecute////////////////
                     }
 
