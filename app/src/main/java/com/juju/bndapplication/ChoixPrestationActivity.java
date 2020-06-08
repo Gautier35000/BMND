@@ -1,8 +1,10 @@
 package com.juju.bndapplication;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,7 +16,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,6 +25,7 @@ import com.juju.bndapplication.models.AdresseBean;
 import com.juju.bndapplication.models.PrestationBean;
 import com.juju.bndapplication.models.ReservationBean;
 import com.juju.bndapplication.models.UserBean;
+import com.juju.bndapplication.requete.post.Prestation;
 
 import java.util.ArrayList;
 
@@ -40,7 +42,7 @@ public class ChoixPrestationActivity extends AppCompatActivity implements View.O
     //Déclaration des variables locales
     private static ReservationBean reservation;
     private static UserBean user;
-    private final ArrayList<PrestationBean> data = new ArrayList<>();
+    private ArrayList<PrestationBean> data = new ArrayList<>();
     private ChoixCoiffureAdapter adapter;
     private static AdresseBean adresseReservation = new AdresseBean();
 
@@ -57,11 +59,11 @@ public class ChoixPrestationActivity extends AppCompatActivity implements View.O
         rvChoixCoiffure = findViewById(R.id.rvChoixCoiffure);
 
         //Remplissage de la rv de prestation
-        for (int i = 1; i < 13; i++) {
+        /*for (int i = 1; i < 13; i++) {
             PrestationBean prestation = new PrestationBean();
             prestation.getPrestation(i);
             data.add(prestation);
-        }
+        }*/
 
         //progressbar à 40%
         progressBar.setProgress(40);
@@ -79,7 +81,7 @@ public class ChoixPrestationActivity extends AppCompatActivity implements View.O
             reservation = intentReservation.getParcelableExtra("reservation1");
             user = intentReservation.getParcelableExtra("user");
             adresseReservation = intentReservation.getParcelableExtra("adresseReservation1");
-            if (String.valueOf(reservation.getAdresseID()) == null) {
+            if (adresseReservation.getVille() == null) {
                 //Si erreur lors de la récupération, redirection vers la début de la réservation
                 Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
                 Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
@@ -95,15 +97,18 @@ public class ChoixPrestationActivity extends AppCompatActivity implements View.O
             finish();
         }
 
-        rvChoixCoiffure.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new ChoixCoiffureAdapter(this, data);
-        adapter.setClickListener(this);
-        rvChoixCoiffure.setAdapter(adapter);
+//        rvChoixCoiffure.setLayoutManager(new LinearLayoutManager(this));
+//        adapter = new ChoixCoiffureAdapter(this, data);
+//        adapter.setClickListener(this);
+//        rvChoixCoiffure.setAdapter(adapter);
+
+        PrestationAT prestationAT = new PrestationAT();
+        prestationAT.execute();
     }
 
     public void onBtAccueilClick(View view) {
 
-        AlertDialog.Builder alerte = new AlertDialog.Builder(this);
+        android.app.AlertDialog.Builder alerte = new android.app.AlertDialog.Builder(this);
         alerte.setMessage("Souhaitez-vous vraiment vous abandonner votre réservation en cours ?");
         alerte.setTitle("Quitter commande");
         alerte.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
@@ -130,7 +135,7 @@ public class ChoixPrestationActivity extends AppCompatActivity implements View.O
     public void onClick(final View v) {
 
         //Si clic sur les boutons du bas, demande la confirmation à l'utilisateur d'abandonner la commande en cours
-        AlertDialog.Builder alerte = new AlertDialog.Builder(this);
+        android.app.AlertDialog.Builder alerte = new android.app.AlertDialog.Builder(this);
         alerte.setMessage("Souhaitez-vous vraiment vous abandonner votre réservation en cours ?");
         alerte.setTitle("Quitter commande");
         alerte.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
@@ -229,7 +234,7 @@ public class ChoixPrestationActivity extends AppCompatActivity implements View.O
 
     private void deconnexion() {
 
-        AlertDialog.Builder alerte = new AlertDialog.Builder(this);
+        android.app.AlertDialog.Builder alerte = new AlertDialog.Builder(this);
         alerte.setMessage("Souhaitez-vous vraiment vous déconnecter ?");
         alerte.setTitle("Déconnexion");
         alerte.setPositiveButton("ok", new DialogInterface.OnClickListener() {
@@ -278,4 +283,41 @@ public class ChoixPrestationActivity extends AppCompatActivity implements View.O
     public void onBackPressed() {
     }
 
+    public class PrestationAT extends AsyncTask {
+        Exception exception;
+        ArrayList<PrestationBean> request;
+
+        @Override
+        protected Object doInBackground(Object[] objects) {
+            try {
+                request= Prestation.selectPrestation(adresseReservation);
+            } catch (Exception e) {
+                e.printStackTrace();
+                exception = e;
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+            super.onPostExecute(o);
+            if (exception != null) {
+                Toast.makeText(ChoixPrestationActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }else{
+//                String text = "";
+//                for (PrestationBean prestationBean : request) {
+//
+//                    //todo
+//
+//                }
+                data = request;
+
+                rvChoixCoiffure.setLayoutManager(new LinearLayoutManager(ChoixPrestationActivity.this));
+                adapter = new ChoixCoiffureAdapter(ChoixPrestationActivity.this, data);
+                adapter.setClickListener(ChoixPrestationActivity.this);
+                rvChoixCoiffure.setAdapter(adapter);
+            }
+        }
+    }
 }

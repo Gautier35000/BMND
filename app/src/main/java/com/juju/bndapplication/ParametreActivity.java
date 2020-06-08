@@ -96,12 +96,10 @@ public class ParametreActivity extends AppCompatActivity {
                             intent.putExtra("user", user);
                             startActivity(intent);
                             finish();//A mettre dans le onPostExecute////////////////
-
                         }
                         else {
                             Toast.makeText(ParametreActivity.this, "Les deux champs de mot de passe ne sont pas identiques", Toast.LENGTH_SHORT).show();
                         }
-
                     }
                     else{
                         if (tampPseudo.equals("") == false){user.setPseudo(tampPseudo);}
@@ -114,7 +112,6 @@ public class ParametreActivity extends AppCompatActivity {
                         startActivity(intent);
                         finish();//A mettre dans le onPostExecute////////////////
                     }
-
                 }
             });
             alerte.setNegativeButton("Annuler", new DialogInterface.OnClickListener() {

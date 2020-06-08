@@ -34,6 +34,8 @@ public class ReservationBean implements Parcelable {
     }
 
     public ReservationBean() {
+        this.prestation = new PrestationBean();
+        this.coiffeuse = new CoiffeuseBean();
     }
 
     protected ReservationBean(Parcel in) {

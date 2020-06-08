@@ -2,6 +2,7 @@ package com.juju.bndapplication;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,12 +18,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.juju.bndapplication.Adapters.PrestationAdapter;
 import com.juju.bndapplication.models.PrestationBean;
 import com.juju.bndapplication.models.UserBean;
+import com.juju.bndapplication.requete.post.Prestation;
 
 import java.util.ArrayList;
 
 public class GaleriePrestationActivity extends AppCompatActivity implements PrestationAdapter.ItemClickListener {
 
-    private final ArrayList<PrestationBean> data = new ArrayList<>();
+    private ArrayList<PrestationBean> data = new ArrayList<>();
     private UserBean user;
     private PrestationAdapter adapter;
     private RecyclerView rvGaleriePrestation;
@@ -34,11 +36,11 @@ public class GaleriePrestationActivity extends AppCompatActivity implements Pres
 
         rvGaleriePrestation = findViewById(R.id.rvGaleriePrestation);
 
-        for (int i = 1; i < 13; i++) {
+        /*for (int i = 1; i < 13; i++) {
             PrestationBean prestation = new PrestationBean();
             prestation.getPrestation(i);
             data.add(prestation);
-        }
+        }*/
 
         //Récupération des informations de l'intent précédente
         Intent currentIntent = getIntent();
@@ -62,10 +64,13 @@ public class GaleriePrestationActivity extends AppCompatActivity implements Pres
             finish();
         }
 
-        rvGaleriePrestation.setLayoutManager(new GridLayoutManager(this, 2));
-        adapter = new PrestationAdapter(this, data);
-        adapter.setClickListener(this);
-        rvGaleriePrestation.setAdapter(adapter);
+        PrestationAt prestationAT = new PrestationAt();
+        prestationAT.execute();
+
+//        rvGaleriePrestation.setLayoutManager(new GridLayoutManager(this, 2));
+//        adapter = new PrestationAdapter(this, data);
+//        adapter.setClickListener(this);
+//        rvGaleriePrestation.setAdapter(adapter);
     }
 
     //Création du menu et de ses liens
@@ -196,6 +201,43 @@ public class GaleriePrestationActivity extends AppCompatActivity implements Pres
 
     @Override
     public void onBackPressed() {
+    }
+
+    public class PrestationAt extends AsyncTask {
+        Exception exception;
+        ArrayList<PrestationBean> request;
+
+        @Override
+        protected Object doInBackground(Object[] objects) {
+            try {
+                request = Prestation.getGalleryPrestation();
+            } catch (Exception e) {
+                e.printStackTrace();
+                exception = e;
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+            super.onPostExecute(o);
+            if (exception != null) {
+                Toast.makeText(GaleriePrestationActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+
+            } else {
+//                String text = "";
+//                for (PrestationBean prestationBean : request) {
+//                    //todo
+//
+//                }
+                data = request;
+
+                rvGaleriePrestation.setLayoutManager(new GridLayoutManager(GaleriePrestationActivity.this, 2));
+                adapter = new PrestationAdapter(GaleriePrestationActivity.this, data);
+                adapter.setClickListener(GaleriePrestationActivity.this);
+                rvGaleriePrestation.setAdapter(adapter);
+            }
+        }
     }
 
 }

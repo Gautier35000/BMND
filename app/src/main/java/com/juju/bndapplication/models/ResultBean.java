@@ -9,6 +9,7 @@ public class ResultBean {
     private ArrayList<AdresseBean> result_adresse;
     private ArrayList<CoiffeuseBean> result_coiffeuse;
     private ArrayList<OptionBean> choix_options;
+    private ArrayList<PrestationBean> choix_prestations;
 
     public ResultBean(ArrayList<UserBean> results, ErrorBean errors, ArrayList<AdresseBean> result_adresse, ArrayList<CoiffeuseBean> result_coiffeuse) {
         this.results = results;
@@ -58,5 +59,13 @@ public class ResultBean {
 
     public void setChoix_options(ArrayList<OptionBean> choix_options) {
         this.choix_options = choix_options;
+    }
+
+    public ArrayList<PrestationBean> getChoix_prestations() {
+        return choix_prestations;
+    }
+
+    public void setChoix_prestations(ArrayList<PrestationBean> choix_prestations) {
+        this.choix_prestations = choix_prestations;
     }
 }

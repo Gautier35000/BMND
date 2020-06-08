@@ -59,119 +59,127 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
+        android:layout_weight="3"
         android:orientation="horizontal">
 
-        <CheckBox
-            android:id="@+id/cbOption1"
+        <Space
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand"
-            android:shadowDx="-2"
-            android:shadowDy="-2"
-            android:shadowRadius="1"
-            android:textStyle="bold"
-            android:shadowColor="@android:color/background_light"
-            android:text="CheckBox" />
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/cbOption1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand"
+                android:shadowColor="@android:color/background_light"
+                android:shadowDx="-2"
+                android:shadowDy="-2"
+                android:shadowRadius="1"
+                android:text="CheckBox"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <CheckBox
+                android:id="@+id/cbOption3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand"
+                android:shadowColor="@android:color/background_light"
+                android:shadowDx="-2"
+                android:shadowDy="-2"
+                android:shadowRadius="1"
+                android:text="CheckBox"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <CheckBox
+                android:id="@+id/cbOption5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand"
+                android:shadowColor="@android:color/background_light"
+                android:shadowDx="-2"
+                android:shadowDy="-2"
+                android:shadowRadius="1"
+                android:text="CheckBox"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <Space
-            android:layout_width="50dp"
-            android:layout_height="wrap_content" />
-
-        <CheckBox
-            android:id="@+id/cbOption2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand"
-            android:shadowDx="-2"
-            android:shadowDy="-2"
-            android:shadowRadius="1"
-            android:textStyle="bold"
-            android:shadowColor="@android:color/background_light"
-            android:text="CheckBox" />
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_weight="1" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <CheckBox
-            android:id="@+id/cbOption3"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand"
-            android:shadowDx="-2"
-            android:shadowDy="-2"
-            android:shadowRadius="1"
-            android:textStyle="bold"
-            android:shadowColor="@android:color/background_light"
-            android:text="CheckBox" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/cbOption2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand"
+                android:shadowColor="@android:color/background_light"
+                android:shadowDx="-2"
+                android:shadowDy="-2"
+                android:shadowRadius="1"
+                android:text="CheckBox"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <CheckBox
+                android:id="@+id/cbOption4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand"
+                android:shadowColor="@android:color/background_light"
+                android:shadowDx="-2"
+                android:shadowDy="-2"
+                android:shadowRadius="1"
+                android:text="CheckBox"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <CheckBox
+                android:id="@+id/cbOption6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand"
+                android:shadowColor="@android:color/background_light"
+                android:shadowDx="-2"
+                android:shadowDy="-2"
+                android:shadowRadius="1"
+                android:text="CheckBox"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <Space
-            android:layout_width="50dp"
-            android:layout_height="wrap_content" />
-
-        <CheckBox
-            android:id="@+id/cbOption4"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand"
-            android:shadowDx="-2"
-            android:shadowDy="-2"
-            android:shadowRadius="1"
-            android:textStyle="bold"
-            android:shadowColor="@android:color/background_light"
-            android:text="CheckBox" />
-    </LinearLayout>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_weight="1" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <CheckBox
-            android:id="@+id/cbOption5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand"
-            android:shadowDx="-2"
-            android:shadowDy="-2"
-            android:shadowRadius="1"
-            android:textStyle="bold"
-            android:shadowColor="@android:color/background_light"
-            android:text="CheckBox" />
-
-        <Space
-            android:layout_width="50dp"
-            android:layout_height="0dp" />
-
-        <CheckBox
-            android:id="@+id/cbOption6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand"
-            android:shadowDx="-2"
-            android:shadowDy="-2"
-            android:shadowRadius="1"
-            android:textStyle="bold"
-            android:shadowColor="@android:color/background_light"
-            android:text="CheckBox" />
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
     </LinearLayout>
 
     <Space

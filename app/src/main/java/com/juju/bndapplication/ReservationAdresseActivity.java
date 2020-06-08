@@ -58,7 +58,9 @@ public class ReservationAdresseActivity extends AppCompatActivity {
         if (currentIntent != null) {
             //Récupération de l'objet reservation de l'intent récupérée
             user = currentIntent.getParcelableExtra("user");
-            reservation = currentIntent.getParcelableExtra("baseRéservation");
+            if (currentIntent.getParcelableExtra("baseRéservation") != null) {
+                reservation = currentIntent.getParcelableExtra("baseRéservation");
+            }
             if (user.getPseudo() == null) {
                 //Si erreur lors de la récupération, redirection vers la début de la réservation
                 Intent intent1 = new Intent(this, AcceuilActivity.class);
@@ -197,7 +199,7 @@ public class ReservationAdresseActivity extends AppCompatActivity {
         if (rdbtAdresseActuelle.isChecked()) {
 
             //Enregistrement de l'adresse
-            reservation.setAdresseID(adresseReservation.getAdresseID());
+//            reservation.setAdresseID(adresseReservation.getAdresseID());
 
             //Passage à l'étape suivante
             Intent intent = new Intent(this, ChoixPrestationActivity.class);

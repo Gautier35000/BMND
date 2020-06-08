@@ -310,11 +310,12 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
 
             }else{
                 //String text = "";
-                for (CoiffeuseBean coiffeuseBean : request) {
-
-                    data.add(coiffeuseBean);
-
-                }
+//                for (CoiffeuseBean coiffeuseBean : request) {
+//
+//                    data.add(coiffeuseBean);
+//
+//                }
+                data = request;
                 rvChoixCoiffeuse.setLayoutManager(new LinearLayoutManager(ChoixCoiffeuseActivity.this));
                 adapter = new ChoixCoiffeuseAdapter(ChoixCoiffeuseActivity.this, data);
                 adapter.setClickListener(ChoixCoiffeuseActivity.this);

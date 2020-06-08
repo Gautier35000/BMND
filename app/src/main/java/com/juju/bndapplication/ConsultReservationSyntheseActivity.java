@@ -79,7 +79,7 @@ public class ConsultReservationSyntheseActivity extends AppCompatActivity {
 
     public void onBtModifierReservClick(View view) {
         //Modification de la réservation
-        if (user.getPrincipal() < 0) {
+        if (user.getPrincipal() > 0) {
             Intent intent = new Intent(this, ReservationAdresseActivity.class);
             intent.putExtra("user", user);
             intent.putExtra("baseRéservation", reservation);
