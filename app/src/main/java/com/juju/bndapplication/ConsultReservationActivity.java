@@ -1,5 +1,6 @@
 package com.juju.bndapplication;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
@@ -29,7 +30,8 @@ public class ConsultReservationActivity extends AppCompatActivity implements Con
 
     private final ArrayList<ReservationBean> data = new ArrayList<>();
     private ConsultReservationAdapter adapter;
-    private UserBean user;
+    private static UserBean user;
+    private ReservationBean reservation;
 
     private RecyclerView rvMesReservations;
 
@@ -40,6 +42,27 @@ public class ConsultReservationActivity extends AppCompatActivity implements Con
         setContentView(R.layout.activity_consult_reservation);
 
         rvMesReservations = findViewById(R.id.rvMesReservations);
+
+        //Récupération de la vue précédente
+        Intent intentReservation = getIntent();
+
+        if (intentReservation != null) {
+            //Récupère les différents objets
+            user = intentReservation.getParcelableExtra("user");
+            if (user.getPseudo() == null) {
+                Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
+                Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
+                startActivity(intent1);
+                finish();
+            } else {
+
+            }
+        } else {
+            Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
+            Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
+            startActivity(intent1);
+            finish();
+        }
 
         //Renseigner le DATA !
 
@@ -70,6 +93,13 @@ public class ConsultReservationActivity extends AppCompatActivity implements Con
     public void onItemClick(View v, int position) {
         Toast.makeText(this, "POUF", Toast.LENGTH_SHORT).show();
 
+    }
+
+    public static void checkSyntheseReservation(Context context, ReservationBean reservation) {
+        Intent intent = new Intent(context, ConsultReservationSyntheseActivity.class);
+        intent.putExtra("reservSynthese", reservation);
+        intent.putExtra("user", user);
+        context.startActivity(intent);
     }
 
     @Override

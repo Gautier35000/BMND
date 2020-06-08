@@ -26,6 +26,7 @@ import com.juju.bndapplication.requete.post.Reservation;
 
 import java.util.ArrayList;
 
+@RequiresApi(api = Build.VERSION_CODES.N)
 public class ReservationAdresseActivity extends AppCompatActivity {
 
     private ProgressBar progressBar5;
@@ -36,6 +37,7 @@ public class ReservationAdresseActivity extends AppCompatActivity {
 
     AdresseBean adresseReservation = new AdresseBean();
     private UserBean user;
+    private ReservationBean reservation = new ReservationBean();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,23 +55,18 @@ public class ReservationAdresseActivity extends AppCompatActivity {
         //Récupération des informations de l'intent précédente
         Intent currentIntent = getIntent();
 
-
-
         if (currentIntent != null) {
             //Récupération de l'objet reservation de l'intent récupérée
             user = currentIntent.getParcelableExtra("user");
+            reservation = currentIntent.getParcelableExtra("baseRéservation");
             if (user.getPseudo() == null) {
                 //Si erreur lors de la récupération, redirection vers la début de la réservation
-                //Intent intent1 = new Intent(this, AcceuilActivity.class);
+                Intent intent1 = new Intent(this, AcceuilActivity.class);
                 Toast.makeText(this, "Une erreur est survenue, veuillez réessayer", Toast.LENGTH_SHORT).show();
-                //startActivity(intent1);
+                startActivity(intent1);
                 finish();
             } else {
-                //A titre de test, à supp
-                //Toast.makeText(this, user.getPseudo(), Toast.LENGTH_SHORT).show();
-                /*adresseReservation.getAdresse(user.getAdresseID());
-                tvAdresse1.setText(adresseReservation.toStringAdresse1());
-                tvAdresse2.setText(adresseReservation.toStringAdresse2());*/
+
             }
         } else {
             Intent intent1 = new Intent(this, ReservationAdresseActivity.class);
@@ -200,7 +197,6 @@ public class ReservationAdresseActivity extends AppCompatActivity {
         if (rdbtAdresseActuelle.isChecked()) {
 
             //Enregistrement de l'adresse
-            ReservationBean reservation = new ReservationBean();
             reservation.setAdresseID(adresseReservation.getAdresseID());
 
             //Passage à l'étape suivante
@@ -250,7 +246,6 @@ public class ReservationAdresseActivity extends AppCompatActivity {
                 Toast.makeText(ReservationAdresseActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
             } else {
                 for (AdresseBean adresseBean : request) {
-                    //todo
                     adresseReservation = request.get(0);
                     tvAdresse1.setText(adresseReservation.toStringAdresse1());
                     tvAdresse2.setText(adresseReservation.toStringAdresse2());

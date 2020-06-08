@@ -14,45 +14,66 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ConsultReservationActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".ReservationAutreAdresseActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ConseilsActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".GalerieCoiffeuseActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".GaleriePrestationActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".LoginActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".CGActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".CreacptActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ContactActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ParametreActivity"
+        <activity android:name=".ConsultReservationSyntheseActivity"></activity>
+        <activity
+            android:name=".ConsultReservationActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".ReservationAdresseActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".AcceuilActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ChoixPrestationActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".SyntheseActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ChoixHoraireActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".CommentActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ProfilCoiffeuseActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ChoixCoiffeuseActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".OptionsActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".ReservationAutreAdresseActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ConseilsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".GalerieCoiffeuseActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".GaleriePrestationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CGActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CreacptActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ContactActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ParametreActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ReservationAdresseActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AcceuilActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ChoixPrestationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SyntheseActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ChoixHoraireActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CommentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ProfilCoiffeuseActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ChoixCoiffeuseActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".OptionsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

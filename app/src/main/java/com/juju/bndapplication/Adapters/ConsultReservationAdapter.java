@@ -1,6 +1,7 @@
 package com.juju.bndapplication.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.juju.bndapplication.ChoixPrestationActivity;
+import com.juju.bndapplication.ConsultReservationActivity;
 import com.juju.bndapplication.R;
 import com.juju.bndapplication.models.PrestationBean;
 import com.juju.bndapplication.models.ReservationBean;
@@ -64,19 +66,13 @@ public class ConsultReservationAdapter extends RecyclerView.Adapter<ConsultReser
     public void onBindViewHolder(@NonNull ConsultReservationAdapter.ViewHolder holder, final int position) {
         final ReservationBean datum = data.get(position);
         holder.tvMesReservDate.setText(datum.getDateReservation());
-        //holder.tvMesReservSecteur.setText(datum.getAdresseID());//TBD
-        holder.ivMesReserv.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, "clic", Toast.LENGTH_SHORT).show();
-            }
-        });
+        //holder.tvMesReservSecteur.setText(datum.getAdresseID());//Todo
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(context, data.get(position).getPrenom(), Toast.LENGTH_SHORT).show();
                 Toast.makeText(context, "OK_ITEM" + position, Toast.LENGTH_SHORT).show();
+                ConsultReservationActivity.checkSyntheseReservation(context, datum);
             }
         });
     }

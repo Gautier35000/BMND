@@ -161,10 +161,19 @@ public class GalerieCoiffeuseActivity extends AppCompatActivity implements Coiff
         startActivity(intent);
     }
 
-    public void onBtReservtionClick(View view) {
-        Intent intent = new Intent(this, ReservationAdresseActivity.class);
-        intent.putExtra("user", user);
-        startActivity(intent);
+    public void onBtReservationClick(View view) {
+        if (user.getPrincipal() > 0) {
+            Intent intent = new Intent(this, ReservationAdresseActivity.class);
+            intent.putExtra("user", user);
+            startActivity(intent);
+            finish();
+        }
+        else{
+            Intent intent = new Intent(this, ReservationAutreAdresseActivity.class);
+            intent.putExtra("user", user);
+            startActivity(intent);
+            finish();
+        }
     }
 
     public void onBtPrestationClick(View view) {
