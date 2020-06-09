@@ -3,6 +3,7 @@ package com.juju.bndapplication;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -23,12 +24,14 @@ import com.juju.bndapplication.models.CoiffeuseBean;
 import com.juju.bndapplication.models.PrestationBean;
 import com.juju.bndapplication.models.ReservationBean;
 import com.juju.bndapplication.models.UserBean;
+import com.juju.bndapplication.requete.post.Synthese;
 
 import java.util.ArrayList;
 
+@RequiresApi(api = Build.VERSION_CODES.N)
 public class ConsultReservationActivity extends AppCompatActivity implements ConsultReservationAdapter.ItemClickListener {
 
-    private final ArrayList<ReservationBean> data = new ArrayList<>();
+    private ArrayList<ReservationBean> data = new ArrayList<>();
     private ConsultReservationAdapter adapter;
     private static UserBean user;
     private ReservationBean reservation;
@@ -66,7 +69,7 @@ public class ConsultReservationActivity extends AppCompatActivity implements Con
 
         //Renseigner le DATA !
 
-        for (int i = 0; i < 9; i++) {
+        /*for (int i = 0; i < 9; i++) {
             PrestationBean prestationBean = new PrestationBean();
             prestationBean.getPrestation(i);
             CoiffeuseBean coiffeuseBean = new CoiffeuseBean();
@@ -74,14 +77,17 @@ public class ConsultReservationActivity extends AppCompatActivity implements Con
             ReservationBean reservationBean = new ReservationBean(i, prestationBean, "option",
                     coiffeuseBean, "string", "string", "string", i, i);
             data.add(reservationBean);
-        }
+        }*/
 
-        rvMesReservations.setLayoutManager(new LinearLayoutManager(this));
+//        rvMesReservations.setLayoutManager(new LinearLayoutManager(this));
+//
+//        //rvMesReservations.setLayoutManager(new GridLayoutManager(this, 2));
+//        adapter = new ConsultReservationAdapter(this, data);
+//        adapter.setClickListener(this);
+//        rvMesReservations.setAdapter(adapter);
 
-        //rvMesReservations.setLayoutManager(new GridLayoutManager(this, 2));
-        adapter = new ConsultReservationAdapter(this, data);
-        adapter.setClickListener(this);
-        rvMesReservations.setAdapter(adapter);
+        AllRervationAT myAT = new AllRervationAT();
+        myAT.execute();
 
     }
 
@@ -104,6 +110,37 @@ public class ConsultReservationActivity extends AppCompatActivity implements Con
 
     @Override
     public void onBackPressed() {
+    }
+
+    public class AllRervationAT extends AsyncTask {
+        Exception exception;
+        ArrayList<ReservationBean> request;
+        @Override
+        protected Object doInBackground(Object[] objects) {
+            try {
+                request= Synthese.allReservation(user.getIdUsers());
+            } catch (Exception e) {
+                e.printStackTrace();
+                exception = e;
+            }
+            return null;
+        }
+
+
+        @Override
+        protected void onPostExecute(Object o) {
+            super.onPostExecute(o);
+            if (exception != null) {
+                Toast.makeText(ConsultReservationActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }else{
+                data = request;
+                rvMesReservations.setLayoutManager(new LinearLayoutManager(ConsultReservationActivity.this));
+                adapter = new ConsultReservationAdapter(ConsultReservationActivity.this, data);
+                adapter.setClickListener(ConsultReservationActivity.this);
+                rvMesReservations.setAdapter(adapter);
+            }
+        }
     }
 
 }

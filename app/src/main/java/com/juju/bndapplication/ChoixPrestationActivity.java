@@ -305,12 +305,6 @@ public class ChoixPrestationActivity extends AppCompatActivity implements View.O
                 Toast.makeText(ChoixPrestationActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
 
             }else{
-//                String text = "";
-//                for (PrestationBean prestationBean : request) {
-//
-//                    //todo
-//
-//                }
                 data = request;
 
                 rvChoixCoiffure.setLayoutManager(new LinearLayoutManager(ChoixPrestationActivity.this));

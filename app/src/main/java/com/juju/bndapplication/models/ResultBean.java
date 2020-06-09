@@ -10,6 +10,7 @@ public class ResultBean {
     private ArrayList<CoiffeuseBean> result_coiffeuse;
     private ArrayList<OptionBean> choix_options;
     private ArrayList<PrestationBean> choix_prestations;
+    private ArrayList<ReservationBean> request_reservation;
 
     public ResultBean(ArrayList<UserBean> results, ErrorBean errors, ArrayList<AdresseBean> result_adresse, ArrayList<CoiffeuseBean> result_coiffeuse) {
         this.results = results;
@@ -67,5 +68,13 @@ public class ResultBean {
 
     public void setChoix_prestations(ArrayList<PrestationBean> choix_prestations) {
         this.choix_prestations = choix_prestations;
+    }
+
+    public ArrayList<ReservationBean> getRequest_reservation() {
+        return request_reservation;
+    }
+
+    public void setRequest_reservation(ArrayList<ReservationBean> request_reservation) {
+        this.request_reservation = request_reservation;
     }
 }

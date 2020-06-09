@@ -71,4 +71,56 @@ public class Synthese {
         }
 
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public static ArrayList<UserBean> deleteReservation(ReservationBean reservation)throws Exception {
+        String id = String.valueOf(reservation.getAdresseID());
+        String json = "";
+        Gson gson1 = new Gson();
+        final Map<String, String> valeurs = new HashMap<String, String>();
+        valeurs.put("request", "request");
+        valeurs.put("key", "delete_reservation");
+        valeurs.put("idreservation", id);
+        String requete = gson1.toJson(valeurs);
+
+
+        try {
+            json = AccesHTTP.sendGetOkHttpRequest(URL, requete);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Gson gson = new Gson();
+        ResultBean resultBean = gson.fromJson(json, ResultBean.class);
+
+
+        if (resultBean.getErrors() != null) {
+            throw new Exception(resultBean.getErrors().getMessage());
+        } else {
+            return resultBean.getResults();
+        }
+    }
+    public static ArrayList<ReservationBean> allReservation(int userId)throws Exception{
+        String json = "";
+        Gson gson1 = new Gson();
+        final Map<String, String> valeurs = new HashMap<String, String>();
+        valeurs.put("request", "request");
+        valeurs.put("key", "request_all_reservations");
+        valeurs.put("users_idusers", String.valueOf(userId));
+        String requete = gson1.toJson(valeurs);
+
+        try {
+            json = AccesHTTP.sendGetOkHttpRequest(URL, requete);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Gson gson = new Gson();
+        ResultBean resultBean = gson.fromJson(json, ResultBean.class);
+
+
+        if (resultBean.getErrors() != null) {
+            throw new Exception(resultBean.getErrors().getMessage());
+        } else {
+            return resultBean.getRequest_reservation();
+        }
+    }
 }
