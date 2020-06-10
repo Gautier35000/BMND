@@ -76,7 +76,8 @@ public class ReservationAdresseActivity extends AppCompatActivity {
             startActivity(intent1);
             finish();
         }
-        ReservationAT reservationAT = new ReservationAT(user.getAdresseID(), user.getPrincipal());
+
+        ReservationAT reservationAT = new ReservationAT(user.getIdUsers(), user.getPrincipal());
         reservationAT.execute();
 
 
@@ -221,11 +222,11 @@ public class ReservationAdresseActivity extends AppCompatActivity {
     public class ReservationAT extends AsyncTask {
         Exception exception;
         ArrayList<AdresseBean> request;
-        int adresseID;
+        int iduser;
         int principal;
 
-        public ReservationAT(int adresseID, int principal) {
-            this.adresseID=adresseID;
+        public ReservationAT(int iduser, int principal) {
+            this.iduser=iduser;
             this.principal=principal;
         }
 
@@ -233,7 +234,7 @@ public class ReservationAdresseActivity extends AppCompatActivity {
         @Override
         protected Object doInBackground(Object[] objects) {
             try {
-                request = Adresse.getAdresse(adresseID,principal);
+                request = Adresse.getAdresse(iduser,principal);
             } catch (Exception e) {
                 e.printStackTrace();
                 exception = e;
