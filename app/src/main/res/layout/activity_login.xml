@@ -56,7 +56,7 @@
                 android:fontFamily="@font/quicksand"
                 android:hint="@string/tamp_mdp"
                 android:inputType="textPersonName"
-                android:text="test" />
+                android:text="aa" />
         </LinearLayout>
 
         <Button

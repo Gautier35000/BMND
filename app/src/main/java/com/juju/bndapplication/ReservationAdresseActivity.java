@@ -76,7 +76,7 @@ public class ReservationAdresseActivity extends AppCompatActivity {
             startActivity(intent1);
             finish();
         }
-        ReservationAT reservationAT = new ReservationAT(user.getAdresseID(), 1);
+        ReservationAT reservationAT = new ReservationAT(user.getAdresseID(), user.getPrincipal());
         reservationAT.execute();
 
 

@@ -3,6 +3,7 @@ package com.juju.bndapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -78,6 +79,15 @@ public class CreacptActivity extends AppCompatActivity {
                     case "0":
                         //Inscription réussi
                         Toast.makeText(com.juju.bndapplication.CreacptActivity.this, text, Toast.LENGTH_LONG).show();
+
+                        String tampPseudo = etPseudo.getText().toString();
+                        String tampMail = etMail.getText().toString();
+
+                        Intent intent = new Intent(CreacptActivity.this, AcceuilActivity.class);
+                        UserBean user = new UserBean(tampPseudo, tampMail);
+                        intent.putExtra("user", user);
+                        startActivity(intent);
+                        finish();
                         break;
                     case "1":
                         //Le deuxième mot de passe est différent du premier

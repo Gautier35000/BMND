@@ -30,6 +30,12 @@ public class UserBean implements Parcelable {
         this.adresseID = adresseID;
     }
 
+    public UserBean(String pseudo, String mail){
+        this.pseudo = pseudo;
+        this.mail = mail;
+        principal = 0;
+    }
+
     public UserBean() {
     }
 

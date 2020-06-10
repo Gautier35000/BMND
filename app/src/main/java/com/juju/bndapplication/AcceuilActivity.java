@@ -145,18 +145,18 @@ public class AcceuilActivity extends AppCompatActivity {
     //Boutons de pied d'écran
     //Dirigent vers les vues du même nom
     public void onBtReservationClick(View view) {
-       /* if (user.getPrincipal() > 0) {*/
+        if (user.getPrincipal() > 0) {
             Intent intent = new Intent(this, ReservationAdresseActivity.class);
             intent.putExtra("user", user);
             startActivity(intent);
-            //finish();
-       /* }
+            finish();
+        }
         else{
             Intent intent = new Intent(this, ReservationAutreAdresseActivity.class);
             intent.putExtra("user", user);
             startActivity(intent);
             finish();
-        }*/
+        }
     }
 
     public void onBtPrestationClick(View view) {

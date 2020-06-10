@@ -65,8 +65,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:fontFamily="@font/quicksand"
-        android:inputType="textPersonName"
-        android:text="Pseudo" />
+        android:hint="Pseudo"
+        android:inputType="textPersonName" />
 
     <Space
         android:layout_width="match_parent"
@@ -79,8 +79,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:fontFamily="@font/quicksand"
-        android:inputType="textPersonName"
-        android:text="Adresse mail" />
+        android:hint="Adresse mail"
+        android:inputType="textPersonName" />
 
     <Space
         android:layout_width="match_parent"
@@ -93,8 +93,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:fontFamily="@font/quicksand"
-        android:inputType="textPersonName"
-        android:text="Mot de passe" />
+        android:hint="Mot de passe"
+        android:inputType="textPassword" />
 
     <Space
         android:layout_width="match_parent"
@@ -107,8 +107,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:fontFamily="@font/quicksand"
-        android:inputType="textPersonName"
-        android:text="Confirmez mot de passe" />
+        android:hint="Confirmez mot de passe"
+        android:inputType="textPassword" />
 
     <Space
         android:layout_width="match_parent"
