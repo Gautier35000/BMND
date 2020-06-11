@@ -27,8 +27,9 @@ public class Synthese {
         String commentaire=reservation.getCommentaire();
         String coiffeuse_id= String.valueOf(reservation.getCoiffeuse().getCoiffeuseID());
         String options=reservation.getOptions();
-        String prestation= String.valueOf(reservation.getPrestation().getPrestationID());
+        String prestation= String.valueOf(reservation.getPrestation().getNomPrestation());
         String adresse= String.valueOf(adresseReservation.getAdresseID());
+        String creneau= String.valueOf(reservation.getCreneauHoraire());
         String json ="";
         String post = "";
 
@@ -53,6 +54,7 @@ public class Synthese {
         valeurs.put("options", options);
         valeurs.put("prestation", prestation);
         valeurs.put("adresse", adresse);
+        valeurs.put("creneauHoraire", creneau);
         String requete = gson1.toJson(valeurs);
 
         try {
