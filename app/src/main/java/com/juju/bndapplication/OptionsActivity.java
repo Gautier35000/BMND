@@ -310,6 +310,12 @@ public class OptionsActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onBackPressed() {
+        Intent intent = new Intent(this, ChoixPrestationActivity.class);
+        intent.putExtra("reservation1", reservation);
+        intent.putExtra("user", user);
+        intent.putExtra("adresseReservation1", adresseReservation);
+        startActivity(intent);
+        finish();
     }
 
     public class ChoixOptionsAT extends AsyncTask {

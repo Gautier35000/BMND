@@ -245,6 +245,12 @@ public class ChoixHoraireActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onBackPressed() {
+        Intent intent = new Intent(this, ChoixCoiffeuseActivity.class);
+        intent.putExtra("reservation3", reservation);
+        intent.putExtra("user", user);
+        intent.putExtra("adresseReservation3", adresseReservation);
+        startActivity(intent);
+        finish();
     }
 
 }

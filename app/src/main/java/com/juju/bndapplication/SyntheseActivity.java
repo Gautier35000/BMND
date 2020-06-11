@@ -297,6 +297,12 @@ public class SyntheseActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onBackPressed() {
+        Intent intent = new Intent(this, ChoixHoraireActivity.class);
+        intent.putExtra("reservation4", reservation);
+        intent.putExtra("user", user);
+        intent.putExtra("adresseReservation4", adresseReservation);
+        startActivity(intent);
+        finish();
     }
 
 }

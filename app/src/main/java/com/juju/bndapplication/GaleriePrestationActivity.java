@@ -36,11 +36,11 @@ public class GaleriePrestationActivity extends AppCompatActivity implements Pres
 
         rvGaleriePrestation = findViewById(R.id.rvGaleriePrestation);
 
-        /*for (int i = 1; i < 13; i++) {
+        for (int i = 1; i < 13; i++) {
             PrestationBean prestation = new PrestationBean();
             prestation.getPrestation(i);
             data.add(prestation);
-        }*/
+        }
 
         //Récupération des informations de l'intent précédente
         Intent currentIntent = getIntent();
@@ -64,13 +64,13 @@ public class GaleriePrestationActivity extends AppCompatActivity implements Pres
             finish();
         }
 
-        PrestationAt prestationAT = new PrestationAt();
-        prestationAT.execute();
+//        PrestationAt prestationAT = new PrestationAt();
+//        prestationAT.execute();
 
-//        rvGaleriePrestation.setLayoutManager(new GridLayoutManager(this, 2));
-//        adapter = new PrestationAdapter(this, data);
-//        adapter.setClickListener(this);
-//        rvGaleriePrestation.setAdapter(adapter);
+        rvGaleriePrestation.setLayoutManager(new GridLayoutManager(this, 2));
+        adapter = new PrestationAdapter(this, data);
+        adapter.setClickListener(this);
+        rvGaleriePrestation.setAdapter(adapter);
     }
 
     //Création du menu et de ses liens
@@ -225,17 +225,13 @@ public class GaleriePrestationActivity extends AppCompatActivity implements Pres
                 Toast.makeText(GaleriePrestationActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
 
             } else {
-//                String text = "";
-//                for (PrestationBean prestationBean : request) {
-//                    //todo
-//
-//                }
-                data = request;
 
-                rvGaleriePrestation.setLayoutManager(new GridLayoutManager(GaleriePrestationActivity.this, 2));
-                adapter = new PrestationAdapter(GaleriePrestationActivity.this, data);
-                adapter.setClickListener(GaleriePrestationActivity.this);
-                rvGaleriePrestation.setAdapter(adapter);
+//                data = request;
+//
+//                rvGaleriePrestation.setLayoutManager(new GridLayoutManager(GaleriePrestationActivity.this, 2));
+//                adapter = new PrestationAdapter(GaleriePrestationActivity.this, data);
+//                adapter.setClickListener(GaleriePrestationActivity.this);
+//                rvGaleriePrestation.setAdapter(adapter);
             }
         }
     }

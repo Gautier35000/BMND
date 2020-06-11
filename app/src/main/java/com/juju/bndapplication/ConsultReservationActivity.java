@@ -38,7 +38,6 @@ public class ConsultReservationActivity extends AppCompatActivity implements Con
 
     private RecyclerView rvMesReservations;
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +68,7 @@ public class ConsultReservationActivity extends AppCompatActivity implements Con
 
         //Renseigner le DATA !
 
-        /*for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < 9; i++) {
             PrestationBean prestationBean = new PrestationBean();
             prestationBean.getPrestation(i);
             CoiffeuseBean coiffeuseBean = new CoiffeuseBean();
@@ -77,17 +76,17 @@ public class ConsultReservationActivity extends AppCompatActivity implements Con
             ReservationBean reservationBean = new ReservationBean(i, prestationBean, "option",
                     coiffeuseBean, "string", "string", "string", i, i);
             data.add(reservationBean);
-        }*/
+        }
 
-//        rvMesReservations.setLayoutManager(new LinearLayoutManager(this));
+        rvMesReservations.setLayoutManager(new LinearLayoutManager(this));
 //
 //        //rvMesReservations.setLayoutManager(new GridLayoutManager(this, 2));
-//        adapter = new ConsultReservationAdapter(this, data);
-//        adapter.setClickListener(this);
-//        rvMesReservations.setAdapter(adapter);
+        adapter = new ConsultReservationAdapter(this, data);
+        adapter.setClickListener(this);
+        rvMesReservations.setAdapter(adapter);
 
-        AllRervationAT myAT = new AllRervationAT();
-        myAT.execute();
+//        AllRervationAT myAT = new AllRervationAT();
+//        myAT.execute();
 
     }
 

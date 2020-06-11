@@ -59,11 +59,11 @@ public class ChoixPrestationActivity extends AppCompatActivity implements View.O
         rvChoixCoiffure = findViewById(R.id.rvChoixCoiffure);
 
         //Remplissage de la rv de prestation
-        /*for (int i = 1; i < 13; i++) {
+        for (int i = 1; i < 13; i++) {
             PrestationBean prestation = new PrestationBean();
             prestation.getPrestation(i);
             data.add(prestation);
-        }*/
+        }
 
         //progressbar à 40%
         progressBar.setProgress(40);
@@ -97,13 +97,13 @@ public class ChoixPrestationActivity extends AppCompatActivity implements View.O
             finish();
         }
 
-//        rvChoixCoiffure.setLayoutManager(new LinearLayoutManager(this));
-//        adapter = new ChoixCoiffureAdapter(this, data);
-//        adapter.setClickListener(this);
-//        rvChoixCoiffure.setAdapter(adapter);
+        rvChoixCoiffure.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new ChoixCoiffureAdapter(this, data);
+        adapter.setClickListener(this);
+        rvChoixCoiffure.setAdapter(adapter);
 
-        PrestationAT prestationAT = new PrestationAT();
-        prestationAT.execute();
+//        PrestationAT prestationAT = new PrestationAT();
+//        prestationAT.execute();
     }
 
     public void onBtAccueilClick(View view) {
@@ -281,6 +281,18 @@ public class ChoixPrestationActivity extends AppCompatActivity implements View.O
 
     @Override
     public void onBackPressed() {
+        if (user.getPrincipal() > 0) {
+            Intent intent = new Intent(this, ReservationAdresseActivity.class);
+            intent.putExtra("user", user);
+            startActivity(intent);
+            finish();
+        }
+        else{
+            Intent intent = new Intent(this, ReservationAutreAdresseActivity.class);
+            intent.putExtra("user", user);
+            startActivity(intent);
+            finish();
+        }
     }
 
     public class PrestationAT extends AsyncTask {

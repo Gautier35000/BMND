@@ -285,6 +285,12 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
 
     @Override
     public void onBackPressed() {
+        Intent intent = new Intent(this, OptionsActivity.class);
+        intent.putExtra("reservation2", reservation);
+        intent.putExtra("user", user);
+        intent.putExtra("adresseReservation2", adresseReservation);
+        startActivity(intent);
+        finish();
     }
 
     public class ChoixCoiffeuseAT extends AsyncTask {
