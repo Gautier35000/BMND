@@ -79,7 +79,6 @@ public class ReservationAdresseActivity extends AppCompatActivity {
         ReservationAT reservationAT = new ReservationAT(user.getAdresseID(), user.getPrincipal());
         reservationAT.execute();
 
-
     }
 
     //Création du menu et de ses liens
