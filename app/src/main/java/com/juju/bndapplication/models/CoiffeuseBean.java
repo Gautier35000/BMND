@@ -13,8 +13,9 @@ public class CoiffeuseBean implements Parcelable {
     private int coiffeuseID;
     private int nbr_notes;
     private int cumul;
+    private String commentaire;
 
-    public CoiffeuseBean(String nom, String prenom, String secteurs, int note, String pretations, int coiffeuseID, int nbr_notes, int cumul) {
+    public CoiffeuseBean(String nom, String prenom, String secteurs, int note, String pretations, int coiffeuseID, int nbr_notes, int cumul, String commentaire) {
         this.nom = nom;
         this.prenom = prenom;
         this.secteurs = secteurs;
@@ -23,6 +24,7 @@ public class CoiffeuseBean implements Parcelable {
         this.coiffeuseID = coiffeuseID;
         this.nbr_notes = nbr_notes;
         this.cumul = cumul;
+        this.commentaire = commentaire;
     }
 
     public CoiffeuseBean(String nom, String prenom, String secteurs, int note, String pretations) {
@@ -139,6 +141,13 @@ public class CoiffeuseBean implements Parcelable {
 
     public void setCumul(int cumul) {
         this.cumul = cumul;
+    }
+    public String getCommentaire() {
+        return commentaire;
+    }
+
+    public void setCommentaire(String commentaire) {
+        this.commentaire = commentaire;
     }
 
     //Template Coiffeuse

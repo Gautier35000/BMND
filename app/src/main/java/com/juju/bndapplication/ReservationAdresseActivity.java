@@ -200,7 +200,7 @@ public class ReservationAdresseActivity extends AppCompatActivity {
         if (rdbtAdresseActuelle.isChecked()) {
 
             //Enregistrement de l'adresse
-//            reservation.setAdresseID(adresseReservation.getAdresseID());
+            reservation.setAdresseID(adresseReservation.getAdresseID());
 
             //Passage à l'étape suivante
             Intent intent = new Intent(this, ChoixPrestationActivity.class);

@@ -315,12 +315,12 @@ public class ChoixCoiffeuseActivity extends AppCompatActivity implements View.On
                 Toast.makeText(ChoixCoiffeuseActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
 
             }else{
-                //String text = "";
-//                for (CoiffeuseBean coiffeuseBean : request) {
-//
-//                    data.add(coiffeuseBean);
-//
-//                }
+                String text = "";
+                for (CoiffeuseBean coiffeuseBean : request) {
+
+                    data.add(coiffeuseBean);
+
+                }
                 data = request;
                 rvChoixCoiffeuse.setLayoutManager(new LinearLayoutManager(ChoixCoiffeuseActivity.this));
                 adapter = new ChoixCoiffeuseAdapter(ChoixCoiffeuseActivity.this, data);

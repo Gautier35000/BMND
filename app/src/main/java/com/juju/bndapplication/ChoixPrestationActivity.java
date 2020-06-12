@@ -59,11 +59,11 @@ public class ChoixPrestationActivity extends AppCompatActivity implements View.O
         rvChoixCoiffure = findViewById(R.id.rvChoixCoiffure);
 
         //Remplissage de la rv de prestation
-        for (int i = 1; i < 13; i++) {
-            PrestationBean prestation = new PrestationBean();
-            prestation.getPrestation(i);
-            data.add(prestation);
-        }
+//        for (int i = 1; i < 5; i++) {
+//            PrestationBean prestation = new PrestationBean();
+//            prestation.getPrestation(i);
+//            data.add(prestation);
+//        }
 
         //progressbar à 40%
         progressBar.setProgress(40);
@@ -102,8 +102,8 @@ public class ChoixPrestationActivity extends AppCompatActivity implements View.O
         adapter.setClickListener(this);
         rvChoixCoiffure.setAdapter(adapter);
 
-//        PrestationAT prestationAT = new PrestationAT();
-//        prestationAT.execute();
+        PrestationAT prestationAT = new PrestationAT();
+        prestationAT.execute();
     }
 
     public void onBtAccueilClick(View view) {

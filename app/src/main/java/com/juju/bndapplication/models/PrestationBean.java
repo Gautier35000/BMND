@@ -93,41 +93,41 @@ public class PrestationBean implements Parcelable {
 
         switch (i){
             case 1 :
-                nomPrestation = "Frisage des frisettes";
+                nomPrestation = "Lissage / Défrisage";
                 break;
             case 2 :
-                nomPrestation = "pose de tresses arc-en-ciel";
+                nomPrestation = "Tresses Africaine";
                 break;
             case 3 :
-                nomPrestation = "Shampouing sauce samouraï";
+                nomPrestation = "Extensions de locks";
                 break;
             case 4 :
-                nomPrestation = "Pose de casque";
+                nomPrestation = "Mèches Brésilennes";
                 break;
-            case 5 :
-                nomPrestation = "Grattage du lobe temporal gauche";
-                break;
-            case 6 :
-                nomPrestation = "Supplément mousse à raser sur les chiquots";
-                break;
-            case 7 :
-                nomPrestation = "Visite du parlement européen";
-                break;
-            case 8 :
-                nomPrestation = "Attribution d'un oscar";
-                break;
-            case 9 :
-                nomPrestation = "Parcours touristique de Los Angeles avec Eddie Murphy";
-                break;
-            case 10 :
-                nomPrestation = "Don d'un ticket de métro";
-                break;
-            case 11 :
-                nomPrestation = "Elevage de poux personnalisés";
-                break;
-            case 12 :
-                nomPrestation = "Initiation au langage JAVA";
-                break;
+//            case 5 :
+//                nomPrestation = "Grattage du lobe temporal gauche";
+//                break;
+//            case 6 :
+//                nomPrestation = "Supplément mousse à raser sur les chiquots";
+//                break;
+//            case 7 :
+//                nomPrestation = "Visite du parlement européen";
+//                break;
+//            case 8 :
+//                nomPrestation = "Attribution d'un oscar";
+//                break;
+//            case 9 :
+//                nomPrestation = "Parcours touristique de Los Angeles avec Eddie Murphy";
+//                break;
+//            case 10 :
+//                nomPrestation = "Don d'un ticket de métro";
+//                break;
+//            case 11 :
+//                nomPrestation = "Elevage de poux personnalisés";
+//                break;
+//            case 12 :
+//                nomPrestation = "Initiation au langage JAVA";
+//                break;
             default :
                 nomPrestation = "oups :/";
                 break;
